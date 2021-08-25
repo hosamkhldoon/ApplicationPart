@@ -125,7 +125,7 @@ Public Class MainForm
                 VisibleControls()
             For i As Integer = 0 To DictionaryMain.Count - 1
                 Dim Key = DictionaryMain.ElementAt(i).Key
-                If row.Cells(0).Value.ToString = Key And row.Cells(2).Value.ToString = DictionaryMain.Item(Key).Item("decription") Then
+                If row.Cells(0).Value.ToString = Key And row.Cells(2).Value.ToString = DictionaryMain.Item(Key).Item("description") Then
                     If DictionaryMain.Item(Key).Item("type") = "News" Then
 
                         News.EditNews(DictionaryMain.Item(Key))
@@ -164,7 +164,7 @@ Public Class MainForm
             SelectRow = NewsPhotoDataGridView1.Rows.Item(index)
             For i As Integer = 0 To DictionaryMain.Count - 1
                 Dim Key = DictionaryMain.ElementAt(i).Key
-                If title = Key And description = DictionaryMain.Item(Key).Item("decription") Then
+                If title = Key And description = DictionaryMain.Item(Key).Item("description") Then
                     If Not DictionaryMain Is Nothing Then
                         If DictionaryMain.Item(title).Item("type") = "News" Then
                             News.DeleteFile(DictionaryMain.Item(title))
