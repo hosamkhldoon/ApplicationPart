@@ -25,7 +25,7 @@ Public Class photo
             Dim filewriter As FileStream = New FileStream("C:\Users\Hussam.Ibraheem\Desktop\First_Task\Photos\" & dic.Item("filename"), FileMode.Create, FileAccess.Write)
 
             file = New StreamWriter(filewriter)
-            file.WriteLine(title_photo & "%$%" & Creation_date & "%$%" & description_photo & "%$%" & body_photo & "%$%")
+            file.WriteLine(title_photo & "%$%" & Creation_date & "%$%" & description_photo & "%$%" & body_photo & "%$%" & path_photo & "%$%")
 
             file.Flush()
             file.Close()
