@@ -48,6 +48,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridViewAutoFilter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataGridView-AutoFilter.1.1.0\lib\net20\DataGridViewAutoFilter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -79,6 +82,12 @@
     <Compile Include="Account.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DeleteForm.Designer.vb">
+      <DependentUpon>DeleteForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
@@ -91,7 +100,6 @@
     <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="News.vb" />
     <Compile Include="NewNews.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -127,24 +135,19 @@
     <Compile Include="NewUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="photo.vb" />
-    <Compile Include="ShowImage.Designer.vb">
-      <DependentUpon>ShowImage.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ShowImage.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ShowUser.Designer.vb">
       <DependentUpon>ShowUser.vb</DependentUpon>
     </Compile>
     <Compile Include="ShowUser.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Account.resx">
       <DependentUpon>Account.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteForm.resx">
+      <DependentUpon>DeleteForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.vb</DependentUpon>
@@ -167,9 +170,6 @@
     <EmbeddedResource Include="NewUser.resx">
       <DependentUpon>NewUser.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowImage.resx">
-      <DependentUpon>ShowImage.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ShowUser.resx">
       <DependentUpon>ShowUser.vb</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +185,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FileWorxObject\FileWorxObject.vbproj">
+      <Project>{5586e0d4-2df8-48d9-863d-265915248e40}</Project>
+      <Name>FileWorxObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

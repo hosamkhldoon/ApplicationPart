@@ -31,6 +31,8 @@ Partial Class NewUser
         Me.CancelButton1 = New System.Windows.Forms.Button()
         Me.SaveButton2 = New System.Windows.Forms.Button()
         Me.updateButton1 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TypeComboBox1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Label1
@@ -121,11 +123,33 @@ Partial Class NewUser
         Me.updateButton1.UseVisualStyleBackColor = True
         Me.updateButton1.Visible = False
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(30, 132)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(85, 16)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "TYPE User"
+        '
+        'TypeComboBox1
+        '
+        Me.TypeComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TypeComboBox1.FormattingEnabled = True
+        Me.TypeComboBox1.Items.AddRange(New Object() {"User", "Admin"})
+        Me.TypeComboBox1.Location = New System.Drawing.Point(124, 127)
+        Me.TypeComboBox1.Name = "TypeComboBox1"
+        Me.TypeComboBox1.Size = New System.Drawing.Size(139, 21)
+        Me.TypeComboBox1.TabIndex = 10
+        '
         'NewUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(294, 185)
+        Me.Controls.Add(Me.TypeComboBox1)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.updateButton1)
         Me.Controls.Add(Me.SaveButton2)
         Me.Controls.Add(Me.CancelButton1)
@@ -150,4 +174,6 @@ Partial Class NewUser
     Friend WithEvents CancelButton1 As Button
     Friend WithEvents SaveButton2 As Button
     Friend WithEvents updateButton1 As Button
+    Friend WithEvents Label4 As Label
+    Friend WithEvents TypeComboBox1 As ComboBox
 End Class

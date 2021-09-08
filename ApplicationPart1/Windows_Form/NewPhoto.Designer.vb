@@ -24,6 +24,7 @@ Partial Class NewPhoto
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.FileDescriptionTabPage1 = New System.Windows.Forms.TabPage()
+        Me.UpdateButton1 = New System.Windows.Forms.Button()
         Me.CancelButton2 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.SaveButton1 = New System.Windows.Forms.Button()
@@ -57,6 +58,7 @@ Partial Class NewPhoto
         '
         'FileDescriptionTabPage1
         '
+        Me.FileDescriptionTabPage1.Controls.Add(Me.UpdateButton1)
         Me.FileDescriptionTabPage1.Controls.Add(Me.CancelButton2)
         Me.FileDescriptionTabPage1.Controls.Add(Me.Label6)
         Me.FileDescriptionTabPage1.Controls.Add(Me.SaveButton1)
@@ -70,8 +72,18 @@ Partial Class NewPhoto
         Me.FileDescriptionTabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.FileDescriptionTabPage1.Size = New System.Drawing.Size(501, 473)
         Me.FileDescriptionTabPage1.TabIndex = 0
-        Me.FileDescriptionTabPage1.Text = "TabPage1"
+        Me.FileDescriptionTabPage1.Text = "File Description"
         Me.FileDescriptionTabPage1.UseVisualStyleBackColor = True
+        '
+        'UpdateButton1
+        '
+        Me.UpdateButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.UpdateButton1.Location = New System.Drawing.Point(323, 312)
+        Me.UpdateButton1.Name = "UpdateButton1"
+        Me.UpdateButton1.Size = New System.Drawing.Size(75, 23)
+        Me.UpdateButton1.TabIndex = 28
+        Me.UpdateButton1.Text = "Update"
+        Me.UpdateButton1.UseVisualStyleBackColor = True
         '
         'CancelButton2
         '
@@ -173,7 +185,7 @@ Partial Class NewPhoto
         Me.ImageTabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.ImageTabPage2.Size = New System.Drawing.Size(501, 473)
         Me.ImageTabPage2.TabIndex = 1
-        Me.ImageTabPage2.Text = "TabPage2"
+        Me.ImageTabPage2.Text = "Image"
         Me.ImageTabPage2.UseVisualStyleBackColor = True
         '
         'PathLabel1
@@ -236,4 +248,5 @@ Partial Class NewPhoto
     Friend WithEvents PathLabel1 As Label
     Friend WithEvents BrowseButton1 As Button
     Friend WithEvents ImagePictureBox1 As PictureBox
+    Friend WithEvents UpdateButton1 As Button
 End Class

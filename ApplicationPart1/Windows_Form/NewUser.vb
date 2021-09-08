@@ -1,14 +1,35 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports FileWorxObject.BusinessQuery
 
 Public Class NewUser
 
-    Dim user As User = New User()
-    Private Sub SaveButton2Click(sender As Object, e As EventArgs) Handles SaveButton2.Click
+
+    Private NewUser As FileWorxObject.User = New FileWorxObject.User()
+    Private iduser As Integer
+    Public Property UserID() As Integer
+        Get
+            Return iduser
+        End Get
+        Set(ByVal value As Integer)
+            iduser = value
+        End Set
+    End Property
+
+    Private idbusiness As Integer
+    Public Property BusinessID() As Integer
+        Get
+            Return idbusiness
+        End Get
+        Set(ByVal value As Integer)
+            idbusiness = value
+        End Set
+    End Property
+    Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton2.Click
 
 
-        Dim dir_file = "C:\Users\Hussam.Ibraheem\Desktop\First_Task\Users"
-        Dim new_user As User = New User()
+        Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+
         Dim emptyBoxes =
            From txt In Me.Controls.OfType(Of TextBox)()
            Where txt.Text.Length = 0
@@ -18,39 +39,77 @@ Public Class NewUser
             ' display popup box
             MessageBox.Show("Please fill in all fields", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
             emptyBoxes.Last().Focus()
-        ElseIf user.cheacknumberOfCharcter255(NameTextBox1.Text) Then
-            MessageBox.Show("please enter in box" & NameTextBox1.Name & " less then 255 charcter")
-        ElseIf user.cheacknumberOfCharcter255(LoginNameTextBox2.Text) Then
-            MessageBox.Show("please enter in box" & LoginNameTextBox2.Name & " less then 255 charcter")
-        ElseIf user.CheackNumberOfCharcter255(PasswordTextBox3.Text) Then
-            MessageBox.Show("please enter in box" & PasswordTextBox3.Name & " less then 255 charcter")
+        ElseIf NumberCharcter() Then
+
         Else
-            Select Case False
-                Case new_user.ValidateInput(NameTextBox1.Text, "^[a-z]*$", "Invalid Name")
-                    NameTextBox1.Focus()
+            Dim flag As Boolean = False
+            Dim UserQuery As FileWorxObject.UserQuery = New FileWorxObject.UserQuery()
+            UserQuery.QClassID = "3"
+            UserQuery.ListIndex(FilterIndex.ClassID) = 0
 
+            UserQuery.Run()
+            If Not UserQuery.ListUser Is Nothing Then
+                For Each item In UserQuery.ListUser
 
-                Case Else
-                    Try
-                        new_user.Set_Value(NameTextBox1.Text, LoginNameTextBox2.Text, PasswordTextBox3.Text)
-                        new_user.SaveNewUser()
-                    Catch ex As DirectoryNotFoundException
-                        MessageBox.Show(dir_file & "not found.", "directory not found")
-                    Catch ex As IOException
-                        MessageBox.Show(ex.Message, "IO Exception")
-                    End Try
-            End Select
+                    If LoginNameTextBox2.Text = item.NameLogin Then
+                        flag = True
+                    End If
+
+                Next
+            End If
+            If flag Then
+                MessageBox.Show("this login name already found write another login name ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Else
+                Dim Bytes() As Byte = System.Text.Encoding.UTF8.GetBytes(PasswordTextBox3.Text)
+                Dim HashofBytes() As Byte = New System.Security.Cryptography.SHA1Managed().ComputeHash(Bytes)
+                Dim StrHash As String = Convert.ToBase64String(HashofBytes)
+
+                NewUser.NameFileUser = NameTextBox1.Text
+                NewUser.NameLogin = LoginNameTextBox2.Text
+                NewUser.IDUser = -1
+                NewUser.ClassIDFileOrUser = 3
+                NewUser.PasswordUser = StrHash
+                NewUser.CreationDateFileUser = Creation_date
+                NewUser.TypeUser = TypeComboBox1.Text
+                NewUser.LastModifierUser = ""
+                NewUser.Updata()
+                MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+
         End If
 
     End Sub
 
-    Private Sub CancelButton1Click(sender As Object, e As EventArgs) Handles CancelButton1.Click
+    Private Sub CancelClick(sender As Object, e As EventArgs) Handles CancelButton1.Click
         Me.Close()
     End Sub
 
-    Private Sub updateButton1_Click(sender As Object, e As EventArgs) Handles updateButton1.Click
+    Private Sub UpdateClick(sender As Object, e As EventArgs) Handles updateButton1.Click
 
-        User.Set_Value(NameTextBox1.Text, LoginNameTextBox2.Text, PasswordTextBox3.Text)
-        user.UpdateOtherUser()
+
+        NewUser.IDUser = Me.UserID
+        NewUser.IDBusiness = Me.BusinessID
+
+        NewUser.NameFileUser = NameTextBox1.Text
+        NewUser.NameLogin = LoginNameTextBox2.Text
+
+        NewUser.PasswordUser = PasswordTextBox3.Text
+        NewUser.LastModifierUser = MainForm.CurrentUser
+        NewUser.Updata()
+        MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+    Private Function NumberCharcter() As Boolean
+        If NameTextBox1.Text.Length > 255 Then
+            MessageBox.Show("Please enter in box " + NameTextBox1.Name + " less than 255 Charcter")
+            Return True
+        ElseIf LoginNameTextBox2.Text.Length > 255 Then
+            MessageBox.Show("Please enter in box " + LoginNameTextBox2.Name + " less than 255 Charcter")
+            Return True
+        ElseIf PasswordTextBox3.Text.Length > 255 Then
+            MessageBox.Show("Please enter in box " + PasswordTextBox3.Name + " less than 255 Charcter")
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class

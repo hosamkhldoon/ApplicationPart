@@ -1,32 +1,38 @@
 ﻿Public Class LoginForm
-    Public ArrayCurrentUser As New Dictionary(Of String, String)
-    Public Name As String
+
+    Public NameUser As String
     Public LoginName As String
-    Private Sub loginButton1_Click(sender As Object, e As EventArgs) Handles loginButton1.Click
-        Dim Dictionarylogin As New Dictionary(Of String, Dictionary(Of String, String))
-        Dim user As User = New User()
-
-        Dim flag As Boolean = False
-        user.GetDataUser(Dictionarylogin)
-        For Each key As String In Dictionarylogin.Keys
-            Dim password = Dictionarylogin.Item(key).Item("password")
-            If usernameTextBox1.Text = key And passwordTextBox2.Text = password Then
-                Name = Dictionarylogin.Item(key).Item("Name")
-                LoginName = Dictionarylogin.Item(key).Item("LoginName")
-                flag = True
-                Me.DialogResult = DialogResult.OK
-
-            End If
+    Public IdUser As Integer
+    Private User As FileWorxObject.User = New FileWorxObject.User()
 
 
-        Next
-        If Not flag Then
+    Private Sub LoginClick(sender As Object, e As EventArgs) Handles loginButton1.Click
+
+        Dim Bytes() As Byte = System.Text.Encoding.UTF8.GetBytes(passwordTextBox2.Text)
+        Dim HashofBytes() As Byte = New System.Security.Cryptography.SHA1Managed().ComputeHash(Bytes)
+        Dim StrHash As String = Convert.ToBase64String(HashofBytes)
+
+
+
+        User.PasswordUser = StrHash
+        User.NameLogin = usernameTextBox1.Text
+
+
+        If User.CheckLoginUser() Then
+            Me.IdUser = User.IDBusiness
+            Me.NameUser = User.NameFileUser
+            Me.LoginName = User.NameLogin
+
+            Me.DialogResult = DialogResult.OK
+        Else
             MessageBox.Show("You don't have account", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
+
+
     End Sub
 
-    Private Sub CancelButton1_Click(sender As Object, e As EventArgs) Handles CancelButton1.Click
+    Private Sub CancelClick(sender As Object, e As EventArgs) Handles CancelButton1.Click
         Application.Exit()
     End Sub
 End Class

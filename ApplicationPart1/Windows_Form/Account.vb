@@ -1,18 +1,22 @@
 ﻿Public Class Account
-    Private Sub Account_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private AccountUser As FileWorxObject.User = New FileWorxObject.User()
+    Private Sub AccountLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Private Sub SaveButton2_Click(sender As Object, e As EventArgs) Handles SaveButton2.Click
+    Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton2.Click
         MainForm.CurrentUser = NameTextBox1.Text
         MainForm.CurrentLoginName = LoginNameTextBox2.Text
-        Dim account_user As User = New User()
-        account_user.AccountUpdate()
-        NameTextBox1.Text = MainForm.CurrentUser
-        LoginNameTextBox2.Text = MainForm.CurrentLoginName
+
+        AccountUser.NameFileUser = MainForm.CurrentUser
+        AccountUser.NameLogin = MainForm.CurrentLoginName
+        AccountUser.IDUser = MainForm.CurrentID
+        AccountUser.Updata()
+        MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
     End Sub
 
-    Private Sub CancelButton1_Click(sender As Object, e As EventArgs) Handles CancelButton1.Click
+    Private Sub CancelClick(sender As Object, e As EventArgs) Handles CancelButton1.Click
         Me.Close()
     End Sub
 
@@ -21,5 +25,7 @@
         EditButton1.Visible = False
         NameTextBox1.Enabled = True
         LoginNameTextBox2.Enabled = True
+
+
     End Sub
 End Class
