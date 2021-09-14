@@ -88,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiClients\ApiClients.csproj" />
-    <ProjectReference Include="..\ClassID\ClassID.vbproj" />
     <ProjectReference Include="..\FileWorxObjects\FileWorxObjects.vbproj" />
   </ItemGroup>
 </Project>

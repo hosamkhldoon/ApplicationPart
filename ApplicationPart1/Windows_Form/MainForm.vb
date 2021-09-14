@@ -1,24 +1,22 @@
-﻿Imports System.Drawing.Imaging
-Imports System.IO
-Imports FileWorxObjects.BusinessQuery
+﻿Imports System.IO
 Imports FileWorxObjects.QueryCondition
-Imports ClassID.ClassType
+
 
 Public Class MainForm
     Private IDBusiness As Integer
-
-
     Public CurrentUser As String
     Public CurrentLoginName As String
     Public CurrentID As Integer
 
 
-    Private BusinessQuery As New FileWorxObjects.BusinessQuery()
-
     Private BusinessObject As New FileWorxObjects.BusinessObject()
 
 
-
+    Enum ClassID
+        News = 1
+        Photo = 2
+        User = 3
+    End Enum
 
     Private Sub UserToolStripMenuItemClick(sender As Object, e As EventArgs) Handles UserToolStripMenuItem.Click
 
@@ -49,8 +47,6 @@ Public Class MainForm
         Me.Close()
     End Sub
 
-
-
     Private Sub NewsPhotoDataGridView1CellContentClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles NewsPhotoDataGridView1.CellMouseClick
 
 
@@ -63,7 +59,7 @@ Public Class MainForm
             VisibleControls()
             BusinessObject = BusinessClient.ReadNewsOrPhotoOrUser(CInt(row.Cells(0).Value))
 
-            If BusinessObject.ClassIDFileOrUser = 1 Then 'news preview
+            If BusinessObject.ClassIDFileOrUser = ClassID.News Then 'news preview
                 Dim NewsClient As New ApiClients.NewsClient
                 Dim NewNew As New FileWorxObjects.News()
                 imagePictureBox1.Visible = False
@@ -76,7 +72,7 @@ Public Class MainForm
                 CreationdateTextBox3.Text = NewNew.CreationDateFileUser
                 categoryComboBox1.Text = NewNew.CategoryNews
                 previewTextBox1.Text = NewNew.BodyNewsPhoto
-            ElseIf BusinessObject.ClassIDFileOrUser = 2 Then 'photo preview
+            ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Photo Then 'photo preview
                 Dim PhotoClient As New ApiClients.PhotoClient
                 Dim NewPhoto As New FileWorxObjects.Photo()
                 categoryLabel3.Visible = False
@@ -147,7 +143,7 @@ Public Class MainForm
             BusinessObject = BusinessClient.ReadNewsOrPhotoOrUser(CInt(row.Cells(0).Value))
 
 
-            If BusinessObject.ClassIDFileOrUser = 1 Then 'news update
+            If BusinessObject.ClassIDFileOrUser = ClassID.News Then 'news update
 
                 Dim NewsClient As New ApiClients.NewsClient
                 Dim NewsDilog As New NewNews()
@@ -170,7 +166,7 @@ Public Class MainForm
                 row.Cells(3).Value = NewNew.DescriptionNewsPhoto
 
 
-            ElseIf BusinessObject.ClassIDFileOrUser = 2 Then 'photo update
+            ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Photo Then 'photo update
                 Dim PhotoClient As New ApiClients.PhotoClient
                 Dim PhotoDilog As NewPhoto = New NewPhoto()
                 Dim NewPhoto As New FileWorxObjects.Photo()
@@ -199,9 +195,6 @@ Public Class MainForm
 
             End If
 
-
-
-
         End If
 
 
@@ -215,7 +208,7 @@ Public Class MainForm
 
             BusinessObject = BusinessClient.ReadNewsOrPhotoOrUser(IDBusiness)
 
-            If BusinessObject.ClassIDFileOrUser = 1 Then
+            If BusinessObject.ClassIDFileOrUser = ClassID.News Then
                 formdelete.TypeRow = "News"
 
             Else
@@ -229,7 +222,7 @@ Public Class MainForm
                 deletephoto = PhotoClient.ReadPhoto(IDBusiness)
 
 
-                If BusinessObject.ClassIDFileOrUser = 2 Then ' delete photo from folder
+                If BusinessObject.ClassIDFileOrUser = ClassID.Photo Then ' delete photo from folder
                     If deletephoto.LocationPhoto <> "" Then
 
                         If File.Exists(deletephoto.LocationPhoto) Then
@@ -279,8 +272,6 @@ Public Class MainForm
         MyAccount.ShowDialog()
     End Sub
 
-
-
     Private Sub OpenToolStripMenuItemClick(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         Dim BusinessQueryClient As New ApiClients.BusinessQueryClient
         NewsPhotoDataGridView1.Rows.Clear()
@@ -295,7 +286,7 @@ Public Class MainForm
 
     Private Sub MainFormLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        ' Add any initialization after the InitializeComponent() call.
+
         Dim loginscreen As LoginForm = New LoginForm()
 
         loginscreen.ShowDialog()
@@ -305,8 +296,6 @@ Public Class MainForm
             CurrentUser = loginscreen.NameUser
             CurrentLoginName = loginscreen.LoginName
             MessageBox.Show("Hello " + Me.CurrentUser)
-
-            ''DONOT InitializeComponent()
             Dim BusinessQueryClient As New ApiClients.BusinessQueryClient
             NewsPhotoDataGridView1.Rows.Clear()
             Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos
@@ -330,9 +319,6 @@ Public Class MainForm
         LoginForm.Show()
 
     End Sub
-
-
-
 
     Private Function SelectedCondition(CondtionCombobox1 As ComboBox) As Integer
 
@@ -386,8 +372,6 @@ Public Class MainForm
         End If
         Return -1
     End Function
-
-
     Private Sub IntergerSelectedIndexChanged(sender As Object, e As EventArgs) Handles ClassComboBox1.SelectedIndexChanged
         ClassidTextBox6.Enabled = True
         If ClassComboBox1.Text = "Between" Then
@@ -401,20 +385,6 @@ Public Class MainForm
             seconedcategoryTextBox1.Enabled = True
         End If
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Private Sub DateSelectedIndexChanged(sender As Object, e As EventArgs) Handles DateComboBox4.SelectedIndexChanged
         DateTimePicker1.Enabled = True
         If DateComboBox4.Text = "Between" Then
@@ -515,7 +485,6 @@ Public Class MainForm
             seconedcategoryTextBox1.Enabled = False
         End If
     End Sub
-
     Private Sub SearchClick(sender As Object, e As EventArgs) Handles SearchButton1.Click
         Dim filefilter As FileWorxObjects.FileQuery = New FileWorxObjects.FileQuery()
         If IDfilterTextBox1.Text.Length <> 0 And IDCheckBox5.Checked Then
@@ -560,10 +529,8 @@ Public Class MainForm
 
         End If
 
-
         Dim FileQueryClient As New ApiClients.FileQueryClient
         Dim FilterNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = FileQueryClient.GetAllNewsAndPhotos(filefilter)
-
         NewsPhotoDataGridView1.Rows.Clear()
 
         If Not FilterNewsAndPhotos Is Nothing Then
