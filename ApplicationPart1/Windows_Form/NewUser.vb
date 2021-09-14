@@ -1,20 +1,13 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
-Imports FileWorxObject.BusinessQuery
+Imports FileWorxObjects.BusinessQuery
 
 Public Class NewUser
 
 
-    Private NewUser As FileWorxObject.User = New FileWorxObject.User()
-    Private iduser As Integer
-    Public Property UserID() As Integer
-        Get
-            Return iduser
-        End Get
-        Set(ByVal value As Integer)
-            iduser = value
-        End Set
-    End Property
+    Private NewUser As FileWorxObjects.User = New FileWorxObjects.User()
+
+
 
     Private idbusiness As Integer
     Public Property BusinessID() As Integer
@@ -29,7 +22,8 @@ Public Class NewUser
 
 
         Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
-
+        Dim UserClient As New ApiClients.UserClient
+        Dim UserQueryClient As New ApiClients.UserQueryClient
         Dim emptyBoxes =
            From txt In Me.Controls.OfType(Of TextBox)()
            Where txt.Text.Length = 0
@@ -43,13 +37,13 @@ Public Class NewUser
 
         Else
             Dim flag As Boolean = False
-            Dim UserQuery As FileWorxObject.UserQuery = New FileWorxObject.UserQuery()
-            UserQuery.QClassID = "3"
-            UserQuery.ListIndex(FilterIndex.ClassID) = 0
+            Dim UserQuery As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
 
-            UserQuery.Run()
-            If Not UserQuery.ListUser Is Nothing Then
-                For Each item In UserQuery.ListUser
+
+
+            Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
+            If Not ListUser Is Nothing Then
+                For Each item In ListUser
 
                     If LoginNameTextBox2.Text = item.NameLogin Then
                         flag = True
@@ -72,7 +66,7 @@ Public Class NewUser
                 NewUser.CreationDateFileUser = Creation_date
                 NewUser.TypeUser = TypeComboBox1.Text
                 NewUser.LastModifierUser = ""
-                NewUser.Updata()
+                UserClient.CreateUser(NewUser)
                 MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
@@ -87,15 +81,16 @@ Public Class NewUser
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles updateButton1.Click
 
 
-        NewUser.IDUser = Me.UserID
-        NewUser.IDBusiness = Me.BusinessID
+        Dim UserClient As New ApiClients.UserClient
+
 
         NewUser.NameFileUser = NameTextBox1.Text
         NewUser.NameLogin = LoginNameTextBox2.Text
 
         NewUser.PasswordUser = PasswordTextBox3.Text
         NewUser.LastModifierUser = MainForm.CurrentUser
-        NewUser.Updata()
+        UserClient.UpdateUser(Me.BusinessID, NewUser)
+
         MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
     Private Function NumberCharcter() As Boolean

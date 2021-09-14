@@ -1,200 +1,93 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}</ProjectGuid>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <StartupObject>Windows_Form.My.MyApplication</StartupObject>
-    <RootNamespace>Windows_Form</RootNamespace>
-    <AssemblyName>Windows_Form</AssemblyName>
-    <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+	  
   </PropertyGroup>
+	
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Windows_Form.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+	 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Windows_Form.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
+	
   <PropertyGroup>
-    <OptionExplicit>On</OptionExplicit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <OptionCompare>Binary</OptionCompare>
-  </PropertyGroup>
-  <PropertyGroup>
+	  
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
-  <PropertyGroup>
-    <OptionInfer>On</OptionInfer>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="DataGridViewAutoFilter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DataGridView-AutoFilter.1.1.0\lib\net20\DataGridViewAutoFilter.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-  <ItemGroup>
-    <Import Include="Microsoft.VisualBasic" />
-    <Import Include="System" />
-    <Import Include="System.Collections" />
-    <Import Include="System.Collections.Generic" />
-    <Import Include="System.Data" />
     <Import Include="System.Drawing" />
-    <Import Include="System.Diagnostics" />
     <Import Include="System.Windows.Forms" />
-    <Import Include="System.Linq" />
-    <Import Include="System.Xml.Linq" />
-    <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.Designer.vb">
+    <Compile Update="Account.Designer.vb">
       <DependentUpon>Account.vb</DependentUpon>
     </Compile>
-    <Compile Include="Account.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DeleteForm.Designer.vb">
+    <Compile Update="DeleteForm.Designer.vb">
       <DependentUpon>DeleteForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="DeleteForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.vb">
+    <Compile Update="LoginForm.Designer.vb">
       <DependentUpon>LoginForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.vb">
+    <Compile Update="MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewNews.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewNews.Designer.vb">
-      <DependentUpon>NewNews.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="My Project\Application.Designer.vb">
+    <Compile Update="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
+    <Compile Update="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
+    <Compile Update="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="NewPhoto.Designer.vb">
+    <Compile Update="NewPhoto.Designer.vb">
       <DependentUpon>NewPhoto.vb</DependentUpon>
     </Compile>
-    <Compile Include="NewPhoto.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewUser.Designer.vb">
+    <Compile Update="NewUser.Designer.vb">
       <DependentUpon>NewUser.vb</DependentUpon>
     </Compile>
-    <Compile Include="NewUser.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShowUser.Designer.vb">
+    <Compile Update="ShowUser.Designer.vb">
       <DependentUpon>ShowUser.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ShowUser.vb">
-      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Account.resx">
-      <DependentUpon>Account.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DeleteForm.resx">
-      <DependentUpon>DeleteForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewNews.resx">
-      <DependentUpon>NewNews.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewPhoto.resx">
-      <DependentUpon>NewPhoto.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewUser.resx">
-      <DependentUpon>NewUser.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShowUser.resx">
-      <DependentUpon>ShowUser.vb</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="My Project\Application.myapp">
+    <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FileWorxObject\FileWorxObject.vbproj">
-      <Project>{5586e0d4-2df8-48d9-863d-265915248e40}</Project>
-      <Name>FileWorxObject</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\FileWorxObject\FileWorxObject.vbproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <ItemGroup>
+    <PackageReference Include="DataGridView-AutoFilter" Version="1.1.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.242703">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="photo.vb" />
+  </ItemGroup>
 </Project>

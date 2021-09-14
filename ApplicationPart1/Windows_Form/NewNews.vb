@@ -2,26 +2,10 @@
 Imports System.Text.RegularExpressions
 
 Public Class NewNews
-    Private NewNew As FileWorxObject.News = New FileWorxObject.News()
-    Private PrevNew As FileWorxObject.News = New FileWorxObject.News()
-    Private idfile As Integer
-    Public Property FileID() As Integer
-        Get
-            Return idfile
-        End Get
-        Set(ByVal value As Integer)
-            idfile = value
-        End Set
-    End Property
-    Private idnews As Integer
-    Public Property NewsID() As Integer
-        Get
-            Return idnews
-        End Get
-        Set(ByVal value As Integer)
-            idnews = value
-        End Set
-    End Property
+    Private NewNew As FileWorxObjects.News = New FileWorxObjects.News()
+    Private PrevNew As FileWorxObjects.News = New FileWorxObjects.News()
+
+
     Private idbusiness As Integer
     Public Property BusinessID() As Integer
         Get
@@ -41,7 +25,7 @@ Public Class NewNews
 
 
 
-
+        Dim NewsClient As New ApiClients.NewsClient
 
 
 
@@ -56,12 +40,12 @@ Public Class NewNews
             NewNew.CreationDateFileUser = Creation_date
             NewNew.ClassIDFileOrUser = 1
             NewNew.IDNews = -1
+            NewNew = NewsClient.CreateNews(NewNew)
 
-            NewNew.Updata()
-            NewNew.Read()
-            MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            MainForm.NewsPhotoDataGridView1.Rows.Add(NewNew.IDBusiness, NewNew.NameFileUser, NewNew.CreationDateFileUser, NewNew.DescriptionNewsPhoto)
-
+            If Not NewNew Is Nothing Then
+                MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MainForm.NewsPhotoDataGridView1.Rows.Add(NewNew.IDBusiness, NewNew.NameFileUser, NewNew.CreationDateFileUser, NewNew.DescriptionNewsPhoto)
+            End If
         End If
 
 
@@ -77,9 +61,8 @@ Public Class NewNews
     End Sub
 
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles UpdateButton1.Click
-        NewNew.IDNews = Me.NewsID
-        NewNew.IDFile = Me.FileID
-        NewNew.IDBusiness = Me.BusinessID
+        Dim NewsClient As New ApiClients.NewsClient
+
         NewNew.NameFileUser = TitleTextBox1.Text
         NewNew.DescriptionNewsPhoto = DescriptionTextBox2.Text
         NewNew.CategoryNews = ComboBox1.Text
@@ -87,8 +70,10 @@ Public Class NewNews
         If NewNew.NameFileUser = PrevNew.NameFileUser And NewNew.CategoryNews = PrevNew.CategoryNews And NewNew.DescriptionNewsPhoto = PrevNew.DescriptionNewsPhoto And NewNew.BodyNewsPhoto = PrevNew.BodyNewsPhoto Then
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else
-            NewNew.Updata()
-            MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim Message = NewsClient.UpdateNews(Me.BusinessID, NewNew)
+            If Not String.IsNullOrEmpty(Message) Then
+                MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         End If
     End Sub
     Private Function NumberCharcter() As Boolean

@@ -5,26 +5,9 @@ Public Class NewPhoto
 
     Private openFD As New OpenFileDialog()
 
-    Private idfile As Integer
-    Private NewPhoto As FileWorxObject.photo = New FileWorxObject.photo()
-    Private PrevPhoto As FileWorxObject.photo = New FileWorxObject.photo()
-    Public Property FileID() As Integer
-        Get
-            Return idfile
-        End Get
-        Set(ByVal value As Integer)
-            idfile = value
-        End Set
-    End Property
-    Private idphoto As Integer
-    Public Property PhotoID() As Integer
-        Get
-            Return idphoto
-        End Get
-        Set(ByVal value As Integer)
-            idphoto = value
-        End Set
-    End Property
+    Private NewPhoto As FileWorxObjects.photo = New FileWorxObjects.photo()
+    Private PrevPhoto As FileWorxObjects.photo = New FileWorxObjects.photo()
+
     Private idbusiness As Integer
     Public Property BusinessID() As Integer
         Get
@@ -34,7 +17,7 @@ Public Class NewPhoto
             idbusiness = value
         End Set
     End Property
-    Private folder As String = "C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart1\Windows_Form\Images\"
+    Private folder As String = "C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\Images\"
     Private Sub NewPhotoLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         FileDescriptionTabPage1.Text = "File Description"
         ImageTabPage2.Text = "Image"
@@ -73,7 +56,7 @@ Public Class NewPhoto
 
 
         Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
-
+        Dim PhotoClient As New ApiClients.PhotoClient
 
 
 
@@ -102,11 +85,11 @@ Public Class NewPhoto
                 File.Copy(openFD.FileName, Path.Combine(folder, fileName), True)
             End If
 
-            NewPhoto.Updata()
-            NewPhoto.Read()
-            MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            MainForm.NewsPhotoDataGridView1.Rows.Add(NewPhoto.IDBusiness, NewPhoto.NameFileUser, NewPhoto.CreationDateFileUser, NewPhoto.DescriptionNewsPhoto)
-
+            NewPhoto = PhotoClient.CreatePhoto(NewPhoto)
+            If Not NewPhoto Is Nothing Then
+                MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MainForm.NewsPhotoDataGridView1.Rows.Add(NewPhoto.IDBusiness, NewPhoto.NameFileUser, NewPhoto.CreationDateFileUser, NewPhoto.DescriptionNewsPhoto)
+            End If
         End If
     End Sub
 
@@ -116,7 +99,7 @@ Public Class NewPhoto
 
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles UpdateButton1.Click
         Dim fileName As String = Path.GetFileName(openFD.FileName) + Guid.NewGuid.ToString
-
+        Dim PhotoClient As New ApiClients.PhotoClient
         If Not openFD.FileName Is Nothing Then
             If File.Exists(PrevPhoto.LocationPhoto) Then
                 File.Delete(PrevPhoto.LocationPhoto)
@@ -125,9 +108,8 @@ Public Class NewPhoto
             End If
             NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
         End If
-        NewPhoto.IDPhoto = Me.PhotoID
-        NewPhoto.IDFile = Me.FileID
-        NewPhoto.IDBusiness = Me.BusinessID
+
+
         NewPhoto.NameFileUser = TitleTextBox1.Text
         NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
 
@@ -136,8 +118,10 @@ Public Class NewPhoto
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         Else
-            NewPhoto.Updata()
-            MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Dim Message = PhotoClient.UpdatePhoto(Me.BusinessID, NewPhoto)
+            If String.IsNullOrEmpty(Message) Then
+                MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         End If
 
 

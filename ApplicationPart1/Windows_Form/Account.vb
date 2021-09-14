@@ -1,5 +1,5 @@
 ﻿Public Class Account
-    Private AccountUser As FileWorxObject.User = New FileWorxObject.User()
+    Private AccountUser As FileWorxObjects.User = New FileWorxObjects.User()
     Private Sub AccountLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -11,8 +11,11 @@
         AccountUser.NameFileUser = MainForm.CurrentUser
         AccountUser.NameLogin = MainForm.CurrentLoginName
         AccountUser.IDUser = MainForm.CurrentID
-        AccountUser.Updata()
-        MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Dim UserClient As New ApiClients.UserClient
+        Dim Message = UserClient.UpdateUser(AccountUser.IDUser, AccountUser)
+        If Not String.IsNullOrEmpty(Message) Then
+            MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
 
     End Sub
 

@@ -1,27 +1,23 @@
 ﻿
 
-Imports FileWorxObject.BusinessQuery
-Imports FileWorxObject.QueryCondition
+Imports FileWorxObjects.BusinessQuery
+Imports FileWorxObjects.QueryCondition
 
 Public Class ShowUser
     Public DictionaryUser As New Dictionary(Of String, Dictionary(Of String, String))
 
     Private IDBusiness As Integer
-    Private BusinessObject As FileWorxObject.BusinessObject = New FileWorxObject.BusinessObject()
-    Private Users As FileWorxObject.User = New FileWorxObject.User()
-    Private UserQuery As FileWorxObject.UserQuery = New FileWorxObject.UserQuery()
-    Private SelectedItem As Integer = -1
-    Private userfilter As FileWorxObject.UserQuery = New FileWorxObject.UserQuery()
+    Private BusinessObject As FileWorxObjects.BusinessObject = New FileWorxObjects.BusinessObject()
+    Private Users As FileWorxObjects.User = New FileWorxObjects.User()
+    Private UserQuery As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
 
-    Private services As FileWorxObject.QueryCondition = New FileWorxObject.QueryCondition()
     Private Sub ShowUserLoad(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim UserQueryClient As New ApiClients.UserQueryClient
 
+        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
 
-        UserQuery.QClassID = "3"
-        UserQuery.ListIndex(FilterIndex.ClassID) = 0
-        UserQuery.Run()
-        If Not UserQuery.ListUser Is Nothing Then
-            For Each item In UserQuery.ListUser
+        If Not ListUser Is Nothing Then
+            For Each item In ListUser
 
                 If MainForm.CurrentID <> item.IDBusiness Then
                     UserDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.NameLogin, item.LastModifierUser)
@@ -36,7 +32,7 @@ Public Class ShowUser
     End Sub
     Private Sub UserDataGridViewCellContentDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles UserDataGridView1.CellMouseDoubleClick
 
-
+        Dim UserClient As New ApiClients.UserClient
 
         If e.RowIndex >= 0 Then
 
@@ -50,12 +46,12 @@ Public Class ShowUser
 
             Dim UserDilog As NewUser = New NewUser()
 
-            UserDilog.UserID = CInt(row.Cells(0).Value)
 
 
             Users.IDBusiness = CInt(row.Cells(0).Value)
             Users.IDUser = CInt(row.Cells(0).Value)
-            Users.Read()
+            Users = UserClient.ReadUser(CInt(row.Cells(0).Value))
+
 
             UserDilog.NameTextBox1.Text = Users.NameFileUser
             UserDilog.LoginNameTextBox2.Text = Users.NameLogin
@@ -66,7 +62,7 @@ Public Class ShowUser
             UserDilog.updateButton1.Visible = True
             UserDilog.SaveButton2.Visible = False
             UserDilog.ShowDialog()
-            Users.Read()
+            Users = UserClient.ReadUser(CInt(row.Cells(0).Value))
 
             row.Cells(1).Value = Users.NameFileUser
 
@@ -95,17 +91,17 @@ Public Class ShowUser
         End If
     End Sub
     Private Sub DeleteToolStripMenuItemClick(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
-
+        Dim BusinessClient As New ApiClients.BusinessClient
         If UserDataGridView1.SelectedRows.Count > 0 Then
             Dim formdelete As DeleteForm = New DeleteForm()
-            BusinessObject.IDBusiness = IDBusiness
+
             formdelete.TypeRow = "User"
 
             formdelete.ShowDialog()
             If formdelete.DialogResult = DialogResult.Yes Then
                 Dim row = UserDataGridView1.SelectedRows(0)
+                BusinessClient.DeleteNewsOrPhotoOrUser(IDBusiness)
 
-                BusinessObject.Delete()
                 UserDataGridView1.Rows.Remove(row)
             End If
         End If
@@ -205,50 +201,52 @@ Public Class ShowUser
     End Sub
 
     Private Sub SearchClick(sender As Object, e As EventArgs) Handles searchButton1.Click
-        Dim userfilter As FileWorxObject.UserQuery = New FileWorxObject.UserQuery()
+        Dim userfilter As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
         If IDTextBox1.Text.Length <> 0 And IDCheckBox1.Checked Then
-            userfilter.ListSeconedValue(FilterIndex.ID) = Me.SeconedValue(seconedidTextBox1, IDComboBox1)
-            userfilter.ListIndex(FilterIndex.ID) = Me.SelectedCondition(IDComboBox1)
+            userfilter.SeconedValueID = Me.SeconedValue(seconedidTextBox1, IDComboBox1)
+            userfilter.IndexConditionID = Me.SelectedCondition(IDComboBox1)
             userfilter.QID = IDTextBox1.Text
 
 
         End If
         If NameTextBox2.Text.Length <> 0 And nameCheckBox1.Checked Then
-            userfilter.ListSeconedValue(FilterIndex.Name) = Me.SeconedValue(seconednameTextBox1, NameComboBox2)
-            userfilter.ListIndex(FilterIndex.Name) = Me.SelectedCondition(NameComboBox2)
+            userfilter.SeconedValueName = Me.SeconedValue(seconednameTextBox1, NameComboBox2)
+            userfilter.IndexConditionName = Me.SelectedCondition(NameComboBox2)
 
             userfilter.QName = NameTextBox2.Text
 
 
         End If
         If LastmodifierTextBox4.Text.Length <> 0 And lastmodifierCheckBox1.Checked Then
-            userfilter.ListSeconedValue(FilterIndex.LastModifer) = Me.SeconedValue(seconedmodiferTextBox1, lastmodifierComboBox1)
-            userfilter.ListIndex(FilterIndex.LastModifer) = Me.SelectedCondition(lastmodifierComboBox1)
+            userfilter.SeconedValueLastModifier = Me.SeconedValue(seconedmodiferTextBox1, lastmodifierComboBox1)
+            userfilter.IndexConditionLastModifier = Me.SelectedCondition(lastmodifierComboBox1)
 
             userfilter.QLastModifier = LastmodifierTextBox4.Text
 
 
         End If
         If dateCheckBox1.Checked Then
-            userfilter.ListSeconedValue(FilterIndex.CreationDate) = Me.SeconedDate()
+            userfilter.SeconedValueCreationDate = Me.SeconedDate()
             userfilter.QCreationDate = Format(userDateTimePicker1.Value, "yyyy-MM-dd")
-            userfilter.ListIndex(FilterIndex.CreationDate) = Me.SelectedCondition(dateComboBox1)
+            userfilter.IndexConditionCreationDate = Me.SelectedCondition(dateComboBox1)
 
         End If
         If LoginnameTextBox3.Text.Length <> 0 And loginnameCheckBox1.Checked Then
-            userfilter.ListSeconedValue(FilterIndex.LoginName) = Me.SeconedValue(seconedloginTextBox1, loginnameComboBox1)
-            userfilter.ListIndex(FilterIndex.LoginName) = Me.SelectedCondition(loginnameComboBox1)
+            userfilter.SeconedValueLoginName = Me.SeconedValue(seconedloginTextBox1, loginnameComboBox1)
+            userfilter.IndexConditionLoginName = Me.SelectedCondition(loginnameComboBox1)
 
             userfilter.QLoginName = LoginnameTextBox3.Text
 
 
         End If
+        Dim UserQueryClient As New ApiClients.UserQueryClient
+
+        Dim FilterUsers As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(userfilter)
 
 
-        userfilter.Run()
         UserDataGridView1.Rows.Clear()
-        If Not userfilter.ListUser Is Nothing Then
-            For Each item In userfilter.ListUser
+        If Not FilterUsers Is Nothing Then
+            For Each item In FilterUsers
                 UserDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.DescriptionNewsPhoto)
             Next
         End If
@@ -341,9 +339,11 @@ Public Class ShowUser
 
     Private Sub ResetClick(sender As Object, e As EventArgs) Handles ResetButton2.Click
         UserDataGridView1.Rows.Clear()
+        Dim UserQueryClient As New ApiClients.UserQueryClient
 
-        If Not UserQuery.ListUser Is Nothing Then
-            For Each item In UserQuery.ListUser
+        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
+        If Not ListUser Is Nothing Then
+            For Each item In ListUser
 
                 If MainForm.CurrentID <> item.IDBusiness Then
                     UserDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.NameLogin, item.LastModifierUser)

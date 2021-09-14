@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileWorxClient", "Windows_Form\FileWorxClient.vbproj", "{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FileWorxClient", "Windows_Form\FileWorxClient.vbproj", "{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileWorxObject", "FileWorxObject\FileWorxObject.vbproj", "{5586E0D4-2DF8-48D9-863D-265915248E40}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "FileWorxObjects", "FileWorxObjects\FileWorxObjects.vbproj", "{57D7957B-9AF3-49B6-94CB-159E23D6229C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClients", "ApiClients\ApiClients.csproj", "{65BCEE46-0FE0-4A26-BB53-018BD2D57467}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiServer", "ApiServer\ApiServer.csproj", "{835DB8EB-9DFB-4001-AB33-DAAC3874B561}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClassID", "ClassID\ClassID.vbproj", "{8BED3AA4-7E60-4412-BE9B-3EFC6B776921}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +23,22 @@ Global
 		{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E7E2D9D-9D8A-4EE1-A1C3-8B89B722E79C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5586E0D4-2DF8-48D9-863D-265915248E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5586E0D4-2DF8-48D9-863D-265915248E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5586E0D4-2DF8-48D9-863D-265915248E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5586E0D4-2DF8-48D9-863D-265915248E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57D7957B-9AF3-49B6-94CB-159E23D6229C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D7957B-9AF3-49B6-94CB-159E23D6229C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D7957B-9AF3-49B6-94CB-159E23D6229C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D7957B-9AF3-49B6-94CB-159E23D6229C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65BCEE46-0FE0-4A26-BB53-018BD2D57467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65BCEE46-0FE0-4A26-BB53-018BD2D57467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65BCEE46-0FE0-4A26-BB53-018BD2D57467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65BCEE46-0FE0-4A26-BB53-018BD2D57467}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835DB8EB-9DFB-4001-AB33-DAAC3874B561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835DB8EB-9DFB-4001-AB33-DAAC3874B561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835DB8EB-9DFB-4001-AB33-DAAC3874B561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835DB8EB-9DFB-4001-AB33-DAAC3874B561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BED3AA4-7E60-4412-BE9B-3EFC6B776921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BED3AA4-7E60-4412-BE9B-3EFC6B776921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BED3AA4-7E60-4412-BE9B-3EFC6B776921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BED3AA4-7E60-4412-BE9B-3EFC6B776921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

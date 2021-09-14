@@ -78,10 +78,11 @@ Partial Class ShowUser
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.UserDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.UserDataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column2, Me.Nameuser, Me.Column3, Me.loginname, Me.Column1})
-        Me.UserDataGridView1.Location = New System.Drawing.Point(2, 122)
+        Me.UserDataGridView1.Location = New System.Drawing.Point(2, 141)
+        Me.UserDataGridView1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.UserDataGridView1.Name = "UserDataGridView1"
         Me.UserDataGridView1.ReadOnly = True
-        Me.UserDataGridView1.Size = New System.Drawing.Size(674, 183)
+        Me.UserDataGridView1.Size = New System.Drawing.Size(786, 211)
         Me.UserDataGridView1.TabIndex = 0
         '
         'Column2
@@ -135,33 +136,37 @@ Partial Class ShowUser
         'IDTextBox1
         '
         Me.IDTextBox1.Enabled = False
-        Me.IDTextBox1.Location = New System.Drawing.Point(6, 6)
+        Me.IDTextBox1.Location = New System.Drawing.Point(7, 7)
+        Me.IDTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.IDTextBox1.Name = "IDTextBox1"
-        Me.IDTextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.IDTextBox1.Size = New System.Drawing.Size(116, 23)
         Me.IDTextBox1.TabIndex = 6
         '
         'NameTextBox2
         '
         Me.NameTextBox2.Enabled = False
-        Me.NameTextBox2.Location = New System.Drawing.Point(6, 6)
+        Me.NameTextBox2.Location = New System.Drawing.Point(7, 7)
+        Me.NameTextBox2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.NameTextBox2.Name = "NameTextBox2"
-        Me.NameTextBox2.Size = New System.Drawing.Size(100, 20)
+        Me.NameTextBox2.Size = New System.Drawing.Size(116, 23)
         Me.NameTextBox2.TabIndex = 7
         '
         'LoginnameTextBox3
         '
         Me.LoginnameTextBox3.Enabled = False
-        Me.LoginnameTextBox3.Location = New System.Drawing.Point(3, 6)
+        Me.LoginnameTextBox3.Location = New System.Drawing.Point(4, 7)
+        Me.LoginnameTextBox3.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.LoginnameTextBox3.Name = "LoginnameTextBox3"
-        Me.LoginnameTextBox3.Size = New System.Drawing.Size(100, 20)
+        Me.LoginnameTextBox3.Size = New System.Drawing.Size(116, 23)
         Me.LoginnameTextBox3.TabIndex = 8
         '
         'LastmodifierTextBox4
         '
         Me.LastmodifierTextBox4.Enabled = False
-        Me.LastmodifierTextBox4.Location = New System.Drawing.Point(6, 6)
+        Me.LastmodifierTextBox4.Location = New System.Drawing.Point(7, 7)
+        Me.LastmodifierTextBox4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.LastmodifierTextBox4.Name = "LastmodifierTextBox4"
-        Me.LastmodifierTextBox4.Size = New System.Drawing.Size(100, 20)
+        Me.LastmodifierTextBox4.Size = New System.Drawing.Size(116, 23)
         Me.LastmodifierTextBox4.TabIndex = 10
         '
         'IDComboBox1
@@ -170,9 +175,10 @@ Partial Class ShowUser
         Me.IDComboBox1.Enabled = False
         Me.IDComboBox1.FormattingEnabled = True
         Me.IDComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
-        Me.IDComboBox1.Location = New System.Drawing.Point(126, 6)
+        Me.IDComboBox1.Location = New System.Drawing.Point(147, 7)
+        Me.IDComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.IDComboBox1.Name = "IDComboBox1"
-        Me.IDComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.IDComboBox1.Size = New System.Drawing.Size(140, 23)
         Me.IDComboBox1.TabIndex = 11
         '
         'NameComboBox2
@@ -181,9 +187,10 @@ Partial Class ShowUser
         Me.NameComboBox2.Enabled = False
         Me.NameComboBox2.FormattingEnabled = True
         Me.NameComboBox2.Items.AddRange(New Object() {"start with", "end with", "Contain", "Not start with", "Not End with", "Exists", "Not contain", "Between"})
-        Me.NameComboBox2.Location = New System.Drawing.Point(128, 6)
+        Me.NameComboBox2.Location = New System.Drawing.Point(149, 7)
+        Me.NameComboBox2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.NameComboBox2.Name = "NameComboBox2"
-        Me.NameComboBox2.Size = New System.Drawing.Size(121, 21)
+        Me.NameComboBox2.Size = New System.Drawing.Size(140, 23)
         Me.NameComboBox2.TabIndex = 12
         '
         'TabControl1
@@ -193,10 +200,11 @@ Partial Class ShowUser
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPage5)
-        Me.TabControl1.Location = New System.Drawing.Point(2, 9)
+        Me.TabControl1.Location = New System.Drawing.Point(2, 10)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(578, 111)
+        Me.TabControl1.Size = New System.Drawing.Size(674, 128)
         Me.TabControl1.TabIndex = 13
         '
         'TabPage1
@@ -205,10 +213,11 @@ Partial Class ShowUser
         Me.TabPage1.Controls.Add(Me.IDCheckBox1)
         Me.TabPage1.Controls.Add(Me.IDTextBox1)
         Me.TabPage1.Controls.Add(Me.IDComboBox1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(570, 85)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TabPage1.Size = New System.Drawing.Size(666, 100)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "ID Filter"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -216,17 +225,19 @@ Partial Class ShowUser
         'seconedidTextBox1
         '
         Me.seconedidTextBox1.Enabled = False
-        Me.seconedidTextBox1.Location = New System.Drawing.Point(267, 7)
+        Me.seconedidTextBox1.Location = New System.Drawing.Point(312, 8)
+        Me.seconedidTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.seconedidTextBox1.Name = "seconedidTextBox1"
-        Me.seconedidTextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.seconedidTextBox1.Size = New System.Drawing.Size(116, 23)
         Me.seconedidTextBox1.TabIndex = 13
         '
         'IDCheckBox1
         '
         Me.IDCheckBox1.AutoSize = True
-        Me.IDCheckBox1.Location = New System.Drawing.Point(7, 47)
+        Me.IDCheckBox1.Location = New System.Drawing.Point(8, 54)
+        Me.IDCheckBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.IDCheckBox1.Name = "IDCheckBox1"
-        Me.IDCheckBox1.Size = New System.Drawing.Size(84, 17)
+        Me.IDCheckBox1.Size = New System.Drawing.Size(90, 19)
         Me.IDCheckBox1.TabIndex = 12
         Me.IDCheckBox1.Text = "Enable Filter"
         Me.IDCheckBox1.UseVisualStyleBackColor = True
@@ -237,10 +248,11 @@ Partial Class ShowUser
         Me.TabPage2.Controls.Add(Me.nameCheckBox1)
         Me.TabPage2.Controls.Add(Me.NameTextBox2)
         Me.TabPage2.Controls.Add(Me.NameComboBox2)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(570, 85)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TabPage2.Size = New System.Drawing.Size(666, 100)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Name Filter"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -248,17 +260,19 @@ Partial Class ShowUser
         'seconednameTextBox1
         '
         Me.seconednameTextBox1.Enabled = False
-        Me.seconednameTextBox1.Location = New System.Drawing.Point(269, 7)
+        Me.seconednameTextBox1.Location = New System.Drawing.Point(314, 8)
+        Me.seconednameTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.seconednameTextBox1.Name = "seconednameTextBox1"
-        Me.seconednameTextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.seconednameTextBox1.Size = New System.Drawing.Size(116, 23)
         Me.seconednameTextBox1.TabIndex = 14
         '
         'nameCheckBox1
         '
         Me.nameCheckBox1.AutoSize = True
-        Me.nameCheckBox1.Location = New System.Drawing.Point(6, 50)
+        Me.nameCheckBox1.Location = New System.Drawing.Point(7, 58)
+        Me.nameCheckBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.nameCheckBox1.Name = "nameCheckBox1"
-        Me.nameCheckBox1.Size = New System.Drawing.Size(84, 17)
+        Me.nameCheckBox1.Size = New System.Drawing.Size(90, 19)
         Me.nameCheckBox1.TabIndex = 13
         Me.nameCheckBox1.Text = "Enable Filter"
         Me.nameCheckBox1.UseVisualStyleBackColor = True
@@ -269,10 +283,11 @@ Partial Class ShowUser
         Me.TabPage3.Controls.Add(Me.loginnameComboBox1)
         Me.TabPage3.Controls.Add(Me.loginnameCheckBox1)
         Me.TabPage3.Controls.Add(Me.LoginnameTextBox3)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(570, 85)
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TabPage3.Size = New System.Drawing.Size(666, 100)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Login Name Filter"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -280,9 +295,10 @@ Partial Class ShowUser
         'seconedloginTextBox1
         '
         Me.seconedloginTextBox1.Enabled = False
-        Me.seconedloginTextBox1.Location = New System.Drawing.Point(271, 7)
+        Me.seconedloginTextBox1.Location = New System.Drawing.Point(316, 8)
+        Me.seconedloginTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.seconedloginTextBox1.Name = "seconedloginTextBox1"
-        Me.seconedloginTextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.seconedloginTextBox1.Size = New System.Drawing.Size(116, 23)
         Me.seconedloginTextBox1.TabIndex = 14
         '
         'loginnameComboBox1
@@ -291,17 +307,19 @@ Partial Class ShowUser
         Me.loginnameComboBox1.Enabled = False
         Me.loginnameComboBox1.FormattingEnabled = True
         Me.loginnameComboBox1.Items.AddRange(New Object() {"start with", "end with", "Contain", "Not start with", "Not End with", "Exists", "Not contain", "Between"})
-        Me.loginnameComboBox1.Location = New System.Drawing.Point(125, 6)
+        Me.loginnameComboBox1.Location = New System.Drawing.Point(146, 7)
+        Me.loginnameComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.loginnameComboBox1.Name = "loginnameComboBox1"
-        Me.loginnameComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.loginnameComboBox1.Size = New System.Drawing.Size(140, 23)
         Me.loginnameComboBox1.TabIndex = 13
         '
         'loginnameCheckBox1
         '
         Me.loginnameCheckBox1.AutoSize = True
-        Me.loginnameCheckBox1.Location = New System.Drawing.Point(7, 49)
+        Me.loginnameCheckBox1.Location = New System.Drawing.Point(8, 57)
+        Me.loginnameCheckBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.loginnameCheckBox1.Name = "loginnameCheckBox1"
-        Me.loginnameCheckBox1.Size = New System.Drawing.Size(84, 17)
+        Me.loginnameCheckBox1.Size = New System.Drawing.Size(90, 19)
         Me.loginnameCheckBox1.TabIndex = 9
         Me.loginnameCheckBox1.Text = "Enable Filter"
         Me.loginnameCheckBox1.UseVisualStyleBackColor = True
@@ -312,10 +330,11 @@ Partial Class ShowUser
         Me.TabPage4.Controls.Add(Me.lastmodifierCheckBox1)
         Me.TabPage4.Controls.Add(Me.lastmodifierComboBox1)
         Me.TabPage4.Controls.Add(Me.LastmodifierTextBox4)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(570, 85)
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TabPage4.Size = New System.Drawing.Size(666, 100)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "LastModifier Filter"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -323,18 +342,20 @@ Partial Class ShowUser
         'seconedmodiferTextBox1
         '
         Me.seconedmodiferTextBox1.Enabled = False
-        Me.seconedmodiferTextBox1.Location = New System.Drawing.Point(267, 7)
+        Me.seconedmodiferTextBox1.Location = New System.Drawing.Point(312, 8)
+        Me.seconedmodiferTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.seconedmodiferTextBox1.Name = "seconedmodiferTextBox1"
-        Me.seconedmodiferTextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.seconedmodiferTextBox1.Size = New System.Drawing.Size(116, 23)
         Me.seconedmodiferTextBox1.TabIndex = 15
         '
         'lastmodifierCheckBox1
         '
         Me.lastmodifierCheckBox1.AutoSize = True
-        Me.lastmodifierCheckBox1.Location = New System.Drawing.Point(7, 49)
+        Me.lastmodifierCheckBox1.Location = New System.Drawing.Point(8, 57)
+        Me.lastmodifierCheckBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.lastmodifierCheckBox1.Name = "lastmodifierCheckBox1"
         Me.lastmodifierCheckBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.lastmodifierCheckBox1.Size = New System.Drawing.Size(81, 17)
+        Me.lastmodifierCheckBox1.Size = New System.Drawing.Size(88, 19)
         Me.lastmodifierCheckBox1.TabIndex = 14
         Me.lastmodifierCheckBox1.Text = "Enable filter"
         Me.lastmodifierCheckBox1.UseVisualStyleBackColor = True
@@ -345,9 +366,10 @@ Partial Class ShowUser
         Me.lastmodifierComboBox1.Enabled = False
         Me.lastmodifierComboBox1.FormattingEnabled = True
         Me.lastmodifierComboBox1.Items.AddRange(New Object() {"start with", "end with", "Contain", "Not start with", "Not End with", "Exists", "Not contain", "Between"})
-        Me.lastmodifierComboBox1.Location = New System.Drawing.Point(123, 6)
+        Me.lastmodifierComboBox1.Location = New System.Drawing.Point(144, 7)
+        Me.lastmodifierComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.lastmodifierComboBox1.Name = "lastmodifierComboBox1"
-        Me.lastmodifierComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.lastmodifierComboBox1.Size = New System.Drawing.Size(140, 23)
         Me.lastmodifierComboBox1.TabIndex = 13
         '
         'TabPage5
@@ -356,10 +378,11 @@ Partial Class ShowUser
         Me.TabPage5.Controls.Add(Me.dateComboBox1)
         Me.TabPage5.Controls.Add(Me.userDateTimePicker1)
         Me.TabPage5.Controls.Add(Me.dateCheckBox1)
-        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 24)
+        Me.TabPage5.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(570, 85)
+        Me.TabPage5.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TabPage5.Size = New System.Drawing.Size(666, 100)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Creation Date filter"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -369,9 +392,10 @@ Partial Class ShowUser
         Me.seconedDateTimePicker1.CustomFormat = "yyyy-MM-dd"
         Me.seconedDateTimePicker1.Enabled = False
         Me.seconedDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.seconedDateTimePicker1.Location = New System.Drawing.Point(350, 7)
+        Me.seconedDateTimePicker1.Location = New System.Drawing.Point(408, 8)
+        Me.seconedDateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.seconedDateTimePicker1.Name = "seconedDateTimePicker1"
-        Me.seconedDateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.seconedDateTimePicker1.Size = New System.Drawing.Size(233, 23)
         Me.seconedDateTimePicker1.TabIndex = 13
         '
         'dateComboBox1
@@ -380,9 +404,10 @@ Partial Class ShowUser
         Me.dateComboBox1.Enabled = False
         Me.dateComboBox1.FormattingEnabled = True
         Me.dateComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
-        Me.dateComboBox1.Location = New System.Drawing.Point(223, 7)
+        Me.dateComboBox1.Location = New System.Drawing.Point(260, 8)
+        Me.dateComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.dateComboBox1.Name = "dateComboBox1"
-        Me.dateComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.dateComboBox1.Size = New System.Drawing.Size(140, 23)
         Me.dateComboBox1.TabIndex = 12
         '
         'userDateTimePicker1
@@ -390,49 +415,54 @@ Partial Class ShowUser
         Me.userDateTimePicker1.CustomFormat = "yyyy-MM-dd"
         Me.userDateTimePicker1.Enabled = False
         Me.userDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.userDateTimePicker1.Location = New System.Drawing.Point(7, 7)
+        Me.userDateTimePicker1.Location = New System.Drawing.Point(8, 8)
+        Me.userDateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.userDateTimePicker1.Name = "userDateTimePicker1"
-        Me.userDateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.userDateTimePicker1.Size = New System.Drawing.Size(233, 23)
         Me.userDateTimePicker1.TabIndex = 2
         '
         'dateCheckBox1
         '
         Me.dateCheckBox1.AutoSize = True
-        Me.dateCheckBox1.Location = New System.Drawing.Point(7, 49)
+        Me.dateCheckBox1.Location = New System.Drawing.Point(8, 57)
+        Me.dateCheckBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.dateCheckBox1.Name = "dateCheckBox1"
-        Me.dateCheckBox1.Size = New System.Drawing.Size(84, 17)
+        Me.dateCheckBox1.Size = New System.Drawing.Size(90, 19)
         Me.dateCheckBox1.TabIndex = 1
         Me.dateCheckBox1.Text = "Enable Filter"
         Me.dateCheckBox1.UseVisualStyleBackColor = True
         '
         'searchButton1
         '
-        Me.searchButton1.Location = New System.Drawing.Point(586, 31)
+        Me.searchButton1.Location = New System.Drawing.Point(684, 36)
+        Me.searchButton1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.searchButton1.Name = "searchButton1"
         Me.searchButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.searchButton1.Size = New System.Drawing.Size(75, 23)
+        Me.searchButton1.Size = New System.Drawing.Size(88, 27)
         Me.searchButton1.TabIndex = 14
         Me.searchButton1.Text = "Search"
         Me.searchButton1.UseVisualStyleBackColor = True
         '
         'ResetButton2
         '
-        Me.ResetButton2.Location = New System.Drawing.Point(586, 80)
+        Me.ResetButton2.Location = New System.Drawing.Point(684, 92)
+        Me.ResetButton2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ResetButton2.Name = "ResetButton2"
-        Me.ResetButton2.Size = New System.Drawing.Size(75, 23)
+        Me.ResetButton2.Size = New System.Drawing.Size(88, 27)
         Me.ResetButton2.TabIndex = 15
         Me.ResetButton2.Text = "Get All User"
         Me.ResetButton2.UseVisualStyleBackColor = True
         '
         'ShowUser
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(677, 303)
+        Me.ClientSize = New System.Drawing.Size(790, 350)
         Me.Controls.Add(Me.ResetButton2)
         Me.Controls.Add(Me.searchButton1)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.UserDataGridView1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "ShowUser"
         Me.Text = "ShowUser"
         CType(Me.UserDataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

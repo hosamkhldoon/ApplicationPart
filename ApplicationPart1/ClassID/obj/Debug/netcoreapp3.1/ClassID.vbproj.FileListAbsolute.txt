@@ -1,0 +1,10 @@
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\bin\Debug\netcoreapp3.1\ClassID.deps.json
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\bin\Debug\netcoreapp3.1\ClassID.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\bin\Debug\netcoreapp3.1\ClassID.pdb
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.vbprojAssemblyReference.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.AssemblyInfoInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.AssemblyInfo.vb
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.vbproj.CoreCompileInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ClassID\obj\Debug\netcoreapp3.1\ClassID.pdb

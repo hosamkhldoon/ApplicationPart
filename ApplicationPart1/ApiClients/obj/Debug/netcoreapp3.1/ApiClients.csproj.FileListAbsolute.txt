@@ -1,0 +1,5 @@
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\netcoreapp3.1\ApiClients.csprojAssemblyReference.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\netcoreapp3.1\ApiClients.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\netcoreapp3.1\ApiClients.AssemblyInfoInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\netcoreapp3.1\ApiClients.AssemblyInfo.cs
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\netcoreapp3.1\ApiClients.csproj.CoreCompileInputs.cache

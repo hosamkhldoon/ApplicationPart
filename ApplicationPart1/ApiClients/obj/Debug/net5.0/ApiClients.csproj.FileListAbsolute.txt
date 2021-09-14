@@ -1,0 +1,15 @@
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\ApiClients.deps.json
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\ApiClients.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\ref\ApiClients.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\ApiClients.pdb
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\FileWorxObjects.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\FileWorxObjects.pdb
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.csprojAssemblyReference.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.AssemblyInfoInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.AssemblyInfo.cs
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.csproj.CoreCompileInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.csproj.CopyComplete
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ref\ApiClients.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.pdb
