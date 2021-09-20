@@ -15,7 +15,7 @@ Public Class UserReportElastic
 
 
     Public Overrides Sub Delete() Implements IUserRepositroy.Delete
-        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("file", Me.IDBusiness)
+        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("user", Me.IDBusiness)
     End Sub
 
     Public Overrides Sub Read() Implements IUserRepositroy.Read

@@ -9,18 +9,10 @@
 
 
 
-    Private BusinessObjectSql As New BusinessReportsql
-    Private FileObjectElastic As New FileReportElstic
-    Private UserObjectElstic As New UserReportElastic
 
 
     Public Overridable Sub Delete() Implements IBusinessObjectRepositroy.Delete
-        BusinessObjectSql.IDBusiness = Me.IDBusiness
-        BusinessObjectSql.Delete()
-        FileObjectElastic.IDBusiness = Me.IDBusiness
-        UserObjectElstic.IDBusiness = Me.IDBusiness
-        FileObjectElastic.Delete()
-        UserObjectElstic.Delete()
+
     End Sub
 
     Public Overridable Sub Read() Implements IBusinessObjectRepositroy.Read

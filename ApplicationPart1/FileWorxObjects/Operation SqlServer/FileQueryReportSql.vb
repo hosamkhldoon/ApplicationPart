@@ -6,18 +6,17 @@ Public Class FileQueryReportSql
     Implements IFileQueryRepositroy
 
     Public Property QBody As String Implements IFileQueryRepositroy.QBody
-    Private tablefile As String = "T_FILE"
-
+    Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
+    Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
 
     <JsonIgnore>
-    Public Overrides ReadOnly Property TableName As String Implements IFileQueryRepositroy.TableName
+    Public Overrides ReadOnly Property TableName As String
         Get
             Return MyBase.TableName + "," + Me.tablefile
         End Get
     End Property
-
     <JsonIgnore>
-    Public Overrides ReadOnly Property WhereColumns As String Implements IFileQueryRepositroy.WhereColumns
+    Public Overrides ReadOnly Property WhereColumns As String
         Get
             Dim FileCondition = Me.CheckData()
             If Not String.IsNullOrEmpty(FileCondition) Then
@@ -27,15 +26,17 @@ Public Class FileQueryReportSql
             End If
         End Get
     End Property
+
+    Private tablefile As String = "T_FILE"
+
+
     Public Sub New()
 
         Me.QBody = ""
     End Sub
-    Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
 
-    Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
 
-    Public Overrides Function Run() As List(Of IBusinessObjectRepositroy) Implements IFileQueryRepositroy.Run
+    Public Overrides Function Run() As List(Of BusinessObject) Implements IFileQueryRepositroy.Run
         Me.ListNewsAndPhotos.Clear()
         Dim query As String = "SELECT " + Me.ColumnNames + " FROM  " + Me.TableName + " "
         query &= "WHERE " & Me.WhereColumns

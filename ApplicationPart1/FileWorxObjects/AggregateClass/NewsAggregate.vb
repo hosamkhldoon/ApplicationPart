@@ -3,12 +3,17 @@
     Implements INewsRepositroy
 
     Public Property CategoryNews As String Implements INewsRepositroy.CategoryNews
-
     Public Property IDNews As Integer Implements INewsRepositroy.IDNews
 
 
-    Public Overrides Sub Delete() Implements INewsRepositroy.Delete
+    Private NewsElastic As New NewsReportElastic
+    Private NewsSql As New NewsReportSql
 
+    Public Overrides Sub Delete() Implements INewsRepositroy.Delete
+        NewsElastic.IDBusiness = Me.IDBusiness
+        NewsSql.IDBusiness = Me.IDBusiness
+        NewsElastic.Delete()
+        NewsSql.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements INewsRepositroy.Read
@@ -16,8 +21,7 @@
     End Sub
 
     Public Overrides Sub Updata() Implements INewsRepositroy.Updata
-        Dim NewsElastic As New NewsReportElastic
-        Dim NewsSql As New NewsReportSql
+
         If Me.IDNews = -1 Then
             Me.CopyObject(NewsSql)
             NewsSql.Updata()

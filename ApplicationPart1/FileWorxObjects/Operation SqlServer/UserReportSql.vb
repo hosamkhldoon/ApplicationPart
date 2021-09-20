@@ -19,7 +19,7 @@ Public Class UserReportSql
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
     Public Overrides Sub Delete() Implements IUserRepositroy.Delete
-        Throw New NotImplementedException()
+        MyBase.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements IUserRepositroy.Read

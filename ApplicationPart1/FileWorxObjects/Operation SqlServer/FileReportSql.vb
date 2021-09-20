@@ -21,13 +21,10 @@ Public Class FileReportSql
     End Sub
 
     Public Overrides Sub Read() Implements IFileRepositroy.Read
-
-
-
     End Sub
 
     Public Overrides Sub Delete() Implements IFileRepositroy.Delete
-
+        MyBase.Delete()
     End Sub
     Public Overrides Sub Updata() Implements IFileRepositroy.Updata
         If Me.IDFile = -1 Then

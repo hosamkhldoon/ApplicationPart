@@ -12,7 +12,7 @@ Public Class FileReportElstic
     Private lowlevelClient As New ElasticLowLevelClient
 
     Public Overrides Sub Delete() Implements IFileRepositroy.Delete
-        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("file", Me.IDBusiness)
+
 
     End Sub
 

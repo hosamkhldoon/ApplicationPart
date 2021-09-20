@@ -4,7 +4,7 @@ Imports System.Text.Json.Serialization
 Public Class BusinessQueryReportsql
     Implements IBusinessQueryRepositroy
 
-    Public ListNewsAndPhotos As New List(Of IBusinessObjectRepositroy)
+
 
     Public Property IndexConditionID As Integer Implements IBusinessQueryRepositroy.IndexConditionID
     Public Property IndexConditionName As Integer Implements IBusinessQueryRepositroy.IndexConditionName
@@ -12,23 +12,25 @@ Public Class BusinessQueryReportsql
     Public Property IndexConditionCreationDate As Integer Implements IBusinessQueryRepositroy.IndexConditionCreationDate
     Public Property IndexConditionClassID As Integer Implements IBusinessQueryRepositroy.IndexConditionClassID
 
-    <JsonIgnore>
-    Public Overridable ReadOnly Property ColumnNames As String Implements IBusinessQueryRepositroy.ColumnNames
-        Get
-            Return "" + Me.tablebusiness + ".ID
-                    , " + Me.tablebusiness + ".C_Name
-                    , " + Me.tablebusiness + ".C_CreationDate
-                    , " + Me.tablebusiness + ".C_Description"
-        End Get
-    End Property
+
     Public Property SeconedValueID As String Implements IBusinessQueryRepositroy.SeconedValueID
     Public Property SeconedValueName As String Implements IBusinessQueryRepositroy.SeconedValueName
     Public Property SeconedValueDescription As String Implements IBusinessQueryRepositroy.SeconedValueDescription
     Public Property SeconedValueCreationDate As String Implements IBusinessQueryRepositroy.SeconedValueCreationDate
     Public Property SeconedValueClassID As String Implements IBusinessQueryRepositroy.SeconedValueClassID
 
+
+
+    Public Property QID As String Implements IBusinessQueryRepositroy.QID
+    Public Property QClassID As String Implements IBusinessQueryRepositroy.QClassID
+    Public Property QName As String Implements IBusinessQueryRepositroy.QName
+    Public Property QCreationDate As String Implements IBusinessQueryRepositroy.QCreationDate
+    Public Property QDescription As String Implements IBusinessQueryRepositroy.QDescription
+    Public Property ValueCondition As String
+    Public Property StringCondition As String
+    Public Property SeconedValueCondition As String
     <JsonIgnore>
-    Public Overridable ReadOnly Property WhereColumns As String Implements IBusinessQueryRepositroy.WhereColumns
+    Public Overridable ReadOnly Property WhereColumns As String
         Get
             Dim BusinessCondition = Me.CheckData()
             If Not String.IsNullOrEmpty(BusinessCondition) Then
@@ -38,18 +40,17 @@ Public Class BusinessQueryReportsql
         End Get
 
     End Property
-
-    Public Property QID As String Implements IBusinessQueryRepositroy.QID
-    Public Property QClassID As String Implements IBusinessQueryRepositroy.QClassID
-    Public Property QName As String Implements IBusinessQueryRepositroy.QName
-    Public Property QCreationDate As String Implements IBusinessQueryRepositroy.QCreationDate
-    Public Property QDescription As String Implements IBusinessQueryRepositroy.QDescription
-    Public Property ValueCondition As String Implements IBusinessQueryRepositroy.ValueCondition
-    Public Property StringCondition As String Implements IBusinessQueryRepositroy.StringCondition
-    Public Property SeconedValueCondition As String Implements IBusinessQueryRepositroy.SeconedValueCondition
-    Private tablebusiness As String = "T_BUSINESSOBJECT"
     <JsonIgnore>
-    Public Overridable ReadOnly Property TableName As String Implements IBusinessQueryRepositroy.TableName
+    Public Overridable ReadOnly Property ColumnNames As String
+        Get
+            Return "" + Me.tablebusiness + ".ID
+                    , " + Me.tablebusiness + ".C_Name
+                    , " + Me.tablebusiness + ".C_CreationDate
+                    , " + Me.tablebusiness + ".C_Description"
+        End Get
+    End Property
+    <JsonIgnore>
+    Public Overridable ReadOnly Property TableName As String
         Get
             Return tablebusiness
         End Get
@@ -57,12 +58,13 @@ Public Class BusinessQueryReportsql
     End Property
 
     Public ListUser As New List(Of User)
-
     Public ItemIndexBusiness As Integer
     Public Conditionbusiness As String
-
-
     Public Constr As String = "Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True"
+    Public ListNewsAndPhotos As New List(Of BusinessObject)
+
+
+    Private tablebusiness As String = "T_BUSINESSOBJECT"
     Public Sub New()
         Me.QID = ""
         Me.QName = ""
@@ -76,7 +78,7 @@ Public Class BusinessQueryReportsql
 
 
 
-    Public Overridable Function Run() As List(Of IBusinessObjectRepositroy) Implements IBusinessQueryRepositroy.Run
+    Public Overridable Function Run() As List(Of BusinessObject) Implements IBusinessQueryRepositroy.Run
         Dim myReader As SqlDataReader
 
 
@@ -92,7 +94,7 @@ WHERE " + Me.TableName + ".[C_ClassID] in (1,2) ", con)
         myReader = cmd.ExecuteReader()
 
         Do While myReader.Read()
-            Dim businessobject As IBusinessObjectRepositroy = New BusinessReportsql()
+            Dim businessobject As BusinessObject = New BusinessObject()
             businessobject.IDBusiness = myReader.GetInt32(0)
             businessobject.NameFileUser = myReader.GetString(1)
             businessobject.CreationDateFileUser = Format(myReader.GetDateTime(2), "MM/dd/yyyy hh:mm:ss tt")

@@ -89,7 +89,8 @@ WHERE U.[C_LoginName] ='" + Me.NameLogin + "' AND U.[C_Password] = '" + Me.Passw
 
     End Function
     Public Overloads Sub Delete()
-        MyBase.Delete()
+        UserRepositroy.IDBusiness = Me.IDBusiness
+        UserRepositroy.Delete()
     End Sub
     Public Overloads Sub Updata()
         If Me.IDBusiness = -1 Then

@@ -11,8 +11,12 @@
 
     Private UserSql As New UserReportSql
     Private UserElastic As New UserReportElastic
+
     Public Overrides Sub Delete() Implements IUserRepositroy.Delete
-        Throw New NotImplementedException()
+        UserElastic.IDBusiness = Me.IDBusiness
+        UserSql.IDBusiness = Me.IDBusiness
+        UserElastic.Delete()
+        UserSql.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements IUserRepositroy.Read

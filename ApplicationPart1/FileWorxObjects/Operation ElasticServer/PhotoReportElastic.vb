@@ -12,7 +12,7 @@ Public Class PhotoReportElastic
 
     Private lowlevelClient As New ElasticLowLevelClient()
     Public Overrides Sub Delete() Implements IPhotoRepositroy.Delete
-        Throw New NotImplementedException()
+        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("file", Me.IDBusiness)
     End Sub
 
     Public Overrides Sub Read() Implements IPhotoRepositroy.Read

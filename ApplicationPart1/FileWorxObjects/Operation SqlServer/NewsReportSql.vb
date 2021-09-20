@@ -27,7 +27,7 @@ Public Class NewsReportSql
     End Sub
 
     Public Overrides Sub Delete() Implements INewsRepositroy.Delete
-
+        MyBase.Delete()
     End Sub
     Public Overrides Sub Updata() Implements INewsRepositroy.Updata
         If Me.IDNews = -1 Then

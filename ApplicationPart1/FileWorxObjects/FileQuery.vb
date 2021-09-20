@@ -5,93 +5,38 @@ Public Class FileQuery
     Inherits BusinessQuery
     Public Property QBody As String
 
-    Private tablefile As String = "T_FILE"
-
-
-    <JsonIgnore>
-    Public Overrides ReadOnly Property TableName As String
-        Get
-            Return MyBase.TableName + "," + Me.tablefile
-        End Get
-    End Property
-
-    <JsonIgnore>
-    Public Overrides ReadOnly Property WhereColumns As String
-        Get
-            Dim FileCondition = Me.CheckData()
-            If Not String.IsNullOrEmpty(FileCondition) Then
-                Return MyBase.WhereColumns + " AND " + FileCondition
-            Else
-                Return MyBase.WhereColumns
-            End If
-        End Get
-    End Property
     Public Sub New()
 
         Me.QBody = ""
     End Sub
     Public Property IndexConditionBody As Integer
-
-
     Public Property SeconedValueBody As String
 
+    Private FileQueryAggregate As IFileQueryRepositroy = New FileQueryAggregate
     Public Overrides Function Run() As List(Of BusinessObject)
-        Me.ListNewsAndPhotos.Clear()
-        Dim query As String = "SELECT " + Me.ColumnNames + " FROM  " + Me.TableName + " "
-        query &= "WHERE " & Me.WhereColumns
-        If Not String.IsNullOrEmpty(Me.WhereColumns) Then
-            query &= " AND " + Me.tablefile + ".ID=" + Me.TableName + ".ID"
-        Else
-            query &= Me.tablefile + ".ID=" + Me.TableName + ".ID"
-        End If
-        Using con As SqlConnection = New SqlConnection(Me.Constr)
-            Using cmd As SqlCommand = New SqlCommand(query, con)
 
-
-                con.Open()
-                Dim myReader As SqlDataReader
-                myReader = cmd.ExecuteReader()
-                Do While myReader.Read()
-                    Dim businessobject As BusinessObject = New BusinessObject()
-                    businessobject.IDBusiness = myReader.GetInt32(0)
-                    businessobject.NameFileUser = myReader.GetString(1)
-                    businessobject.CreationDateFileUser = Format(myReader.GetDateTime(2), " MM/dd/yyyy hh:mm:ss tt")
-                    businessobject.DescriptionNewsPhoto = myReader.GetString(3)
-                    Me.ListNewsAndPhotos.Add(businessobject)
-                Loop
-
-
-                myReader.Close()
-                con.Close()
-
-                Return Me.ListNewsAndPhotos
-            End Using
-        End Using
+        Return FileQueryAggregate.Run()
     End Function
 
-    Private Function CheckData() As String
+    Public Overloads Sub CopyObject(AggregateQuery As IFileQueryRepositroy)
+        AggregateQuery.QCreationDate = Me.QCreationDate
+        AggregateQuery.QClassID = Me.QClassID
+        AggregateQuery.QDescription = Me.QDescription
+        AggregateQuery.QID = Me.QID
+        AggregateQuery.QName = Me.QName
+        AggregateQuery.SeconedValueClassID = Me.SeconedValueClassID
+        AggregateQuery.SeconedValueCreationDate = Me.SeconedValueCreationDate
+        AggregateQuery.SeconedValueDescription = Me.SeconedValueDescription
+        AggregateQuery.SeconedValueID = Me.SeconedValueID
+        AggregateQuery.SeconedValueName = Me.SeconedValueName
+        AggregateQuery.IndexConditionClassID = Me.IndexConditionClassID
+        AggregateQuery.IndexConditionCreationDate = Me.IndexConditionCreationDate
+        AggregateQuery.IndexConditionDescription = Me.IndexConditionDescription
+        AggregateQuery.IndexConditionID = Me.IndexConditionID
+        AggregateQuery.IndexConditionName = Me.IndexConditionName
+        AggregateQuery.IndexConditionBody = Me.IndexConditionBody
+        AggregateQuery.SeconedValueBody = Me.SeconedValueBody
+        AggregateQuery.QBody = Me.QBody
+    End Sub
 
-        Dim bqWhereColumns As String = ""
-        If Not Me.QBodyfilter Is Nothing Then
-            If Not String.IsNullOrEmpty(bqWhereColumns) Then
-                bqWhereColumns &= " AND " & Me.QBodyfilter()
-            Else
-                bqWhereColumns = Me.QBodyfilter()
-            End If
-        End If
-        Return bqWhereColumns
-
-
-    End Function
-    Private Function QBodyfilter() As String
-        If Not String.IsNullOrEmpty(Me.QBody) Then
-            Dim condition As New QueryCondition()
-            condition.SelectItem = Me.IndexConditionBody
-            condition.ColumnName = "C_Body"
-            condition.Value = Me.QBody
-            condition.SeconedValue = Me.SeconedValueBody
-            Return condition.ConditionString()
-        End If
-        Return Nothing
-    End Function
 End Class

@@ -43,7 +43,8 @@ WHERE [ID]='" & Me.IDNews & "' ", con)
     End Sub
 
     Public Overrides Sub Delete()
-        MyBase.Delete()
+        NewsRepositroy.IDBusiness = Me.IDBusiness
+        NewsRepositroy.Delete()
     End Sub
     Public Overrides Sub Updata()
         If Me.IDBusiness = -1 Then

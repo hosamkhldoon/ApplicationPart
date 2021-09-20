@@ -40,7 +40,8 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
     End Sub
 
     Public Overrides Sub Delete()
-        MyBase.Delete()
+        PhotoRepositroy.IDBusiness = Me.IDBusiness
+        PhotoRepositroy.Delete()
 
     End Sub
     Public Overrides Sub Updata()

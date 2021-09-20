@@ -1,5 +1,5 @@
-﻿Public Class FileQueryElastic
-    Inherits BusinessQueryReportsql
+﻿Public Class FileQueryAggregate
+    Inherits BusinessQueryAggregate
     Implements IFileQueryRepositroy
 
     Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
@@ -10,7 +10,8 @@
 
 
 
-    Public Overrides Function Run() As List(Of BusinessObject) Implements IFileQueryRepositroy.Run
+
+    Public Overloads Function Run() As List(Of BusinessObject) Implements IFileQueryRepositroy.Run
         Throw New NotImplementedException()
     End Function
 End Class

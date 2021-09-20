@@ -12,7 +12,7 @@ Public Class NewsReportElastic
     Private lowlevelClient As New ElasticLowLevelClient()
 
     Public Overrides Sub Delete() Implements INewsRepositroy.Delete
-        Throw New NotImplementedException()
+        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("file", Me.IDBusiness)
     End Sub
 
     Public Overrides Sub Read() Implements INewsRepositroy.Read

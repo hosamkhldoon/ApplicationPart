@@ -8,9 +8,13 @@
 
 
 
-
+    Private PhotoElastic As New PhotoReportElastic
+    Private PhotoSql As New PhotoReportSql
     Public Overrides Sub Delete() Implements IPhotoRepositroy.Delete
-        Throw New NotImplementedException()
+        PhotoElastic.IDBusiness = Me.IDBusiness
+        PhotoSql.IDBusiness = Me.IDBusiness
+        PhotoElastic.Delete()
+        PhotoSql.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements IPhotoRepositroy.Read
@@ -18,8 +22,7 @@
     End Sub
 
     Public Overrides Sub Updata() Implements IPhotoRepositroy.Updata
-        Dim PhotoElastic As New PhotoReportElastic
-        Dim PhotoSql As New PhotoReportSql
+
         If Me.IDPhoto = -1 Then
             Me.CopyObject(PhotoSql)
 

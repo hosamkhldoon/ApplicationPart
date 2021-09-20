@@ -19,7 +19,7 @@ Public Class PhotoReportSql
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
     Public Overrides Sub Delete() Implements IPhotoRepositroy.Delete
-
+        MyBase.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements IPhotoRepositroy.Read
