@@ -1,13 +1,10 @@
 ﻿using FileWorxObjects;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ApiClients
 {
@@ -22,6 +19,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.GetAsync("api/News/" + id).Result;
 
         
@@ -40,6 +38,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.DeleteAsync("api/News/"+ id).Result;
 
 
@@ -55,13 +54,14 @@ namespace ApiClients
 
 
         }
-        public News CreateNews(News news)
+        public string CreateNews(News news)
         {
 
             client = new HttpClient();
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.PostAsJsonAsync("api/News", news).Result;
 
 
@@ -69,8 +69,8 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                News NewsData = JsonConvert.DeserializeObject<News>(body);
-                return NewsData;
+               
+                return body;
             }
             return null;
 
@@ -83,6 +83,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.PutAsJsonAsync("api/News/"+id, news).Result;
 
 

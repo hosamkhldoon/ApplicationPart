@@ -7,7 +7,10 @@ C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Api
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\ApiServer.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\ref\ApiServer.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\ApiServer.pdb
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Elasticsearch.Net.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\ElasticsearchCrud.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Nest.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\ApiServer\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll

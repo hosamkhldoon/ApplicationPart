@@ -7,61 +7,17 @@ Imports FileWorxObjects.BusinessQuery
 Public Class User
     Inherits BusinessObject
 
-    Private id As Integer
-    Public Property IDUser() As Integer
-        Get
-            Return id
-        End Get
-        Set(ByVal value As Integer)
-            id = value
-        End Set
-    End Property
-    Private loginname As String
-    Public Property NameLogin() As String
-        Get
-            Return loginname
-        End Get
-        Set(ByVal value As String)
-            loginname = value
-        End Set
-    End Property
-    Private idbusinessuser As Integer
-    Public Property BusinessIDUser() As Integer
-        Get
-            Return idbusinessuser
-        End Get
-        Set(ByVal value As Integer)
-            idbusinessuser = value
-        End Set
-    End Property
-    Private lastmodifier As String
-    Public Property LastModifierUser() As String
-        Get
-            Return lastmodifier
-        End Get
-        Set(ByVal value As String)
-            lastmodifier = value
-        End Set
-    End Property
-    Private password As String
-    Public Property PasswordUser() As String
-        Get
-            Return password
-        End Get
-        Set(ByVal value As String)
-            password = value
-        End Set
-    End Property
-    Private type As String
-    Public Property TypeUser() As String
-        Get
-            Return type
-        End Get
-        Set(ByVal value As String)
-            type = value
-        End Set
-    End Property
+
+    Public Property IDUser As Integer
+    Public Property NameLogin As String
+    Public Property BusinessIDUser As Integer
+    Public Property LastModifierUser As String
+    Public Property PasswordUser As String
+    Public Property TypeUser As String
+
+    Private UserRepositroy As IUserRepositroy = New UserAggregate
     Private con As SqlConnection
+    Private AggregateClassUser As New UserAggregate
     Public Sub New()
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
@@ -133,41 +89,27 @@ WHERE U.[C_LoginName] ='" + Me.NameLogin + "' AND U.[C_Password] = '" + Me.Passw
 
     End Function
     Public Overloads Sub Delete()
-
         MyBase.Delete()
     End Sub
     Public Overloads Sub Updata()
-        If Me.IDUser = -1 Then
-            Me.IDBusiness = -1
-            MyBase.Updata()
-            Me.IDUser = Me.IDBusiness
-
-            Dim cmd As SqlCommand = New SqlCommand("INSERT INTO [dbo].[T_USER]
-           ([ID]
-,[C_LoginName]
-           ,[C_Password]
-,[C_Type]
-,[C_LastModifier]
-          )
-     VALUES
-           ('" & Me.IDUser & "',N'" + Me.NameLogin + "','" + Me.PasswordUser + "','" + Me.TypeUser + "',N'" + Me.LastModifierUser + "')", con)
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
+        If Me.IDBusiness = -1 Then
+            Me.CopyObject(UserRepositroy)
+            UserRepositroy.Updata()
+            Me.IDUser = UserRepositroy.IDUser
         Else
-            MyBase.Updata()
-            Me.IDUser = Me.IDBusiness
-            Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_USER]
-   SET [C_LoginName] = N'" + Me.NameLogin + "'
-      ,[C_Password] = '" + Me.PasswordUser + "'
-     
-      ,[C_LastModifier] = N'" + Me.LastModifierUser + "'
-      ,[C_Type]='" + Me.TypeUser + "'
- WHERE [ID]='" & Me.IDUser & "'", con)
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
+            Me.CopyObject(UserRepositroy)
+            UserRepositroy.Updata()
         End If
     End Sub
-
+    Private Sub CopyObject(AggregateObject As IUserRepositroy)
+        AggregateObject.IDUser = Me.IDBusiness
+        AggregateObject.NameLogin = Me.NameLogin
+        AggregateObject.LastModifierUser = Me.LastModifierUser
+        AggregateObject.PasswordUser = Me.PasswordUser
+        AggregateObject.TypeUser = Me.TypeUser
+        AggregateObject.DescriptionNewsPhoto = Me.DescriptionNewsPhoto
+        AggregateObject.CreationDateFileUser = Me.CreationDateFileUser
+        AggregateObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
+        AggregateObject.NameFileUser = Me.NameFileUser
+    End Sub
 End Class

@@ -1,11 +1,7 @@
 ﻿using FileWorxObjects;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ApiServer.Controllers
 {
@@ -18,8 +14,8 @@ namespace ApiServer.Controllers
         [HttpPut]
         public IActionResult GET([FromBody]FileQuery filterNewsAndPhotos)
         {
-
-           // string SerializeToJson = JsonConvert.SerializeObject(DataNewsPhoto.Run());
+           
+         
             List<BusinessObject> ListFilterNewsAndPhoto = filterNewsAndPhotos.Run();
             
             if (ListFilterNewsAndPhoto != null)
@@ -33,7 +29,7 @@ namespace ApiServer.Controllers
             file.IDBusiness = id;
            
             file.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(file);
+          
             if (file != null)
             {
 
@@ -46,7 +42,7 @@ namespace ApiServer.Controllers
         {
             file.IDBusiness = id;
             file.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(file);
+          
             if (file == null)
                 return NotFound();
             file.Delete();
@@ -59,7 +55,7 @@ namespace ApiServer.Controllers
             file.IDBusiness = id;
             file.Read();
             FileUpdate.IDBusiness = id;
-            string SerializeToJson = JsonConvert.SerializeObject(FileUpdate);
+           
             if (file == null)
                 return NotFound();
 

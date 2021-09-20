@@ -3,44 +3,25 @@ Imports System.Data.SqlClient
 Public Class Photo
 
     Inherits File
+
     'Create ADO.NET objects.
 
-    Private id As Integer
-    Public Property IDPhoto() As Integer
-        Get
-            Return id
-        End Get
-        Set(ByVal value As Integer)
-            id = value
-        End Set
-    End Property
-    Private location As String
-    Public Property LocationPhoto() As String
-        Get
-            Return location
-        End Get
-        Set(ByVal value As String)
-            location = value
-        End Set
-    End Property
-    Private idfilephoto As Integer
-    Public Property FileIDPhoto() As Integer
-        Get
-            Return idfilephoto
-        End Get
-        Set(ByVal value As Integer)
-            idfilephoto = value
-        End Set
-    End Property
 
+    Public Property IDPhoto() As Integer
+    Public Property LocationPhoto() As String
+    Public Property FileIDPhoto() As Integer
+
+
+    Private PhotoRepositroy As IPhotoRepositroy = New PhotoAggregate()
     Private con As SqlConnection
+
     Public Sub New()
-        location = ""
+        Me.LocationPhoto = ""
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
 
 
-    Public Overloads Sub Read()
+    Public Overrides Sub Read()
         Dim myReader As SqlDataReader
         MyBase.Read()
         Me.IDPhoto = Me.IDBusiness
@@ -58,40 +39,32 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
         con.Close()
     End Sub
 
-    Public Overloads Sub Delete()
-
+    Public Overrides Sub Delete()
         MyBase.Delete()
 
     End Sub
-    Public Overloads Sub Updata()
-        If Me.IDPhoto = -1 Then
-            Me.IDFile = -1
-            MyBase.Updata()
-            Me.IDPhoto = Me.IDBusiness
+    Public Overrides Sub Updata()
+        If Me.IDBusiness = -1 Then
 
-            Dim cmd As SqlCommand = New SqlCommand("INSERT INTO [dbo].[T_PHOTO]
-           ([ID]
-,[C_Location]
-         )
-     VALUES
-           ('" & Me.IDPhoto & "','" + Me.LocationPhoto + "')", con)
-            con.Open()
-
-            cmd.ExecuteNonQuery()
-            con.Close()
+            Me.CopyObject(PhotoRepositroy)
+            PhotoRepositroy.Updata()
+            Me.IDPhoto = PhotoRepositroy.IDPhoto
         Else
-            MyBase.Updata()
-            Me.IDPhoto = Me.IDBusiness
-            Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_PHOTO]
-   SET [C_Location] = '" + Me.LocationPhoto + "'
-     
- WHERE [ID]='" & Me.IDPhoto & "'", con)
-            con.Open()
-            cmd.ExecuteNonQuery()
-            con.Close()
+
+            Me.CopyObject(PhotoRepositroy)
+            PhotoRepositroy.Updata()
+
         End If
     End Sub
-
+    Private Sub CopyObject(AggregateObject As IPhotoRepositroy)
+        AggregateObject.IDPhoto = Me.IDBusiness
+        AggregateObject.LocationPhoto = Me.LocationPhoto
+        AggregateObject.BodyNewsPhoto = Me.BodyNewsPhoto
+        AggregateObject.DescriptionNewsPhoto = Me.DescriptionNewsPhoto
+        AggregateObject.CreationDateFileUser = Me.CreationDateFileUser
+        AggregateObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
+        AggregateObject.NameFileUser = Me.NameFileUser
+    End Sub
 
 
 

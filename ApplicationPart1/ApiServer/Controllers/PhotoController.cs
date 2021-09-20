@@ -1,11 +1,7 @@
 ﻿using FileWorxObjects;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ApiServer.Controllers
 {
@@ -19,7 +15,7 @@ namespace ApiServer.Controllers
         public IActionResult GET()
         {
 
-             BusinessQuery DataNewsPhoto = new BusinessQuery();
+            IBusinessQueryRepositroy DataNewsPhoto = new BusinessQueryReportsql();
         string SerializeToJson = JsonConvert.SerializeObject(DataNewsPhoto.Run());
             if (SerializeToJson != null)
             {
@@ -47,7 +43,7 @@ namespace ApiServer.Controllers
         {
             photo.IDBusiness = id;
             photo.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(photo);
+            
             if (photo == null)
                 return NotFound();
             photo.Delete();
@@ -59,7 +55,7 @@ namespace ApiServer.Controllers
             PhotoUpdate.IDBusiness = id;
             photo.IDBusiness = id;
             photo.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(PhotoUpdate);
+       
             if (photo == null)
                 return NotFound();
 
@@ -71,7 +67,7 @@ namespace ApiServer.Controllers
         {
            
             PhotoCreate.Updata();
-            return Ok(PhotoCreate);
+            return Ok(PhotoCreate.IDPhoto);
         }
     }
 }

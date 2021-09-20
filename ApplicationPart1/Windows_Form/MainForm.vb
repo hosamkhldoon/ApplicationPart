@@ -61,10 +61,10 @@ Public Class MainForm
 
             If BusinessObject.ClassIDFileOrUser = ClassID.News Then 'news preview
                 Dim NewsClient As New ApiClients.NewsClient
-                Dim NewNew As New FileWorxObjects.News()
                 imagePictureBox1.Visible = False
                 categoryLabel3.Visible = True
                 categoryComboBox1.Visible = True
+                Dim NewNew As FileWorxObjects.News = New FileWorxObjects.News()
                 NewNew = NewsClient.ReadNews(CInt(row.Cells(0).Value))
 
 
@@ -147,7 +147,7 @@ Public Class MainForm
 
                 Dim NewsClient As New ApiClients.NewsClient
                 Dim NewsDilog As New NewNews()
-                Dim NewNew As New FileWorxObjects.News()
+                Dim NewNew As FileWorxObjects.News = New FileWorxObjects.News()
                 NewNew = NewsClient.ReadNews(CInt(row.Cells(0).Value))
 
 

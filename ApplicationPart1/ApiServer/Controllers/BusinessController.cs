@@ -1,12 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FileWorxObjects;
-using Newtonsoft.Json;
-using System.Net.Http;
+
+
 
 namespace ApiServer.Controllers
 {
@@ -21,7 +17,7 @@ namespace ApiServer.Controllers
         public IActionResult GET()
         {
            BusinessQuery DataNewsPhoto = new BusinessQuery();
-
+            
             List<BusinessObject> ListDataNewsAndPhotos = DataNewsPhoto.Run();
            if (ListDataNewsAndPhotos != null)
             {
@@ -48,7 +44,7 @@ namespace ApiServer.Controllers
         {
             business.IDBusiness = id;
             business.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(business);
+            
             if (business == null)
                 return NotFound();
             business.Delete();
@@ -60,7 +56,7 @@ namespace ApiServer.Controllers
 
             business.IDBusiness = id;
             business.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(BusinessUpdate);
+            
             if (business == null)
                 return NotFound();
 

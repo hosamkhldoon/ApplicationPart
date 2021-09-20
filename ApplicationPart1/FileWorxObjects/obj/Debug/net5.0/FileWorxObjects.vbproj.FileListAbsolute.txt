@@ -1,3 +1,11 @@
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.vbprojAssemblyReference.cache
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.AssemblyInfoInputs.cache
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.AssemblyInfo.vb
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.vbproj.CoreCompileInputs.cache
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.dll
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\ref\FileWorxObjects.dll
+C:\Users\Hosam\Downloads\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\obj\Debug\net5.0\FileWorxObjects.pdb
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\bin\Debug\net5.0\FileWorxObjects.deps.json
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\bin\Debug\net5.0\FileWorxObjects.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\FileWorxObjects\bin\Debug\net5.0\ref\FileWorxObjects.dll

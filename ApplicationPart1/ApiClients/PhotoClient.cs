@@ -22,6 +22,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.GetAsync("api/Photo/" + id).Result;
 
             if (response.IsSuccessStatusCode)
@@ -39,6 +40,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.DeleteAsync("api/Photo/" + id).Result;
 
 
@@ -53,13 +55,14 @@ namespace ApiClients
 
 
         }
-        public Photo CreatePhoto(Photo photo)
+        public string CreatePhoto(Photo photo)
         {
 
             client = new HttpClient();
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.PostAsJsonAsync("api/Photo", photo).Result;
 
 
@@ -68,8 +71,8 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                Photo PhotoData = JsonConvert.DeserializeObject<Photo>(body);
-                return PhotoData;
+
+                return body;
             }
             return null;
 
@@ -82,6 +85,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(30);
             HttpResponseMessage response = client.PutAsJsonAsync("api/Photo/" + id, photo).Result;
 
 

@@ -8,15 +8,9 @@ Public Class NewPhoto
     Private NewPhoto As FileWorxObjects.photo = New FileWorxObjects.photo()
     Private PrevPhoto As FileWorxObjects.photo = New FileWorxObjects.photo()
 
-    Private idbusiness As Integer
+
     Public Property BusinessID() As Integer
-        Get
-            Return idbusiness
-        End Get
-        Set(ByVal value As Integer)
-            idbusiness = value
-        End Set
-    End Property
+
     Private folder As String = "C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\Images\"
     Private Sub NewPhotoLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         FileDescriptionTabPage1.Text = "File Description"
@@ -54,41 +48,31 @@ Public Class NewPhoto
     End Sub
     Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton1.Click
 
-
         Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
         Dim PhotoClient As New ApiClients.PhotoClient
 
-
-
-
         If NumberCharcter() Then
-
-
 
         ElseIf TitleTextBox1.Text.Length = 0 Then
             MessageBox.Show("Please Fill Title", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-
-
             Dim fileName As String = Path.GetFileName(openFD.FileName) + Guid.NewGuid.ToString
-
             NewPhoto.NameFileUser = TitleTextBox1.Text
             NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
-
-            NewPhoto.IDPhoto = -1
-
+            NewPhoto.IDBusiness = -1
             NewPhoto.BodyNewsPhoto = BodyTextBox3.Text
             NewPhoto.CreationDateFileUser = Creation_date
             NewPhoto.ClassIDFileOrUser = 2
+
             If Not openFD.FileName Is Nothing Then
                 NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
                 File.Copy(openFD.FileName, Path.Combine(folder, fileName), True)
             End If
 
-            NewPhoto = PhotoClient.CreatePhoto(NewPhoto)
-            If Not NewPhoto Is Nothing Then
+            Dim IdPhoto = PhotoClient.CreatePhoto(NewPhoto)
+            If Not String.IsNullOrEmpty(IdPhoto) Then
                 MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                MainForm.NewsPhotoDataGridView1.Rows.Add(NewPhoto.IDBusiness, NewPhoto.NameFileUser, NewPhoto.CreationDateFileUser, NewPhoto.DescriptionNewsPhoto)
+                MainForm.NewsPhotoDataGridView1.Rows.Add(IdPhoto, NewPhoto.NameFileUser, NewPhoto.CreationDateFileUser, NewPhoto.DescriptionNewsPhoto)
             End If
         End If
     End Sub
@@ -100,26 +84,28 @@ Public Class NewPhoto
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles UpdateButton1.Click
         Dim fileName As String = Path.GetFileName(openFD.FileName) + Guid.NewGuid.ToString
         Dim PhotoClient As New ApiClients.PhotoClient
-        If Not openFD.FileName Is Nothing Then
+        If Not String.IsNullOrEmpty(openFD.FileName) Then
             If File.Exists(PrevPhoto.LocationPhoto) Then
                 File.Delete(PrevPhoto.LocationPhoto)
                 File.Copy(openFD.FileName, Path.Combine(folder, fileName), True)
 
             End If
             NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
+        Else
+            NewPhoto.LocationPhoto = PrevPhoto.LocationPhoto
         End If
-
 
         NewPhoto.NameFileUser = TitleTextBox1.Text
         NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
-
         NewPhoto.BodyNewsPhoto = BodyTextBox3.Text
-        If NewPhoto.NameFileUser = PrevPhoto.NameFileUser And openFD.FileName Is Nothing And NewPhoto.DescriptionNewsPhoto = PrevPhoto.DescriptionNewsPhoto And NewPhoto.BodyNewsPhoto = PrevPhoto.BodyNewsPhoto Then
+        NewPhoto.ClassIDFileOrUser = 2
+        NewPhoto.CreationDateFileUser = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+        If NewPhoto.NameFileUser = PrevPhoto.NameFileUser And String.IsNullOrEmpty(openFD.FileName) And NewPhoto.DescriptionNewsPhoto = PrevPhoto.DescriptionNewsPhoto And NewPhoto.BodyNewsPhoto = PrevPhoto.BodyNewsPhoto Then
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         Else
             Dim Message = PhotoClient.UpdatePhoto(Me.BusinessID, NewPhoto)
-            If String.IsNullOrEmpty(Message) Then
+            If Not String.IsNullOrEmpty(Message) Then
                 MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If

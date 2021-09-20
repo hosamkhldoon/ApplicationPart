@@ -7,7 +7,10 @@ C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Win
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\ref\Windows_Form.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Windows_Form.pdb
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Windows_Form.xml
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Elasticsearch.Net.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\ElasticsearchCrud.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\System.Net.Http.Formatting.dll
+C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Nest.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\Newtonsoft.Json.Bson.dll
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\System.Data.SqlClient.dll
@@ -39,5 +42,3 @@ C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Win
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\obj\Debug\net5.0-windows\Windows_Form.xml
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\obj\Debug\net5.0-windows\Windows_Form.pdb
 C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\obj\Debug\net5.0-windows\FileWorxClient.genruntimeconfig.cache
-C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\ClassID.dll
-C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\ClassID.pdb

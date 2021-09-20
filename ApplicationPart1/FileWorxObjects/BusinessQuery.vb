@@ -3,6 +3,7 @@ Imports System.Data
 Imports Newtonsoft.Json
 
 Public Class BusinessQuery
+
     Public ListNewsAndPhotos As New List(Of BusinessObject)
 
     Public Property IndexConditionID As Integer
@@ -61,6 +62,7 @@ Public Class BusinessQuery
     Public ItemIndexBusiness As Integer
     Public Conditionbusiness As String
 
+
     Public Constr As String = "Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True"
     Public Sub New()
         Me.QID = ""
@@ -71,18 +73,19 @@ Public Class BusinessQuery
         Me.Conditionbusiness = ""
 
     End Sub
+
     Public Overridable Function Run() As List(Of BusinessObject)
         Dim myReader As SqlDataReader
 
 
-        Dim con As SqlConnection = New SqlConnection(Constr)
-        Dim cmd As SqlCommand = New SqlCommand("SELECT " + Me.tablebusiness + ".[ID]
-," + Me.tablebusiness + ".[C_Name]
-," + Me.tablebusiness + ".[C_CreationDate]
-," + Me.tablebusiness + ".[C_Description]
+        Dim con As SqlConnection = New SqlConnection(Me.Constr)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT " + Me.TableName + ".[ID]
+," + Me.TableName + ".[C_Name]
+," + Me.TableName + ".[C_CreationDate]
+," + Me.TableName + ".[C_Description]
 
-            FROM " + Me.tablebusiness + " 
-WHERE " + Me.tablebusiness + ".[C_ClassID] in (1,2) ", con)
+            FROM " + Me.TableName + " 
+WHERE " + Me.TableName + ".[C_ClassID] in (1,2) ", con)
         con.Open()
         myReader = cmd.ExecuteReader()
 
@@ -99,7 +102,6 @@ WHERE " + Me.tablebusiness + ".[C_ClassID] in (1,2) ", con)
         myReader.Close()
         con.Close()
     End Function
-
     Private Function CheckData() As String
         Dim bqWhereColumns As String = ""
 

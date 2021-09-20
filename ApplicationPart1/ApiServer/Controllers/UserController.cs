@@ -19,7 +19,7 @@ namespace ApiServer.Controllers
         {
 
           
-        //string SerializeToJson = JsonConvert.SerializeObject(DataUser.Run());
+        
             List<User> ListDataUser = userfilter.Run();
             if (ListDataUser != null)
             {
@@ -34,7 +34,7 @@ namespace ApiServer.Controllers
             user.IDBusiness = id;
          
             user.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(user);
+           
             if (user != null)
             {
 
@@ -58,7 +58,7 @@ namespace ApiServer.Controllers
         {
             user.IDBusiness = id;
             user.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(user);
+           
             if (user == null)
                 return NotFound();
             user.Delete();
@@ -70,7 +70,7 @@ namespace ApiServer.Controllers
             UserUpdate.IDBusiness = id;
             user.IDBusiness = id;
             user.Read();
-            string SerializeToJson = JsonConvert.SerializeObject(UserUpdate);
+            
             if (user == null)
                 return NotFound();
 

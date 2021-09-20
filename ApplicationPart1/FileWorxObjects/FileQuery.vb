@@ -6,12 +6,15 @@ Public Class FileQuery
     Public Property QBody As String
 
     Private tablefile As String = "T_FILE"
+
+
     <JsonIgnore>
     Public Overrides ReadOnly Property TableName As String
         Get
             Return MyBase.TableName + "," + Me.tablefile
         End Get
     End Property
+
     <JsonIgnore>
     Public Overrides ReadOnly Property WhereColumns As String
         Get
@@ -31,20 +34,15 @@ Public Class FileQuery
 
 
     Public Property SeconedValueBody As String
+
     Public Overrides Function Run() As List(Of BusinessObject)
-
-
-
-
-
-
         Me.ListNewsAndPhotos.Clear()
         Dim query As String = "SELECT " + Me.ColumnNames + " FROM  " + Me.TableName + " "
         query &= "WHERE " & Me.WhereColumns
         If Not String.IsNullOrEmpty(Me.WhereColumns) Then
-            query &= " AND " + Me.tablefile + ".ID=" + MyBase.TableName + ".ID"
+            query &= " AND " + Me.tablefile + ".ID=" + Me.TableName + ".ID"
         Else
-            query &= Me.tablefile + ".ID=" + MyBase.TableName + ".ID"
+            query &= Me.tablefile + ".ID=" + Me.TableName + ".ID"
         End If
         Using con As SqlConnection = New SqlConnection(Me.Constr)
             Using cmd As SqlCommand = New SqlCommand(query, con)
@@ -70,6 +68,7 @@ Public Class FileQuery
             End Using
         End Using
     End Function
+
     Private Function CheckData() As String
 
         Dim bqWhereColumns As String = ""

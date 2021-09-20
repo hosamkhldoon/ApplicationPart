@@ -60,17 +60,19 @@ Public Class NewUser
 
                 NewUser.NameFileUser = NameTextBox1.Text
                 NewUser.NameLogin = LoginNameTextBox2.Text
-                NewUser.IDUser = -1
+                NewUser.IDBusiness = -1
                 NewUser.ClassIDFileOrUser = 3
                 NewUser.PasswordUser = StrHash
                 NewUser.CreationDateFileUser = Creation_date
                 NewUser.TypeUser = TypeComboBox1.Text
                 NewUser.LastModifierUser = ""
-                UserClient.CreateUser(NewUser)
-                MessageBox.Show("Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Dim Message = UserClient.CreateUser(NewUser)
+                If Not String.IsNullOrEmpty(Message) Then
+                    MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
             End If
 
-        End If
+            End If
 
     End Sub
 
@@ -86,12 +88,14 @@ Public Class NewUser
 
         NewUser.NameFileUser = NameTextBox1.Text
         NewUser.NameLogin = LoginNameTextBox2.Text
-
         NewUser.PasswordUser = PasswordTextBox3.Text
         NewUser.LastModifierUser = MainForm.CurrentUser
-        UserClient.UpdateUser(Me.BusinessID, NewUser)
-
-        MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        NewUser.ClassIDFileOrUser = 3
+        NewUser.CreationDateFileUser = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+        Dim Message = UserClient.UpdateUser(Me.BusinessID, NewUser)
+        If Not String.IsNullOrEmpty(Message) Then
+            MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
     End Sub
     Private Function NumberCharcter() As Boolean
         If NameTextBox1.Text.Length > 255 Then
