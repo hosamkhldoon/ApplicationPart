@@ -41,7 +41,7 @@ Public Class NewUser
 
 
 
-            Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
+            Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetUsers(UserQuery)
             If Not ListUser Is Nothing Then
                 For Each item In ListUser
 

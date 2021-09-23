@@ -1,5 +1,5 @@
 ﻿Imports System.Data.SqlClient
-Public Class QueryCondition
+Public Class QueryConditionSql
     Public Property Condition As String
     Public Property SelectItem As Integer
     Public Property ColumnName As String

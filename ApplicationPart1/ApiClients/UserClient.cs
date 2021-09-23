@@ -22,7 +22,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.GetAsync("api/User/" + id).Result;
 
             response.EnsureSuccessStatusCode();
@@ -41,7 +41,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.PostAsJsonAsync("api/User/GETUSER",UserLogin).Result;
 
            
@@ -63,7 +63,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.DeleteAsync("api/User/" + id).Result;
 
 
@@ -85,7 +85,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.PostAsJsonAsync("api/User", user).Result;
 
 
@@ -107,7 +107,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.PutAsJsonAsync("api/User/" + id, user).Result;
 
 

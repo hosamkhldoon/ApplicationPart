@@ -2,14 +2,14 @@
 Imports Nest
 
 Public Class FileReportElstic
-    Inherits BusinessReportsql
+    Inherits BusinessReportElastic
     Implements IFileRepositroy
 
     Public Property BodyNewsPhoto As String Implements IFileRepositroy.BodyNewsPhoto
     Public Property IDFile As Integer Implements IFileRepositroy.IDFile
 
 
-    Private lowlevelClient As New ElasticLowLevelClient
+
 
     Public Overrides Sub Delete() Implements IFileRepositroy.Delete
 

@@ -23,12 +23,26 @@ Public Class PhotoReportSql
     End Sub
 
     Public Overrides Sub Read() Implements IPhotoRepositroy.Read
-        Throw New NotImplementedException()
+        Dim myReader As SqlDataReader
+        MyBase.Read()
+        Me.IDPhoto = Me.IDBusiness
+        Dim cmd As SqlCommand = New SqlCommand("SELECT [C_Location]
+  FROM [dbo].[T_PHOTO]
+WHERE [ID]='" & Me.IDPhoto & "'", con)
+        con.Open()
+        myReader = cmd.ExecuteReader()
+
+        Do While myReader.Read()
+            Me.LocationPhoto = myReader.GetString(0)
+        Loop
+
+        myReader.Close()
+        con.Close()
     End Sub
 
     Public Overrides Sub Updata() Implements IPhotoRepositroy.Updata
-        If Me.IDPhoto = -1 Then
-            Me.IDFile = -1
+        If Me.IDBusiness = -1 Then
+
             MyBase.Updata()
             Me.IDPhoto = Me.IDBusiness
 

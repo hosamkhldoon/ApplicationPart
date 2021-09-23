@@ -14,13 +14,14 @@ namespace ApiClients
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public List<BusinessObject> GetAllNewsAndPhotos(FileQuery filternewsphoto)
+        public List<BusinessObject> GetNewsAndPhotos(FileQuery filternewsphoto)
         {
 
             client = new HttpClient();
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.PutAsJsonAsync("api/File",filternewsphoto).Result;
           
         

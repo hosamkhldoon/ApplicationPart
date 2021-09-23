@@ -1,7 +1,7 @@
 ﻿
 
 Imports FileWorxObjects.BusinessQuery
-Imports FileWorxObjects.QueryCondition
+Imports FileWorxObjects.QueryConditionSql
 
 Public Class ShowUser
     Public DictionaryUser As New Dictionary(Of String, Dictionary(Of String, String))
@@ -14,7 +14,7 @@ Public Class ShowUser
     Private Sub ShowUserLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim UserQueryClient As New ApiClients.UserQueryClient
 
-        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
+        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetUsers(UserQuery)
 
         If Not ListUser Is Nothing Then
             For Each item In ListUser
@@ -91,7 +91,8 @@ Public Class ShowUser
         End If
     End Sub
     Private Sub DeleteToolStripMenuItemClick(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
-        Dim BusinessClient As New ApiClients.BusinessClient
+
+        Dim UserClient As New ApiClients.UserClient
         If UserDataGridView1.SelectedRows.Count > 0 Then
             Dim formdelete As DeleteForm = New DeleteForm()
 
@@ -100,7 +101,7 @@ Public Class ShowUser
             formdelete.ShowDialog()
             If formdelete.DialogResult = DialogResult.Yes Then
                 Dim row = UserDataGridView1.SelectedRows(0)
-                BusinessClient.DeleteNewsOrPhotoOrUser(IDBusiness)
+                UserClient.DeleteUser(IDBusiness)
 
                 UserDataGridView1.Rows.Remove(row)
             End If
@@ -240,8 +241,10 @@ Public Class ShowUser
 
         End If
         Dim UserQueryClient As New ApiClients.UserQueryClient
-
-        Dim FilterUsers As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(userfilter)
+        If SqlOrElasticComboBox.Text = "ELASTICSEARCH" Then
+            userfilter.IDSqlServerOrElsticSearch = 1
+        End If
+        Dim FilterUsers As List(Of FileWorxObjects.User) = UserQueryClient.GetUsers(userfilter)
 
 
         UserDataGridView1.Rows.Clear()
@@ -341,7 +344,7 @@ Public Class ShowUser
         UserDataGridView1.Rows.Clear()
         Dim UserQueryClient As New ApiClients.UserQueryClient
 
-        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetAllUser(UserQuery)
+        Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetUsers(UserQuery)
         If Not ListUser Is Nothing Then
             For Each item In ListUser
 

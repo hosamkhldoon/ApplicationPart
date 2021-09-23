@@ -7,7 +7,7 @@ Public Class PhotoQuery
     Public ItemIndexPhoto As Integer
 
     'TODO: Remove
-    Private condition As QueryCondition = New QueryCondition()
+    Private condition As QueryConditionSql = New QueryConditionSql()
 
     Public Sub New()
         Me.LocationImage = ""

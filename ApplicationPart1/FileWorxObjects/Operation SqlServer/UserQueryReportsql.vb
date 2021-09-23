@@ -25,6 +25,8 @@ Public Class UserQueryReportsql
     Public Property SeconedValueLastModifier As String Implements IUserQueryRepositroy.SeconedValueLastModifier
     Public Property SeconedValueLoginName As String Implements IUserQueryRepositroy.SeconedValueLoginName
 
+    Public Property IDSqlServerOrElasticSearch As Integer Implements IUserQueryRepositroy.IDSqlServerOrElasticSearch
+
     <JsonIgnore>
     Public Overrides ReadOnly Property TableName As String
         Get
@@ -43,6 +45,9 @@ Public Class UserQueryReportsql
             End If
         End Get
     End Property
+
+
+
 
     Private tabeluser As String = "T_USER"
 
@@ -114,7 +119,7 @@ Public Class UserQueryReportsql
     End Function
     Private Function QLoginNamefilter() As String
         If Not String.IsNullOrEmpty(Me.QLoginName) Then
-            Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql()
             condition.SelectItem = Me.IndexConditionLoginName
             condition.ColumnName = "C_LoginName"
             condition.Value = Me.QLoginName
@@ -125,7 +130,7 @@ Public Class UserQueryReportsql
     End Function
     Private Function Lastmodifierfilter() As String
         If Not String.IsNullOrEmpty(Me.QLastModifier) Then
-            Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql()
             condition.SelectItem = Me.IndexConditionLastModifier
             condition.ColumnName = "C_LastModifier"
             condition.Value = Me.QLastModifier
@@ -136,7 +141,7 @@ Public Class UserQueryReportsql
     End Function
     Private Function PasswordFilter() As String
         If Not String.IsNullOrEmpty(Me.QPassword) Then
-            Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql()
             condition.SelectItem = Me.IndexConditionPassword
             condition.ColumnName = "C_Password"
             condition.Value = Me.QPassword

@@ -10,13 +10,36 @@ Public Class BusinessReportsql
     Public Property ClassIDFileOrUser() As Integer Implements IBusinessObjectRepositroy.ClassIDFileOrUser
     Public Property DescriptionNewsPhoto() As String Implements IBusinessObjectRepositroy.DescriptionNewsPhoto
 
+    Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
+
+    Public Property DateElastic As Date Implements IBusinessObjectRepositroy.DateElastic
 
 
     Private con As SqlConnection
 
 
     Public Overridable Sub Read() Implements IBusinessObjectRepositroy.Read
+        Dim myReader As SqlDataReader
 
+        con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
+
+        Dim cmd As SqlCommand = New SqlCommand("SELECT  [C_Name]
+,[C_CreationDate]
+,[C_Description]
+,[C_ClassID]
+            FROM [dbo].[T_BUSINESSOBJECT]
+WHERE [ID]='" & Me.IDBusiness & "'", con)
+        con.Open()
+        myReader = cmd.ExecuteReader()
+        Do While myReader.Read()
+            Me.NameFileUser = myReader.GetString(0)
+            Me.CreationDateFileUser = Format(myReader.GetDateTime(1), "MM/dd/yyyy hh:mm:ss tt")
+            Me.DescriptionNewsPhoto = myReader.GetString(2)
+            Me.ClassIDFileOrUser = myReader.GetInt32(3)
+        Loop
+
+        myReader.Close()
+        con.Close()
 
 
     End Sub

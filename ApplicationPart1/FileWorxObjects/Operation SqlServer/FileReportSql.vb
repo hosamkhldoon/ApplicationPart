@@ -21,14 +21,35 @@ Public Class FileReportSql
     End Sub
 
     Public Overrides Sub Read() Implements IFileRepositroy.Read
+        MyBase.Read()
+        Me.IDFile = Me.IDBusiness
+        Dim myReader As SqlDataReader
+
+
+
+
+        Dim cmd As SqlCommand = New SqlCommand("SELECT 
+[C_Body]
+
+  FROM [dbo].[T_FILE]
+WHERE [ID]='" & Me.IDFile & "'", con)
+        con.Open()
+        myReader = cmd.ExecuteReader()
+        Do While myReader.Read()
+            Me.BodyNewsPhoto = myReader.GetString(0)
+
+        Loop
+
+        myReader.Close()
+        con.Close()
     End Sub
 
     Public Overrides Sub Delete() Implements IFileRepositroy.Delete
         MyBase.Delete()
     End Sub
     Public Overrides Sub Updata() Implements IFileRepositroy.Updata
-        If Me.IDFile = -1 Then
-            Me.IDBusiness = -1
+        If Me.IDBusiness = -1 Then
+
             MyBase.Updata()
             Me.IDFile = Me.IDBusiness
 

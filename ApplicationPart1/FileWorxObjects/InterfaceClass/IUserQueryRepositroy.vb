@@ -9,6 +9,6 @@
     Property QPassword As String
     Property SeconedValueLastModifier As String
     Property SeconedValueLoginName As String
-
+    Property IDSqlServerOrElasticSearch As Integer
     Overloads Function Run() As List(Of User)
 End Interface

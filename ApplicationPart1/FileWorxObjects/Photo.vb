@@ -22,21 +22,9 @@ Public Class Photo
 
 
     Public Overrides Sub Read()
-        Dim myReader As SqlDataReader
-        MyBase.Read()
-        Me.IDPhoto = Me.IDBusiness
-        Dim cmd As SqlCommand = New SqlCommand("SELECT [C_Location]
-  FROM [dbo].[T_PHOTO]
-WHERE [ID]='" & Me.IDPhoto & "'", con)
-        con.Open()
-        myReader = cmd.ExecuteReader()
-
-        Do While myReader.Read()
-            Me.LocationPhoto = myReader.GetString(0)
-        Loop
-
-        myReader.Close()
-        con.Close()
+        PhotoRepositroy.IDBusiness = Me.IDBusiness
+        PhotoRepositroy.Read()
+        Me.CopyObjectFromAggregate(PhotoRepositroy)
     End Sub
 
     Public Overrides Sub Delete()
@@ -49,7 +37,7 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
 
             Me.CopyObject(PhotoRepositroy)
             PhotoRepositroy.Updata()
-            Me.IDPhoto = PhotoRepositroy.IDPhoto
+            Me.IDPhoto = PhotoRepositroy.IDBusiness
         Else
 
             Me.CopyObject(PhotoRepositroy)
@@ -58,7 +46,7 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
         End If
     End Sub
     Private Sub CopyObject(AggregateObject As IPhotoRepositroy)
-        AggregateObject.IDPhoto = Me.IDBusiness
+        AggregateObject.IDBusiness = Me.IDBusiness
         AggregateObject.LocationPhoto = Me.LocationPhoto
         AggregateObject.BodyNewsPhoto = Me.BodyNewsPhoto
         AggregateObject.DescriptionNewsPhoto = Me.DescriptionNewsPhoto
@@ -67,7 +55,15 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
         AggregateObject.NameFileUser = Me.NameFileUser
     End Sub
 
-
+    Private Sub CopyObjectFromAggregate(AggregateObject As IPhotoRepositroy)
+        Me.LocationPhoto = AggregateObject.LocationPhoto
+        Me.IDBusiness = AggregateObject.IDBusiness
+        Me.BodyNewsPhoto = AggregateObject.BodyNewsPhoto
+        Me.DescriptionNewsPhoto = AggregateObject.DescriptionNewsPhoto
+        Me.CreationDateFileUser = AggregateObject.CreationDateFileUser
+        Me.ClassIDFileOrUser = AggregateObject.ClassIDFileOrUser
+        Me.NameFileUser = AggregateObject.NameFileUser
+    End Sub
 
 
 End Class

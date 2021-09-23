@@ -13,36 +13,42 @@
     Private UserElastic As New UserReportElastic
 
     Public Overrides Sub Delete() Implements IUserRepositroy.Delete
-        UserElastic.IDBusiness = Me.IDBusiness
-        UserSql.IDBusiness = Me.IDBusiness
-        UserElastic.Delete()
-        UserSql.Delete()
+        Me.UserElastic.IDBusiness = Me.IDBusiness
+        Me.UserSql.IDBusiness = Me.IDBusiness
+        Me.UserElastic.Delete()
+        Me.UserSql.Delete()
     End Sub
 
     Public Overrides Sub Read() Implements IUserRepositroy.Read
-        Throw New NotImplementedException()
+        Me.UserSql.IDBusiness = Me.IDBusiness
+        Me.UserSql.Read()
+        Me.CopyObjectFromSql(Me.UserSql)
     End Sub
 
     Public Overrides Sub Updata() Implements IUserRepositroy.Updata
-        If Me.IDUser = -1 Then
+        If Me.IDBusiness = -1 Then
             Me.CopyObject(UserSql)
             Me.UserSql.Updata()
-            Me.IDUser = UserSql.IDBusiness
-            Me.CopyObject(UserElastic)
+            Me.IDBusiness = Me.UserSql.IDBusiness
+            Me.CopyObject(Me.UserElastic)
             Me.UserElastic.Updata()
         Else
-            Me.CopyObject(UserSql)
-            Me.CopyObject(UserElastic)
+            Me.CopyObject(Me.UserSql)
+            Me.CopyObject(Me.UserElastic)
             Me.UserSql.Updata()
             Me.UserElastic.Updata()
         End If
     End Sub
 
     Public Function CheckLoginUser() As Boolean Implements IUserRepositroy.CheckLoginUser
-        Throw New NotImplementedException()
+        Me.UserSql.PasswordUser = Me.PasswordUser
+        Me.UserSql.NameLogin = Me.NameLogin
+        Dim Cheak As Boolean = Me.UserSql.CheckLoginUser()
+        Me.CopyObjectFromSql(Me.UserSql)
+        Return Cheak
     End Function
     Private Sub CopyObject(UserObject As IUserRepositroy)
-        UserObject.IDUser = Me.IDUser
+        UserObject.IDBusiness = Me.IDBusiness
         UserObject.NameLogin = Me.NameLogin
         UserObject.LastModifierUser = Me.LastModifierUser
         UserObject.PasswordUser = Me.PasswordUser
@@ -51,5 +57,16 @@
         UserObject.CreationDateFileUser = Me.CreationDateFileUser
         UserObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
         UserObject.NameFileUser = Me.NameFileUser
+    End Sub
+    Private Sub CopyObjectFromSql(UserObject As IUserRepositroy)
+        Me.IDBusiness = UserObject.IDBusiness
+        Me.NameLogin = UserObject.NameLogin
+        Me.LastModifierUser = UserObject.LastModifierUser
+        Me.PasswordUser = UserObject.PasswordUser
+        Me.TypeUser = UserObject.TypeUser
+        Me.DescriptionNewsPhoto = UserObject.DescriptionNewsPhoto
+        Me.CreationDateFileUser = UserObject.CreationDateFileUser
+        Me.ClassIDFileOrUser = UserObject.ClassIDFileOrUser
+        Me.NameFileUser = UserObject.NameFileUser
     End Sub
 End Class

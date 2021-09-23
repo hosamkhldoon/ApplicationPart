@@ -11,7 +11,7 @@ Public Class NewPhoto
 
     Public Property BusinessID() As Integer
 
-    Private folder As String = "C:\Users\Hussam.Ibraheem\Desktop\First_Task\ApplicationPart\ApplicationPart1\Windows_Form\Images\"
+    Private folder As String = "C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\Images\"
     Private Sub NewPhotoLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         FileDescriptionTabPage1.Text = "File Description"
         ImageTabPage2.Text = "Image"
@@ -64,7 +64,7 @@ Public Class NewPhoto
             NewPhoto.CreationDateFileUser = Creation_date
             NewPhoto.ClassIDFileOrUser = 2
 
-            If Not openFD.FileName Is Nothing Then
+            If Not String.IsNullOrEmpty(openFD.FileName) Then
                 NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
                 File.Copy(openFD.FileName, Path.Combine(folder, fileName), True)
             End If

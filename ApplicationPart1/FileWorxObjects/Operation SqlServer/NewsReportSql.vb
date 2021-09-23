@@ -23,15 +23,31 @@ Public Class NewsReportSql
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
     Public Overrides Sub Read() Implements INewsRepositroy.Read
+        MyBase.Read()
+        Me.IDNews = Me.IDBusiness
+        Dim myReader As SqlDataReader
 
+
+        Dim cmd As SqlCommand = New SqlCommand("SELECT  [C_Category]
+  FROM [dbo].[T_NEWS]
+WHERE [ID]='" & Me.IDNews & "' ", con)
+        con.Open()
+        myReader = cmd.ExecuteReader()
+
+
+        Do While myReader.Read()
+            Me.CategoryNews = myReader.GetString(0)
+        Loop
+        myReader.Close()
+        con.Close()
     End Sub
 
     Public Overrides Sub Delete() Implements INewsRepositroy.Delete
         MyBase.Delete()
     End Sub
     Public Overrides Sub Updata() Implements INewsRepositroy.Updata
-        If Me.IDNews = -1 Then
-            Me.IDFile = -1
+        If Me.IDBusiness = -1 Then
+
             MyBase.Updata()
             Me.IDNews = Me.IDBusiness
 

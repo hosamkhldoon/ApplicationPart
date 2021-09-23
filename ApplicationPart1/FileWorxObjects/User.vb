@@ -17,76 +17,21 @@ Public Class User
 
     Private UserRepositroy As IUserRepositroy = New UserAggregate
     Private con As SqlConnection
-    Private AggregateClassUser As New UserAggregate
     Public Sub New()
         con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
     End Sub
 
     Public Overloads Sub Read()
-        Dim myReader As SqlDataReader
-
-
-        MyBase.Read()
-        Me.IDUser = Me.IDBusiness
-        Dim cmd As SqlCommand = New SqlCommand("SELECT [C_LoginName]
-   
-,[C_Password]
-,[C_Type]
-,[C_LastModifier]
-  FROM [dbo].[T_USER]
-WHERE [ID]='" & Me.IDUser & "'", con)
-        con.Open()
-        myReader = cmd.ExecuteReader()
-        Do While myReader.Read()
-            Me.NameLogin = myReader.GetString(0)
-
-            Me.PasswordUser = myReader.GetString(1)
-            Me.TypeUser = myReader.GetString(2)
-            Me.LastModifierUser = myReader.GetString(3)
-        Loop
-
-        myReader.Close()
-        con.Close()
-
-
-
+        UserRepositroy.IDBusiness = Me.IDBusiness
+        UserRepositroy.Read()
+        Me.CopyObjectFromAggregate(UserRepositroy)
     End Sub
     Public Function CheckLoginUser() As Boolean
-        Dim myReader As SqlDataReader
-        Dim UserLogin As New User
-
-        MyBase.Read()
-
-        Dim cmd As SqlCommand = New SqlCommand("SELECT U.[C_LoginName]
-  , B.[C_Name]
-
-,B.[C_Description]
-
-,U.[C_Type]
-,U.[C_LastModifier]
-,U.[ID]
-  FROM [dbo].[T_USER] U, [dbo].[T_BUSINESSOBJECT] B
-WHERE U.[C_LoginName] ='" + Me.NameLogin + "' AND U.[C_Password] = '" + Me.PasswordUser + "' AND U.[ID] = B.[ID]", con)
-        con.Open()
-        myReader = cmd.ExecuteReader()
-        Do While myReader.Read()
-            Me.NameLogin = myReader.GetString(0)
-            Me.NameFileUser = myReader.GetString(1)
-            Me.DescriptionNewsPhoto = myReader.GetString(2)
-            Me.TypeUser = myReader.GetString(3)
-            Me.LastModifierUser = myReader.GetString(4)
-            Me.PasswordUser = ""
-            Return True
-        Loop
-
-        myReader.Close()
-        con.Close()
-        Return False
-
-
-
-
-
+        UserRepositroy.PasswordUser = Me.PasswordUser
+        UserRepositroy.NameLogin = Me.NameLogin
+        Dim CheackUser As Boolean = UserRepositroy.CheckLoginUser()
+        Me.CopyObjectFromAggregate(UserRepositroy)
+        Return CheackUser
     End Function
     Public Overloads Sub Delete()
         UserRepositroy.IDBusiness = Me.IDBusiness
@@ -96,14 +41,14 @@ WHERE U.[C_LoginName] ='" + Me.NameLogin + "' AND U.[C_Password] = '" + Me.Passw
         If Me.IDBusiness = -1 Then
             Me.CopyObject(UserRepositroy)
             UserRepositroy.Updata()
-            Me.IDUser = UserRepositroy.IDUser
+            Me.IDUser = UserRepositroy.IDBusiness
         Else
             Me.CopyObject(UserRepositroy)
             UserRepositroy.Updata()
         End If
     End Sub
     Private Sub CopyObject(AggregateObject As IUserRepositroy)
-        AggregateObject.IDUser = Me.IDBusiness
+        AggregateObject.IDBusiness = Me.IDBusiness
         AggregateObject.NameLogin = Me.NameLogin
         AggregateObject.LastModifierUser = Me.LastModifierUser
         AggregateObject.PasswordUser = Me.PasswordUser
@@ -112,5 +57,16 @@ WHERE U.[C_LoginName] ='" + Me.NameLogin + "' AND U.[C_Password] = '" + Me.Passw
         AggregateObject.CreationDateFileUser = Me.CreationDateFileUser
         AggregateObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
         AggregateObject.NameFileUser = Me.NameFileUser
+    End Sub
+    Private Sub CopyObjectFromAggregate(AggregateObject As IUserRepositroy)
+        Me.NameLogin = AggregateObject.NameLogin
+        Me.LastModifierUser = AggregateObject.LastModifierUser
+        Me.PasswordUser = AggregateObject.PasswordUser
+        Me.TypeUser = AggregateObject.TypeUser
+        Me.IDBusiness = AggregateObject.IDBusiness
+        Me.DescriptionNewsPhoto = AggregateObject.DescriptionNewsPhoto
+        Me.CreationDateFileUser = AggregateObject.CreationDateFileUser
+        Me.ClassIDFileOrUser = AggregateObject.ClassIDFileOrUser
+        Me.NameFileUser = AggregateObject.NameFileUser
     End Sub
 End Class

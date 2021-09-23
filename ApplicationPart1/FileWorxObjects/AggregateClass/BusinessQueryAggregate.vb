@@ -24,9 +24,11 @@
 
 
     Private BusinessQuerySql As New BusinessQueryReportsql
+    Private BusinessQueryElstic As New BusinessQueryElastic
 
     Public Function Run() As List(Of BusinessObject) Implements IBusinessQueryRepositroy.Run
 
         Return BusinessQuerySql.Run()
+
     End Function
 End Class

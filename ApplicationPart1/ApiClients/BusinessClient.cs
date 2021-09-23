@@ -18,7 +18,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.GetAsync("api/Business/" + id).Result;
 
   
@@ -38,7 +38,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(30);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.DeleteAsync("api/Business/" + id).Result;
             if (response.IsSuccessStatusCode)
             {

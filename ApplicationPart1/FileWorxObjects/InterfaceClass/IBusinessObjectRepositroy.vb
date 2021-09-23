@@ -5,6 +5,8 @@
     Property IDBusiness As Integer
     Property NameFileUser As String
 
+    Property Id As Integer
+    Property DateElastic As Date
     Sub Delete()
 
     Sub Read()

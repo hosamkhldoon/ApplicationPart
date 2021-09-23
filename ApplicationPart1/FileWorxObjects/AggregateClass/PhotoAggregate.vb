@@ -18,32 +18,43 @@
     End Sub
 
     Public Overrides Sub Read() Implements IPhotoRepositroy.Read
-        Throw New NotImplementedException()
+        Me.PhotoSql.IDBusiness = Me.IDBusiness
+        Me.PhotoSql.Read()
+        Me.CopyObjectFromSql(Me.PhotoSql)
     End Sub
 
     Public Overrides Sub Updata() Implements IPhotoRepositroy.Updata
 
-        If Me.IDPhoto = -1 Then
-            Me.CopyObject(PhotoSql)
+        If Me.IDBusiness = -1 Then
+            Me.CopyObject(Me.PhotoSql)
 
-            PhotoSql.Updata()
-            Me.IDPhoto = PhotoSql.IDBusiness
-            Me.CopyObject(PhotoElastic)
-            PhotoElastic.Updata()
+            Me.PhotoSql.Updata()
+            Me.IDBusiness = Me.PhotoSql.IDBusiness
+            Me.CopyObject(Me.PhotoElastic)
+            Me.PhotoElastic.Updata()
         Else
-            Me.CopyObject(PhotoSql)
-            Me.CopyObject(PhotoElastic)
-            PhotoSql.Updata()
-            PhotoElastic.Updata()
+            Me.CopyObject(Me.PhotoSql)
+            Me.CopyObject(Me.PhotoElastic)
+            Me.PhotoSql.Updata()
+            Me.PhotoElastic.Updata()
         End If
     End Sub
     Private Sub CopyObject(PhotoObject As IPhotoRepositroy)
-        PhotoObject.IDPhoto = Me.IDPhoto
+        PhotoObject.IDBusiness = Me.IDBusiness
         PhotoObject.LocationPhoto = Me.LocationPhoto
         PhotoObject.BodyNewsPhoto = Me.BodyNewsPhoto
         PhotoObject.DescriptionNewsPhoto = Me.DescriptionNewsPhoto
         PhotoObject.CreationDateFileUser = Me.CreationDateFileUser
         PhotoObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
         PhotoObject.NameFileUser = Me.NameFileUser
+    End Sub
+    Private Sub CopyObjectFromSql(PhotoObject As IPhotoRepositroy)
+        Me.IDBusiness = PhotoObject.IDBusiness
+        Me.LocationPhoto = PhotoObject.LocationPhoto
+        Me.BodyNewsPhoto = PhotoObject.BodyNewsPhoto
+        Me.DescriptionNewsPhoto = PhotoObject.DescriptionNewsPhoto
+        Me.CreationDateFileUser = PhotoObject.CreationDateFileUser
+        Me.ClassIDFileOrUser = PhotoObject.ClassIDFileOrUser
+        Me.NameFileUser = PhotoObject.NameFileUser
     End Sub
 End Class

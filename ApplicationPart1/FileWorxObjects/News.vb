@@ -17,29 +17,15 @@ Public Class News
 
     Private NewsRepositroy As INewsRepositroy = New NewsAggregate
 
-    Private con As SqlConnection
+
     Public Sub New()
         Me.CategoryNews = ""
-        con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
+
     End Sub
     Public Overrides Sub Read()
-        MyBase.Read()
-        Me.IDNews = Me.IDBusiness
-        Dim myReader As SqlDataReader
-
-
-        Dim cmd As SqlCommand = New SqlCommand("SELECT  [C_Category]
-  FROM [dbo].[T_NEWS]
-WHERE [ID]='" & Me.IDNews & "' ", con)
-        con.Open()
-        myReader = cmd.ExecuteReader()
-
-
-        Do While myReader.Read()
-            Me.CategoryNews = myReader.GetString(0)
-        Loop
-        myReader.Close()
-        con.Close()
+        NewsRepositroy.IDBusiness = Me.IDBusiness
+        NewsRepositroy.Read()
+        Me.CopyObjectFromAggregate(NewsRepositroy)
     End Sub
 
     Public Overrides Sub Delete()
@@ -50,7 +36,7 @@ WHERE [ID]='" & Me.IDNews & "' ", con)
         If Me.IDBusiness = -1 Then
             Me.CopyObject(NewsRepositroy)
             NewsRepositroy.Updata()
-            Me.IDNews = NewsRepositroy.IDNews
+            Me.IDNews = NewsRepositroy.IDBusiness
         Else
             Me.CopyObject(NewsRepositroy)
             NewsRepositroy.Updata()
@@ -59,13 +45,23 @@ WHERE [ID]='" & Me.IDNews & "' ", con)
     End Sub
 
     Private Sub CopyObject(AggregateObject As INewsRepositroy)
-        AggregateObject.IDNews = Me.IDBusiness
+        AggregateObject.IDBusiness = Me.IDBusiness
         AggregateObject.CategoryNews = Me.CategoryNews
         AggregateObject.BodyNewsPhoto = Me.BodyNewsPhoto
         AggregateObject.DescriptionNewsPhoto = Me.DescriptionNewsPhoto
         AggregateObject.CreationDateFileUser = Me.CreationDateFileUser
         AggregateObject.ClassIDFileOrUser = Me.ClassIDFileOrUser
         AggregateObject.NameFileUser = Me.NameFileUser
+
+    End Sub
+    Private Sub CopyObjectFromAggregate(AggregateObject As INewsRepositroy)
+        Me.IDBusiness = AggregateObject.IDBusiness
+        Me.CategoryNews = AggregateObject.CategoryNews
+        Me.BodyNewsPhoto = AggregateObject.BodyNewsPhoto
+        Me.DescriptionNewsPhoto = AggregateObject.DescriptionNewsPhoto
+        Me.CreationDateFileUser = AggregateObject.CreationDateFileUser
+        Me.ClassIDFileOrUser = AggregateObject.ClassIDFileOrUser
+        Me.NameFileUser = AggregateObject.NameFileUser
 
     End Sub
 End Class

@@ -59,6 +59,7 @@ Partial Class ShowUser
         Me.dateCheckBox1 = New System.Windows.Forms.CheckBox()
         Me.searchButton1 = New System.Windows.Forms.Button()
         Me.ResetButton2 = New System.Windows.Forms.Button()
+        Me.SqlOrElasticComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.UserDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.UserContextMenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -82,7 +83,7 @@ Partial Class ShowUser
         Me.UserDataGridView1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.UserDataGridView1.Name = "UserDataGridView1"
         Me.UserDataGridView1.ReadOnly = True
-        Me.UserDataGridView1.Size = New System.Drawing.Size(786, 211)
+        Me.UserDataGridView1.Size = New System.Drawing.Size(836, 211)
         Me.UserDataGridView1.TabIndex = 0
         '
         'Column2
@@ -434,7 +435,7 @@ Partial Class ShowUser
         '
         'searchButton1
         '
-        Me.searchButton1.Location = New System.Drawing.Point(684, 36)
+        Me.searchButton1.Location = New System.Drawing.Point(693, 74)
         Me.searchButton1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.searchButton1.Name = "searchButton1"
         Me.searchButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -445,7 +446,7 @@ Partial Class ShowUser
         '
         'ResetButton2
         '
-        Me.ResetButton2.Location = New System.Drawing.Point(684, 92)
+        Me.ResetButton2.Location = New System.Drawing.Point(693, 107)
         Me.ResetButton2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ResetButton2.Name = "ResetButton2"
         Me.ResetButton2.Size = New System.Drawing.Size(88, 27)
@@ -453,11 +454,21 @@ Partial Class ShowUser
         Me.ResetButton2.Text = "Get All User"
         Me.ResetButton2.UseVisualStyleBackColor = True
         '
+        'SqlOrElasticComboBox
+        '
+        Me.SqlOrElasticComboBox.FormattingEnabled = True
+        Me.SqlOrElasticComboBox.Items.AddRange(New Object() {"SQL SERVER", "ELASTICSEARCH"})
+        Me.SqlOrElasticComboBox.Location = New System.Drawing.Point(683, 34)
+        Me.SqlOrElasticComboBox.Name = "SqlOrElasticComboBox"
+        Me.SqlOrElasticComboBox.Size = New System.Drawing.Size(121, 23)
+        Me.SqlOrElasticComboBox.TabIndex = 31
+        '
         'ShowUser
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(790, 350)
+        Me.ClientSize = New System.Drawing.Size(840, 350)
+        Me.Controls.Add(Me.SqlOrElasticComboBox)
         Me.Controls.Add(Me.ResetButton2)
         Me.Controls.Add(Me.searchButton1)
         Me.Controls.Add(Me.TabControl1)
@@ -518,4 +529,5 @@ Partial Class ShowUser
     Friend WithEvents seconedloginTextBox1 As TextBox
     Friend WithEvents seconedmodiferTextBox1 As TextBox
     Friend WithEvents seconedDateTimePicker1 As DateTimePicker
+    Friend WithEvents SqlOrElasticComboBox As ComboBox
 End Class

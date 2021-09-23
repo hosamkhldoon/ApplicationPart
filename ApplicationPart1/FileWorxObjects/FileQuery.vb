@@ -14,7 +14,8 @@ Public Class FileQuery
 
     Private FileQueryAggregate As IFileQueryRepositroy = New FileQueryAggregate
     Public Overrides Function Run() As List(Of BusinessObject)
-
+        Me.CopyObject(FileQueryAggregate)
+        FileQueryAggregate.IDSqlServerOrElasticSearch = Me.IDSqlServerOrElsticSearch
         Return FileQueryAggregate.Run()
     End Function
 
@@ -24,19 +25,23 @@ Public Class FileQuery
         AggregateQuery.QDescription = Me.QDescription
         AggregateQuery.QID = Me.QID
         AggregateQuery.QName = Me.QName
+        AggregateQuery.QBody = Me.QBody
+
         AggregateQuery.SeconedValueClassID = Me.SeconedValueClassID
         AggregateQuery.SeconedValueCreationDate = Me.SeconedValueCreationDate
         AggregateQuery.SeconedValueDescription = Me.SeconedValueDescription
         AggregateQuery.SeconedValueID = Me.SeconedValueID
         AggregateQuery.SeconedValueName = Me.SeconedValueName
+        AggregateQuery.SeconedValueBody = Me.SeconedValueBody
+
         AggregateQuery.IndexConditionClassID = Me.IndexConditionClassID
         AggregateQuery.IndexConditionCreationDate = Me.IndexConditionCreationDate
         AggregateQuery.IndexConditionDescription = Me.IndexConditionDescription
         AggregateQuery.IndexConditionID = Me.IndexConditionID
         AggregateQuery.IndexConditionName = Me.IndexConditionName
         AggregateQuery.IndexConditionBody = Me.IndexConditionBody
-        AggregateQuery.SeconedValueBody = Me.SeconedValueBody
-        AggregateQuery.QBody = Me.QBody
+
+
     End Sub
 
 End Class

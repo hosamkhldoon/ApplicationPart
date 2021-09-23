@@ -1,5 +1,6 @@
 ﻿Imports System.IO
-Imports FileWorxObjects.QueryCondition
+Imports FileWorxObjects.QueryConditionSql
+Imports FileWorxObjects.FileQueryAggregate
 
 
 Public Class MainForm
@@ -202,6 +203,8 @@ Public Class MainForm
 
     Private Sub DeleteToolStripMenuItemClick(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
         Dim BusinessClient As New ApiClients.BusinessClient
+        Dim SelectRow As New DataGridViewRow
+        Dim Message As String
         If NewsPhotoDataGridView1.SelectedRows.Count > 0 Then
             Dim index As Integer
             Dim formdelete As DeleteForm = New DeleteForm()
@@ -219,10 +222,13 @@ Public Class MainForm
             If formdelete.DialogResult = DialogResult.Yes Then 'delete news or photo
                 Dim deletephoto As FileWorxObjects.Photo = New FileWorxObjects.Photo()
                 Dim PhotoClient As New ApiClients.PhotoClient
+                Dim NewsClient As New ApiClients.NewsClient
                 deletephoto = PhotoClient.ReadPhoto(IDBusiness)
-
+                index = NewsPhotoDataGridView1.SelectedRows.Item(0).Index
+                SelectRow = NewsPhotoDataGridView1.Rows.Item(index)
 
                 If BusinessObject.ClassIDFileOrUser = ClassID.Photo Then ' delete photo from folder
+
                     If deletephoto.LocationPhoto <> "" Then
 
                         If File.Exists(deletephoto.LocationPhoto) Then
@@ -230,12 +236,14 @@ Public Class MainForm
                             File.Delete(deletephoto.LocationPhoto)
                         End If
                     End If
+                    Message = PhotoClient.DeletePhoto(IDBusiness)
+                Else
+                    Message = NewsClient.DeleteNews(IDBusiness)
                 End If
-                Dim SelectRow As New DataGridViewRow
 
-                index = NewsPhotoDataGridView1.SelectedRows.Item(0).Index
-                SelectRow = NewsPhotoDataGridView1.Rows.Item(index)
-                Dim Message = BusinessClient.DeleteNewsOrPhotoOrUser(IDBusiness)
+
+
+
                 If Not String.IsNullOrEmpty(Message) Then
                     MessageBox.Show(Message, "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     NewsPhotoDataGridView1.Rows.Remove(SelectRow)
@@ -528,9 +536,11 @@ Public Class MainForm
 
 
         End If
-
+        If SqlOrElasticComboBox.Text = "ELASTICSEARCH" Then
+            filefilter.IDSqlServerOrElsticSearch = SqlOrElastic.ElasticSearch
+        End If
         Dim FileQueryClient As New ApiClients.FileQueryClient
-        Dim FilterNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = FileQueryClient.GetAllNewsAndPhotos(filefilter)
+        Dim FilterNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = FileQueryClient.GetNewsAndPhotos(filefilter)
         NewsPhotoDataGridView1.Rows.Clear()
 
         If Not FilterNewsAndPhotos Is Nothing Then
@@ -565,7 +575,7 @@ Public Class MainForm
     Private Sub ResetClick(sender As Object, e As EventArgs) Handles ResetButton2.Click
         Dim BusinessQueryClient As New ApiClients.BusinessQueryClient
         NewsPhotoDataGridView1.Rows.Clear()
-        Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos
+        Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos()
         If Not DataNewsAndPhotos Is Nothing Then
             For Each item In DataNewsAndPhotos
                 NewsPhotoDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.DescriptionNewsPhoto)

@@ -27,6 +27,7 @@ Public Class BusinessQuery
     Public Property StringCondition As String
     Public Property SeconedValueCondition As String
 
+    Public Property IDSqlServerOrElsticSearch As Integer
 
     Public BusinessQueryAggregate As IBusinessQueryRepositroy = New BusinessQueryAggregate
 

@@ -155,9 +155,9 @@ WHERE " + Me.TableName + ".[C_ClassID] in (1,2) ", con)
 End Function
 Private Function Idfilter() As String
     If Not String.IsNullOrEmpty(Me.QID) Then
-        Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql
 
-        condition.SelectItem = Me.IndexConditionID
+            condition.SelectItem = Me.IndexConditionID
         condition.ColumnName = "ID"
         condition.Value = Me.QID
         condition.SeconedValue = Me.SeconedValueID
@@ -168,9 +168,9 @@ End Function
 
 Private Function Namefilter() As String
     If Not String.IsNullOrEmpty(Me.QName) Then
-        Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql
 
-        condition.SelectItem = Me.IndexConditionName
+            condition.SelectItem = Me.IndexConditionName
         condition.ColumnName = "C_Name"
         condition.Value = Me.QName
         condition.SeconedValue = Me.SeconedValueName
@@ -180,8 +180,8 @@ Private Function Namefilter() As String
 End Function
 Private Function Descriptionfilter() As String
     If Not String.IsNullOrEmpty(Me.QDescription) Then
-        Dim condition As New QueryCondition()
-        condition.SelectItem = Me.IndexConditionDescription
+            Dim condition As New QueryConditionSql
+            condition.SelectItem = Me.IndexConditionDescription
         condition.ColumnName = "C_Description"
         condition.Value = Me.QDescription
         condition.SeconedValue = Me.SeconedValueDescription
@@ -191,8 +191,8 @@ Private Function Descriptionfilter() As String
 End Function
 Private Function CreationDatefilter() As String
     If Not String.IsNullOrEmpty(Me.QCreationDate) Then
-        Dim condition As New QueryCondition()
-        condition.SelectItem = Me.IndexConditionCreationDate
+            Dim condition As New QueryConditionSql
+            condition.SelectItem = Me.IndexConditionCreationDate
         condition.ColumnName = "C_CreationDate"
         condition.DateValue = Me.QCreationDate
         DateTime.TryParse(Me.SeconedValueCreationDate, condition.SeconedDate)
@@ -202,8 +202,8 @@ Private Function CreationDatefilter() As String
 End Function
 Private Function ClassIdfilter() As String
     If Not String.IsNullOrEmpty(Me.QClassID) Then
-        Dim condition As New QueryCondition()
-        condition.SelectItem = Me.IndexConditionClassID
+            Dim condition As New QueryConditionSql
+            condition.SelectItem = Me.IndexConditionClassID
         condition.ColumnName = "C_ClassID"
         condition.Value = Me.QClassID
         condition.SeconedValue = Me.SeconedValueClassID

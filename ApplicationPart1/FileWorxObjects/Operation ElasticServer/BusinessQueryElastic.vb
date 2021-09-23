@@ -1,4 +1,7 @@
-﻿Public Class BusinessQueryElastic
+﻿Imports Nest
+Imports Newtonsoft.Json
+
+Public Class BusinessQueryElastic
     Implements IBusinessQueryRepositroy
 
 
@@ -28,7 +31,6 @@
     Public Property StringCondition As String
     Public Property ValueCondition As String
 
-
     Public ListUser As New List(Of User)
     Public ItemIndexBusiness As Integer
     Public Conditionbusiness As String
@@ -40,8 +42,24 @@
         Me.QClassID = ""
         Me.Conditionbusiness = ""
 
+
     End Sub
-    Public Function Run() As List(Of BusinessObject) Implements IBusinessQueryRepositroy.Run
-        Throw New NotImplementedException()
+    Public ListNewsAndPhotos As New List(Of BusinessObject)
+
+
+    Public Overridable Function Run() As List(Of BusinessObject) Implements IBusinessQueryRepositroy.Run
+        Dim settings = New ConnectionSettings(New Uri("http://localhost:9200")).DefaultIndex("file")
+        Dim client = New ElasticClient(settings)
+        Dim response = client.Search(Of BusinessObject)(Function(s) s.Index("file").Query(Function(q) q.MatchAll()))
+
+        For Each hit In response.Hits
+            Dim BusinessObject As BusinessObject = New BusinessObject()
+            BusinessObject.IDBusiness = hit.Source.IDBusiness
+            BusinessObject.NameFileUser = hit.Source.NameFileUser.ToString
+            BusinessObject.CreationDateFileUser = Format(hit.Source.DateElastic, "MM/dd/yyyy hh:mm:ss tt")
+            BusinessObject.DescriptionNewsPhoto = hit.Source.DescriptionNewsPhoto.ToString
+            Me.ListNewsAndPhotos.Add(BusinessObject)
+        Next
+        Return Me.ListNewsAndPhotos
     End Function
 End Class

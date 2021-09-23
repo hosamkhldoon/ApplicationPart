@@ -6,9 +6,10 @@
     Public Property DescriptionNewsPhoto As String Implements IBusinessObjectRepositroy.DescriptionNewsPhoto
     Public Property IDBusiness As Integer Implements IBusinessObjectRepositroy.IDBusiness
     Public Property NameFileUser As String Implements IBusinessObjectRepositroy.NameFileUser
+    Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
 
-
-
+    Public Property DateElastic As Date Implements IBusinessObjectRepositroy.DateElastic
+    Private BusinessObjectSql As New BusinessReportsql
 
 
     Public Overridable Sub Delete() Implements IBusinessObjectRepositroy.Delete
@@ -16,7 +17,9 @@
     End Sub
 
     Public Overridable Sub Read() Implements IBusinessObjectRepositroy.Read
-        Throw New NotImplementedException()
+        BusinessObjectSql.IDBusiness = Me.IDBusiness
+        BusinessObjectSql.Read()
+        Me.ClassIDFileOrUser = BusinessObjectSql.ClassIDFileOrUser
     End Sub
 
     Public Overridable Sub Updata() Implements IBusinessObjectRepositroy.Updata

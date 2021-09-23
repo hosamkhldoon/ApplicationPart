@@ -8,6 +8,7 @@ Public Class FileQueryReportSql
     Public Property QBody As String Implements IFileQueryRepositroy.QBody
     Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
     Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
+    Public Property IDSqlServerOrElasticSearch As Integer Implements IFileQueryRepositroy.IDSqlServerOrElasticSearch
 
     <JsonIgnore>
     Public Overrides ReadOnly Property TableName As String
@@ -27,6 +28,9 @@ Public Class FileQueryReportSql
         End Get
     End Property
 
+
+
+
     Private tablefile As String = "T_FILE"
 
 
@@ -41,9 +45,9 @@ Public Class FileQueryReportSql
         Dim query As String = "SELECT " + Me.ColumnNames + " FROM  " + Me.TableName + " "
         query &= "WHERE " & Me.WhereColumns
         If Not String.IsNullOrEmpty(Me.WhereColumns) Then
-            query &= " AND " + Me.tablefile + ".ID=" + Me.TableName + ".ID"
+            query &= " AND " + Me.tablefile + ".ID=" + MyBase.TableName + ".ID"
         Else
-            query &= Me.tablefile + ".ID=" + Me.TableName + ".ID"
+            query &= Me.tablefile + ".ID=" + MyBase.TableName + ".ID"
         End If
         Using con As SqlConnection = New SqlConnection(Me.Constr)
             Using cmd As SqlCommand = New SqlCommand(query, con)
@@ -85,7 +89,7 @@ Public Class FileQueryReportSql
     End Function
     Private Function QBodyfilter() As String
         If Not String.IsNullOrEmpty(Me.QBody) Then
-            Dim condition As New QueryCondition()
+            Dim condition As New QueryConditionSql
             condition.SelectItem = Me.IndexConditionBody
             condition.ColumnName = "C_Body"
             condition.Value = Me.QBody

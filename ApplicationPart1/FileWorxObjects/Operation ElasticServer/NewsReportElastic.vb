@@ -1,5 +1,7 @@
 ﻿Imports Nest
 Imports Elasticsearch.Net
+Imports MessagePack.Formatters
+Imports NodaTime
 
 Public Class NewsReportElastic
     Inherits FileReportSql
@@ -9,10 +11,15 @@ Public Class NewsReportElastic
     Public Property IDNews As Integer Implements INewsRepositroy.IDNews
 
 
-    Private lowlevelClient As New ElasticLowLevelClient()
 
+    Public Sub New()
+        Dim settings = New ConnectionSettings(New Uri("http://localhost:9200")).DefaultIndex("file")
+        client = New ElasticClient(settings)
+    End Sub
+
+    Private client As New ElasticClient()
     Public Overrides Sub Delete() Implements INewsRepositroy.Delete
-        Dim DeleteResponse = Me.lowlevelClient.Delete(Of BytesResponse)("file", Me.IDBusiness)
+        Dim DeleteResponse = Me.client.Delete(Of BytesResponse)(Me.IDBusiness)
     End Sub
 
     Public Overrides Sub Read() Implements INewsRepositroy.Read
@@ -20,8 +27,10 @@ Public Class NewsReportElastic
     End Sub
 
     Public Overrides Sub Updata() Implements INewsRepositroy.Updata
-
-        Dim IndexResponse = Me.lowlevelClient.Index(Of BytesResponse)("file", Me.IDNews, PostData.Serializable(Me))
+        Me.Id = Me.IDBusiness
+        Me.DateElastic = Me.CreationDateFileUser
+        Me.CreationDateFileUser = ""
+        Dim indexResponse = client.IndexDocument(Me)
 
     End Sub
 
