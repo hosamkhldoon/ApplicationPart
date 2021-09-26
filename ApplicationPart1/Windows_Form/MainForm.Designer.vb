@@ -467,7 +467,7 @@ Partial Class MainForm
         Me.ClassComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ClassComboBox1.Enabled = False
         Me.ClassComboBox1.FormattingEnabled = True
-        Me.ClassComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
+        Me.ClassComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal", "Equal", "Between"})
         Me.ClassComboBox1.Location = New System.Drawing.Point(152, 7)
         Me.ClassComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ClassComboBox1.Name = "ClassComboBox1"
@@ -555,7 +555,7 @@ Partial Class MainForm
         Me.IdComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.IdComboBox3.Enabled = False
         Me.IdComboBox3.FormattingEnabled = True
-        Me.IdComboBox3.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
+        Me.IdComboBox3.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal", "Equal", "Between"})
         Me.IdComboBox3.Location = New System.Drawing.Point(161, 7)
         Me.IdComboBox3.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.IdComboBox3.Name = "IdComboBox3"
@@ -733,7 +733,7 @@ Partial Class MainForm
         Me.DateComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.DateComboBox4.Enabled = False
         Me.DateComboBox4.FormattingEnabled = True
-        Me.DateComboBox4.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
+        Me.DateComboBox4.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal", "Equal", "Between"})
         Me.DateComboBox4.Location = New System.Drawing.Point(202, 10)
         Me.DateComboBox4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DateComboBox4.Name = "DateComboBox4"

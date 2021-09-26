@@ -68,7 +68,7 @@ WHERE [ID]='" & Me.IDUser & "'", con)
             cmd.ExecuteNonQuery()
             con.Close()
         Else
-            Me.IDBusiness = Me.IDUser
+
             MyBase.Updata()
             Me.IDUser = Me.IDBusiness
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_USER]

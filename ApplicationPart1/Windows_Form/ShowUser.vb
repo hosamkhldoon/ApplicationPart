@@ -149,10 +149,10 @@ Public Class ShowUser
         ElseIf ConditionCombobox1.Text = "Less Than" Then
 
             Return ConditionIndex.LessThan
-        ElseIf ConditionCombobox1.Text = "Greater Or Equal" Then
+        ElseIf ConditionCombobox1.Text = "Greater or Equal" Then
 
             Return ConditionIndex.GreaterOrequal
-        ElseIf ConditionCombobox1.Text = "Less Or equal" Then
+        ElseIf ConditionCombobox1.Text = "Less or equal" Then
 
             Return ConditionIndex.LessOrEqual
         ElseIf ConditionCombobox1.Text = "Not equal" Then
@@ -250,7 +250,7 @@ Public Class ShowUser
         UserDataGridView1.Rows.Clear()
         If Not FilterUsers Is Nothing Then
             For Each item In FilterUsers
-                UserDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.DescriptionNewsPhoto)
+                UserDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.NameLogin, item.LastModifierUser)
             Next
         End If
 

@@ -29,6 +29,7 @@
             Me.NewsSql.Updata()
             Me.IDBusiness = Me.NewsSql.IDBusiness
             Me.CopyObject(Me.NewsElastic)
+            Me.NewsElastic.IDCreateOrUpdate = -1
             Me.NewsElastic.Updata()
         Else
             Me.CopyObject(Me.NewsSql)

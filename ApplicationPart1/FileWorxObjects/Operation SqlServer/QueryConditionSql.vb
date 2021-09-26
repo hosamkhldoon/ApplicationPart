@@ -40,7 +40,7 @@ Public Class QueryConditionSql
             Case ConditionIndex.NotEqual
                 Me.Condition = "" + Me.ColumnName + " <> " + Me.Value + ""
             Case ConditionIndex.Between
-                Me.Condition = "" + Me.ColumnName + " BETWEEN " + Me.Value + " AND " + Me.SeconedDate + ""
+                Me.Condition = "" + Me.ColumnName + " BETWEEN " + Me.Value + " AND " + Me.SeconedValue + ""
             Case Else
 
 

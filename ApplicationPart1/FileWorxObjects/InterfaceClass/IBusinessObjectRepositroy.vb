@@ -4,7 +4,7 @@
     Property DescriptionNewsPhoto As String
     Property IDBusiness As Integer
     Property NameFileUser As String
-
+    Property IDCreateOrUpdate As Integer
     Property Id As Integer
     Property DateElastic As Date
     Sub Delete()

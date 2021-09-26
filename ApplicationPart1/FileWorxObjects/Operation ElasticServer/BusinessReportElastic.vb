@@ -2,58 +2,23 @@
     Implements IBusinessObjectRepositroy
 
     Public Property ClassIDFileOrUser As Integer Implements IBusinessObjectRepositroy.ClassIDFileOrUser
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As Integer)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
 
     Public Property CreationDateFileUser As String Implements IBusinessObjectRepositroy.CreationDateFileUser
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
 
     Public Property DescriptionNewsPhoto As String Implements IBusinessObjectRepositroy.DescriptionNewsPhoto
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
 
     Public Property IDBusiness As Integer Implements IBusinessObjectRepositroy.IDBusiness
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As Integer)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
 
     Public Property NameFileUser As String Implements IBusinessObjectRepositroy.NameFileUser
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As String)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
 
     Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
-        Get
-            Throw New NotImplementedException()
-        End Get
-        Set(value As Integer)
-            Throw New NotImplementedException()
-        End Set
-    End Property
+
+    Public Property IDCreateOrUpdate As Integer Implements IBusinessObjectRepositroy.IDCreateOrUpdate
 
     Public Property DATEElastic As Date
 

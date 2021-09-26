@@ -2,7 +2,7 @@
 Imports Nest
 
 Public Class PhotoReportElastic
-    Inherits FileReportSql
+    Inherits FileReportElstic
     Implements IPhotoRepositroy
 
     Public Property FileIDPhoto As Integer Implements IPhotoRepositroy.FileIDPhoto

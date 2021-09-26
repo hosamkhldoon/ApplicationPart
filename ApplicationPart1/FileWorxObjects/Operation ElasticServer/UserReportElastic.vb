@@ -2,7 +2,7 @@
 Imports Nest
 
 Public Class UserReportElastic
-    Inherits BusinessReportsql
+    Inherits BusinessReportElastic
     Implements IUserRepositroy
 
     Public Property IDUser As Integer Implements IUserRepositroy.IDUser
@@ -40,4 +40,5 @@ Public Class UserReportElastic
 
         Throw New NotImplementedException()
     End Function
+
 End Class

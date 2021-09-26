@@ -50,7 +50,6 @@ Public Class NewNews
 
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles UpdateButton1.Click
         Dim NewsClient As New ApiClients.NewsClient
-        Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
         NewNew.NameFileUser = TitleTextBox1.Text
         NewNew.DescriptionNewsPhoto = DescriptionTextBox2.Text
         NewNew.CategoryNews = ComboBox1.Text

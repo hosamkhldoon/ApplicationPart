@@ -31,6 +31,7 @@
             Me.UserSql.Updata()
             Me.IDBusiness = Me.UserSql.IDBusiness
             Me.CopyObject(Me.UserElastic)
+            Me.UserElastic.IDCreateOrUpdate = -1
             Me.UserElastic.Updata()
         Else
             Me.CopyObject(Me.UserSql)

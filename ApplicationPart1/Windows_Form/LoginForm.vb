@@ -20,13 +20,17 @@
 
 
         If Not User Is Nothing Then
-            Me.IdUser = User.IDBusiness
-            Me.NameUser = User.NameFileUser
-            Me.LoginName = User.NameLogin
+            If User.TypeUser = "Admin" Then
+                Me.IdUser = User.IDBusiness
+                Me.NameUser = User.NameFileUser
+                Me.LoginName = User.NameLogin
 
-            Me.DialogResult = DialogResult.OK
+                Me.DialogResult = DialogResult.OK
+            Else
+                MessageBox.Show("You are Not Admin", "Not Admin", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         Else
-            MessageBox.Show("You don't have account", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("You don't have account", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
 

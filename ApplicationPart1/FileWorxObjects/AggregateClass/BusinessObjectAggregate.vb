@@ -6,9 +6,12 @@
     Public Property DescriptionNewsPhoto As String Implements IBusinessObjectRepositroy.DescriptionNewsPhoto
     Public Property IDBusiness As Integer Implements IBusinessObjectRepositroy.IDBusiness
     Public Property NameFileUser As String Implements IBusinessObjectRepositroy.NameFileUser
-    Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
 
+    Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
     Public Property DateElastic As Date Implements IBusinessObjectRepositroy.DateElastic
+    Public Property IDCreateOrUpdate As Integer Implements IBusinessObjectRepositroy.IDCreateOrUpdate
+
+
     Private BusinessObjectSql As New BusinessReportsql
 
 

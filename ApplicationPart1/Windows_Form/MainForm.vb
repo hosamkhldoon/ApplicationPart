@@ -362,10 +362,10 @@ Public Class MainForm
         ElseIf CondtionCombobox1.Text = "Less Than" Then
 
             Return ConditionIndex.LessThan
-        ElseIf CondtionCombobox1.Text = "Greater Or Equal" Then
+        ElseIf CondtionCombobox1.Text = "Greater or Equal" Then
 
             Return ConditionIndex.GreaterOrequal
-        ElseIf CondtionCombobox1.Text = "Less Or equal" Then
+        ElseIf CondtionCombobox1.Text = "Less or equal" Then
 
             Return ConditionIndex.LessOrEqual
         ElseIf CondtionCombobox1.Text = "Not equal" Then

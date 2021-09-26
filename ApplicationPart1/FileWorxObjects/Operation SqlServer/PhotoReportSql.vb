@@ -57,7 +57,7 @@ WHERE [ID]='" & Me.IDPhoto & "'", con)
             cmd.ExecuteNonQuery()
             con.Close()
         Else
-            Me.IDFile = Me.IDPhoto
+            Me.IDPhoto = Me.IDBusiness
             MyBase.Updata()
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_PHOTO]
    SET [C_Location] = '" + Me.LocationPhoto + "'

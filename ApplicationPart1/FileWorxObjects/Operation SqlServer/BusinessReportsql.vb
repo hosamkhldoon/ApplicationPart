@@ -11,8 +11,8 @@ Public Class BusinessReportsql
     Public Property DescriptionNewsPhoto() As String Implements IBusinessObjectRepositroy.DescriptionNewsPhoto
 
     Public Property Id As Integer Implements IBusinessObjectRepositroy.Id
-
     Public Property DateElastic As Date Implements IBusinessObjectRepositroy.DateElastic
+    Public Property IDCreateOrUpdate As Integer Implements IBusinessObjectRepositroy.IDCreateOrUpdate
 
 
     Private con As SqlConnection
@@ -74,7 +74,7 @@ WHERE [ID]='" & Me.IDBusiness & "'", con)
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_BUSINESSOBJECT]
    SET [C_Name] = N'" + Me.NameFileUser + "'
    ,[C_Description]=N'" + Me.DescriptionNewsPhoto + "'
-    ,[C_CreationDate]='" + Me.CreationDateFileUser + "'
+   ,[C_CreationDate]='" + Me.CreationDateFileUser + "'
  WHERE [ID]='" & Me.IDBusiness & "'", con)
             con.Open()
             cmd.ExecuteNonQuery()

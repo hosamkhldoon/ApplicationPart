@@ -17,7 +17,7 @@ Public Class FileQueryElastic
         Dim settings = New ConnectionSettings(New Uri("http://localhost:9200")).DefaultIndex("file")
         Dim client = New ElasticClient(settings)
 
-        Dim response = client.Search(Of BusinessObject)(Function(s) s.Query(Function(q) q.Bool(Function(f) f.Must(Me.BuildQueryElstic()))))
+        Dim response = client.Search(Of BusinessObject)(Function(s) s.Query(Function(q) q.Bool(Function(f) f.Filter(Me.BuildQueryElstic()))))
 
         For Each hit In response.Hits
             Dim BusinessObject As BusinessObject = New BusinessObject()

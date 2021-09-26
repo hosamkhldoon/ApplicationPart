@@ -31,6 +31,7 @@
             Me.PhotoSql.Updata()
             Me.IDBusiness = Me.PhotoSql.IDBusiness
             Me.CopyObject(Me.PhotoElastic)
+            Me.PhotoElastic.IDCreateOrUpdate = -1
             Me.PhotoElastic.Updata()
         Else
             Me.CopyObject(Me.PhotoSql)

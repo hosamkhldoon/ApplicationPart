@@ -66,7 +66,7 @@ WHERE [ID]='" & Me.IDFile & "'", con)
             con.Close()
 
         Else
-            Me.IDBusiness = Me.IDFile
+            Me.IDFile = Me.IDBusiness
             MyBase.Updata()
 
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_FILE]

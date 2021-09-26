@@ -42,7 +42,7 @@ Public Class QueryConditionElstic
             Case ConditionIndex.NotEqual
                 Me.Condition = querydescriptor.Bool(Function(qc) qc.MustNot(Function(c) c.Term(Function(m) m.Field(Me.Field).Value(Me.Value))))
             Case ConditionIndex.Between
-                Me.Condition = querydescriptor.Range(Function(m) m.Field(Me.Field).GreaterThan(Me.Value).LessThan(Me.SeconedValue))
+                Me.Condition = querydescriptor.Range(Function(m) m.Field(Me.Field).GreaterThanOrEquals(Me.Value).LessThanOrEquals(Me.SeconedValue))
             Case Else
 
 
@@ -52,19 +52,19 @@ Public Class QueryConditionElstic
     Public Function Conditiondate() As QueryContainer
         Select Case Me.SelectItem
             Case ConditionIndex.Equal
-                Me.Condition = querydescriptor.Term(Function(m) m.Field(Me.Field).Value(Me.DateValue))
+                Me.Condition = querydescriptor.Term(Function(m) m.Field(Me.Field).Value(Format(Me.DateValue, "yyyy-MM-dd")))
             Case ConditionIndex.GreaterThan
-                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThan(Me.DateValue))
+                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThan(Format(Me.DateValue, "yyyy-MM-dd")))
             Case ConditionIndex.GreaterOrequal
-                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThanOrEquals(Me.DateValue))
+                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThanOrEquals(Format(Me.DateValue, "yyyy-MM-dd")))
             Case ConditionIndex.LessThan
-                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).LessThan(Me.DateValue))
+                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).LessThan(Format(Me.DateValue, "yyyy-MM-dd")))
             Case ConditionIndex.LessOrEqual
-                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).LessThanOrEquals(Me.DateValue))
+                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).LessThanOrEquals(Format(Me.DateValue, "yyyy-MM-dd")))
             Case ConditionIndex.NotEqual
-                Me.Condition = querydescriptor.Bool(Function(qc) qc.MustNot(Function(c) c.Term(Function(m) m.Field(Me.Field).Value(Me.DateValue))))
+                Me.Condition = querydescriptor.Bool(Function(qc) qc.MustNot(Function(c) c.Term(Function(m) m.Field(Me.Field).Value(Format(Me.DateValue, "yyyy-MM-dd")))))
             Case ConditionIndex.Between
-                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThan(Me.DateValue).LessThan(Me.SeconedDate))
+                Me.Condition = querydescriptor.DateRange(Function(m) m.Field(Me.Field).GreaterThanOrEquals(Format(Me.DateValue, "yyyy-MM-dd")).LessThanOrEquals(Format(Me.SeconedDate, "yyyy-MM-dd")))
             Case Else
 
 

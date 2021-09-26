@@ -158,8 +158,8 @@ Private Function Idfilter() As String
             Dim condition As New QueryConditionSql
 
             condition.SelectItem = Me.IndexConditionID
-        condition.ColumnName = "ID"
-        condition.Value = Me.QID
+            condition.ColumnName = Me.tablebusiness + ".ID"
+            condition.Value = Me.QID
         condition.SeconedValue = Me.SeconedValueID
         Return condition.ConditionInteger()
     End If

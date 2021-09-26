@@ -62,7 +62,7 @@ WHERE [ID]='" & Me.IDNews & "' ", con)
             cmd.ExecuteNonQuery()
             con.Close()
         Else
-            Me.IDFile = Me.IDNews
+            Me.IDNews = Me.IDBusiness
             MyBase.Updata()
 
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_NEWS]

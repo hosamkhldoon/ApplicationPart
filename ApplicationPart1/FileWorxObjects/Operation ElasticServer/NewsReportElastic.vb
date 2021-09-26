@@ -28,6 +28,7 @@ Public Class NewsReportElastic
 
     Public Overrides Sub Updata() Implements INewsRepositroy.Updata
         Me.Id = Me.IDBusiness
+        Dim NewsElastic As New NewsReportElastic
         Me.DateElastic = Me.CreationDateFileUser
         Me.CreationDateFileUser = ""
         Dim indexResponse = client.IndexDocument(Me)

@@ -175,7 +175,7 @@ Partial Class ShowUser
         Me.IDComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.IDComboBox1.Enabled = False
         Me.IDComboBox1.FormattingEnabled = True
-        Me.IDComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
+        Me.IDComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal", "Equal", "Between"})
         Me.IDComboBox1.Location = New System.Drawing.Point(147, 7)
         Me.IDComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.IDComboBox1.Name = "IDComboBox1"
@@ -404,7 +404,7 @@ Partial Class ShowUser
         Me.dateComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.dateComboBox1.Enabled = False
         Me.dateComboBox1.FormattingEnabled = True
-        Me.dateComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal ", "Equal", "Between"})
+        Me.dateComboBox1.Items.AddRange(New Object() {"Greater than", "Less Than", "Greater or Equal", "Less or equal", "Not equal", "Equal", "Between"})
         Me.dateComboBox1.Location = New System.Drawing.Point(260, 8)
         Me.dateComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.dateComboBox1.Name = "dateComboBox1"
