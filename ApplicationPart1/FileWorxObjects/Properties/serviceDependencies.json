@@ -1,0 +1,11 @@
+{
+  "dependencies": {},
+  "AppConfig": {
+    "SmtpOptions": {
+      "Host": "localhost",
+      "Port": "15672",
+      "Username": "guest",
+      "Password": "guest"
+    }
+  }
+}

@@ -91,6 +91,7 @@ Partial Class MainForm
         Me.SearchButton1 = New System.Windows.Forms.Button()
         Me.ResetButton2 = New System.Windows.Forms.Button()
         Me.SqlOrElasticComboBox = New System.Windows.Forms.ComboBox()
+        Me.SendButton = New System.Windows.Forms.Button()
         CType(Me.NewsPhotoDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -132,11 +133,11 @@ Partial Class MainForm
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.NewsPhotoDataGridView1.DefaultCellStyle = DataGridViewCellStyle2
-        Me.NewsPhotoDataGridView1.Location = New System.Drawing.Point(14, 170)
+        Me.NewsPhotoDataGridView1.Location = New System.Drawing.Point(14, 188)
         Me.NewsPhotoDataGridView1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.NewsPhotoDataGridView1.Name = "NewsPhotoDataGridView1"
         Me.NewsPhotoDataGridView1.ReadOnly = True
-        Me.NewsPhotoDataGridView1.Size = New System.Drawing.Size(965, 172)
+        Me.NewsPhotoDataGridView1.Size = New System.Drawing.Size(997, 154)
         Me.NewsPhotoDataGridView1.TabIndex = 0
         '
         'Column4
@@ -182,7 +183,7 @@ Partial Class MainForm
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(7, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(991, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1023, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -305,7 +306,7 @@ Partial Class MainForm
         Me.titleTextBox1.Location = New System.Drawing.Point(139, 348)
         Me.titleTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.titleTextBox1.Name = "titleTextBox1"
-        Me.titleTextBox1.Size = New System.Drawing.Size(843, 23)
+        Me.titleTextBox1.Size = New System.Drawing.Size(875, 23)
         Me.titleTextBox1.TabIndex = 6
         Me.titleTextBox1.Visible = False
         '
@@ -316,7 +317,7 @@ Partial Class MainForm
         Me.CreationdateTextBox3.Location = New System.Drawing.Point(139, 378)
         Me.CreationdateTextBox3.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.CreationdateTextBox3.Name = "CreationdateTextBox3"
-        Me.CreationdateTextBox3.Size = New System.Drawing.Size(843, 23)
+        Me.CreationdateTextBox3.Size = New System.Drawing.Size(875, 23)
         Me.CreationdateTextBox3.TabIndex = 8
         Me.CreationdateTextBox3.Visible = False
         '
@@ -328,7 +329,7 @@ Partial Class MainForm
         Me.categoryComboBox1.Location = New System.Drawing.Point(139, 413)
         Me.categoryComboBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.categoryComboBox1.Name = "categoryComboBox1"
-        Me.categoryComboBox1.Size = New System.Drawing.Size(843, 23)
+        Me.categoryComboBox1.Size = New System.Drawing.Size(875, 23)
         Me.categoryComboBox1.TabIndex = 9
         Me.categoryComboBox1.Visible = False
         '
@@ -343,7 +344,7 @@ Partial Class MainForm
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(976, 225)
+        Me.TabControl1.Size = New System.Drawing.Size(1008, 225)
         Me.TabControl1.TabIndex = 10
         Me.TabControl1.Visible = False
         '
@@ -354,7 +355,7 @@ Partial Class MainForm
         Me.prviewTabPage1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.prviewTabPage1.Name = "prviewTabPage1"
         Me.prviewTabPage1.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.prviewTabPage1.Size = New System.Drawing.Size(968, 197)
+        Me.prviewTabPage1.Size = New System.Drawing.Size(1000, 197)
         Me.prviewTabPage1.TabIndex = 0
         Me.prviewTabPage1.Text = "Preview"
         Me.prviewTabPage1.UseVisualStyleBackColor = True
@@ -369,7 +370,7 @@ Partial Class MainForm
         Me.previewTextBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.previewTextBox1.Multiline = True
         Me.previewTextBox1.Name = "previewTextBox1"
-        Me.previewTextBox1.Size = New System.Drawing.Size(957, 162)
+        Me.previewTextBox1.Size = New System.Drawing.Size(989, 162)
         Me.previewTextBox1.TabIndex = 0
         '
         'ImageTabPage2
@@ -379,7 +380,7 @@ Partial Class MainForm
         Me.ImageTabPage2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ImageTabPage2.Name = "ImageTabPage2"
         Me.ImageTabPage2.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.ImageTabPage2.Size = New System.Drawing.Size(968, 197)
+        Me.ImageTabPage2.Size = New System.Drawing.Size(1000, 197)
         Me.ImageTabPage2.TabIndex = 1
         Me.ImageTabPage2.Text = "Image"
         Me.ImageTabPage2.UseVisualStyleBackColor = True
@@ -512,7 +513,7 @@ Partial Class MainForm
         Me.TabControl2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabControl2.Name = "TabControl2"
         Me.TabControl2.SelectedIndex = 0
-        Me.TabControl2.Size = New System.Drawing.Size(798, 139)
+        Me.TabControl2.Size = New System.Drawing.Size(815, 139)
         Me.TabControl2.TabIndex = 27
         '
         'TabPage1
@@ -525,7 +526,7 @@ Partial Class MainForm
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage1.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage1.Size = New System.Drawing.Size(807, 111)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "ID filter"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -572,7 +573,7 @@ Partial Class MainForm
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage2.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage2.Size = New System.Drawing.Size(807, 111)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Title filter"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -619,7 +620,7 @@ Partial Class MainForm
         Me.TabPage3.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage3.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage3.Size = New System.Drawing.Size(807, 111)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Description filter"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -666,7 +667,7 @@ Partial Class MainForm
         Me.TabPage4.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage4.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage4.Size = New System.Drawing.Size(807, 111)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "ClassID Filter"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -701,7 +702,7 @@ Partial Class MainForm
         Me.TabPage5.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage5.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage5.Size = New System.Drawing.Size(807, 111)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "CreationDate filter"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -750,7 +751,7 @@ Partial Class MainForm
         Me.TabPage6.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.TabPage6.Name = "TabPage6"
         Me.TabPage6.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.TabPage6.Size = New System.Drawing.Size(790, 111)
+        Me.TabPage6.Size = New System.Drawing.Size(807, 111)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Category Filter"
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -778,7 +779,7 @@ Partial Class MainForm
         'SearchButton1
         '
         Me.SearchButton1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.SearchButton1.Location = New System.Drawing.Point(825, 87)
+        Me.SearchButton1.Location = New System.Drawing.Point(883, 78)
         Me.SearchButton1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.SearchButton1.Name = "SearchButton1"
         Me.SearchButton1.Size = New System.Drawing.Size(88, 27)
@@ -789,7 +790,7 @@ Partial Class MainForm
         'ResetButton2
         '
         Me.ResetButton2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ResetButton2.Location = New System.Drawing.Point(825, 137)
+        Me.ResetButton2.Location = New System.Drawing.Point(850, 111)
         Me.ResetButton2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ResetButton2.Name = "ResetButton2"
         Me.ResetButton2.Size = New System.Drawing.Size(161, 27)
@@ -799,18 +800,30 @@ Partial Class MainForm
         '
         'SqlOrElasticComboBox
         '
+        Me.SqlOrElasticComboBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SqlOrElasticComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SqlOrElasticComboBox.FormattingEnabled = True
         Me.SqlOrElasticComboBox.Items.AddRange(New Object() {"SQL SERVER", "ELASTICSEARCH"})
-        Me.SqlOrElasticComboBox.Location = New System.Drawing.Point(825, 49)
+        Me.SqlOrElasticComboBox.Location = New System.Drawing.Point(853, 49)
         Me.SqlOrElasticComboBox.Name = "SqlOrElasticComboBox"
-        Me.SqlOrElasticComboBox.Size = New System.Drawing.Size(121, 23)
+        Me.SqlOrElasticComboBox.Size = New System.Drawing.Size(154, 23)
         Me.SqlOrElasticComboBox.TabIndex = 30
+        '
+        'SendButton
+        '
+        Me.SendButton.Location = New System.Drawing.Point(850, 159)
+        Me.SendButton.Name = "SendButton"
+        Me.SendButton.Size = New System.Drawing.Size(157, 23)
+        Me.SendButton.TabIndex = 31
+        Me.SendButton.Text = "Send News And Photo"
+        Me.SendButton.UseVisualStyleBackColor = True
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(991, 667)
+        Me.ClientSize = New System.Drawing.Size(1023, 667)
+        Me.Controls.Add(Me.SendButton)
         Me.Controls.Add(Me.SqlOrElasticComboBox)
         Me.Controls.Add(Me.ResetButton2)
         Me.Controls.Add(Me.SearchButton1)
@@ -922,4 +935,5 @@ Partial Class MainForm
     Friend WithEvents seconedcategoryTextBox1 As TextBox
     Friend WithEvents seconedDateTimePicker2 As DateTimePicker
     Friend WithEvents SqlOrElasticComboBox As ComboBox
+    Friend WithEvents SendButton As Button
 End Class

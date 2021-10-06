@@ -31,6 +31,9 @@ Public Class BusinessQueryElastic
     Public Property StringCondition As String
     Public Property ValueCondition As String
 
+    Public Property IDSqlServerOrElasticSearch As Integer Implements IBusinessQueryRepositroy.IDSqlServerOrElasticSearch
+
+
     Public ListUser As New List(Of User)
     Public ItemIndexBusiness As Integer
     Public Conditionbusiness As String

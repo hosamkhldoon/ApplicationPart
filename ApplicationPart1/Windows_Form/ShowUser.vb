@@ -15,7 +15,7 @@ Public Class ShowUser
         Dim UserQueryClient As New ApiClients.UserQueryClient
 
         Dim ListUser As List(Of FileWorxObjects.User) = UserQueryClient.GetUsers(UserQuery)
-
+        Me.SqlOrElasticComboBox.Text = "--Select Server Search--"
         If Not ListUser Is Nothing Then
             For Each item In ListUser
 

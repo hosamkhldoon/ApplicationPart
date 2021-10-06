@@ -57,12 +57,15 @@ Public Class BusinessQueryReportsql
 
     End Property
 
+    Public Property IDSqlServerOrElasticSearch As Integer Implements IBusinessQueryRepositroy.IDSqlServerOrElasticSearch
+
+
     Public ListUser As New List(Of User)
     Public ItemIndexBusiness As Integer
     Public Conditionbusiness As String
     Public Constr As String = "Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True"
     Public ListNewsAndPhotos As New List(Of BusinessObject)
-
+    Public ListContact As New List(Of Contact)
 
     Private tablebusiness As String = "T_BUSINESSOBJECT"
     Public Sub New()

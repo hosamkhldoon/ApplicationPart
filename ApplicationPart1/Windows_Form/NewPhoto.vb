@@ -99,7 +99,7 @@ Public Class NewPhoto
         NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
         NewPhoto.BodyNewsPhoto = BodyTextBox3.Text
         NewPhoto.ClassIDFileOrUser = 2
-        NewPhoto.CreationDateFileUser = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+
         If NewPhoto.NameFileUser = PrevPhoto.NameFileUser And String.IsNullOrEmpty(openFD.FileName) And NewPhoto.DescriptionNewsPhoto = PrevPhoto.DescriptionNewsPhoto And NewPhoto.BodyNewsPhoto = PrevPhoto.BodyNewsPhoto Then
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 

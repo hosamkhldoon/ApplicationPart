@@ -10,7 +10,7 @@ Public Class FileQueryAggregate
     Public Property QBody As String Implements IFileQueryRepositroy.QBody
     Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
 
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IFileQueryRepositroy.IDSqlServerOrElasticSearch
+
 
 
     Private FileQuerySql As New FileQueryReportSql

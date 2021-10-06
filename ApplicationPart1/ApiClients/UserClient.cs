@@ -25,7 +25,7 @@ namespace ApiClients
             client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.GetAsync("api/User/" + id).Result;
 
-            response.EnsureSuccessStatusCode();
+           
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;

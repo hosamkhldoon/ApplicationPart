@@ -25,7 +25,7 @@ Public Class UserQueryReportsql
     Public Property SeconedValueLastModifier As String Implements IUserQueryRepositroy.SeconedValueLastModifier
     Public Property SeconedValueLoginName As String Implements IUserQueryRepositroy.SeconedValueLoginName
 
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IUserQueryRepositroy.IDSqlServerOrElasticSearch
+
 
     <JsonIgnore>
     Public Overrides ReadOnly Property TableName As String

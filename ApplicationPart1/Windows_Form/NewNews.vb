@@ -55,7 +55,7 @@ Public Class NewNews
         NewNew.CategoryNews = ComboBox1.Text
         NewNew.BodyNewsPhoto = BodyTextBox3.Text
         NewNew.ClassIDFileOrUser = 1
-        NewNew.CreationDateFileUser = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+
         If NewNew.NameFileUser = PrevNew.NameFileUser And NewNew.CategoryNews = PrevNew.CategoryNews And NewNew.DescriptionNewsPhoto = PrevNew.DescriptionNewsPhoto And NewNew.BodyNewsPhoto = PrevNew.BodyNewsPhoto Then
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Else

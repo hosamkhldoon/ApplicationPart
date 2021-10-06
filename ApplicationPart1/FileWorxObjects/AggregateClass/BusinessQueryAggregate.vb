@@ -22,6 +22,8 @@
     Public Property QCreationDate As String Implements IBusinessQueryRepositroy.QCreationDate
     Public Property QDescription As String Implements IBusinessQueryRepositroy.QDescription
 
+    Public Property IDSqlServerOrElasticSearch As Integer Implements IBusinessQueryRepositroy.IDSqlServerOrElasticSearch
+
 
     Private BusinessQuerySql As New BusinessQueryReportsql
     Private BusinessQueryElstic As New BusinessQueryElastic

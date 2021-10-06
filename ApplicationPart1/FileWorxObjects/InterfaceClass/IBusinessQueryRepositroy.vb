@@ -15,7 +15,7 @@
     Property SeconedValueDescription As String
     Property SeconedValueID As String
     Property SeconedValueName As String
-
+    Property IDSqlServerOrElasticSearch As Integer
 
     Function Run() As List(Of BusinessObject)
 End Interface

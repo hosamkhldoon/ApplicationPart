@@ -306,6 +306,7 @@ Public Class MainForm
             MessageBox.Show("Hello " + Me.CurrentUser)
             Dim BusinessQueryClient As New ApiClients.BusinessQueryClient
             NewsPhotoDataGridView1.Rows.Clear()
+
             Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos
             If Not DataNewsAndPhotos Is Nothing Then
                 For Each item In DataNewsAndPhotos
@@ -583,5 +584,29 @@ Public Class MainForm
         End If
     End Sub
 
+    Private Sub SendButtonClick(sender As Object, e As EventArgs) Handles SendButton.Click
+        Dim showcontact As ShowContact = New ShowContact()
+        Dim selectedRows = NewsPhotoDataGridView1.SelectedRows.OfType(Of DataGridViewRow)().Where(Function(row) Not row.IsNewRow).ToArray()
 
+
+        ' If NewsPhotoDataGridView1.SelectedRows.Count > 0 Then
+        'For Each item In selectedRows
+        'BusinessObject = BusinessClient.ReadNewsOrPhotoOrUser(CInt(item.Cells(0).Value))
+        'If BusinessObject.ClassIDFileOrUser = ClassID.News Then
+        'Dim newsobject As New FileWorxObjects.News
+        'bject = NewsClient.ReadNews(CInt(item.Cells(0).Value))
+        'wcontact.listNews.Add(newsobject)
+        '  Else
+        'Dim photoobject As New FileWorxObjects.Photo
+        '  photoobject = PhotoClient.ReadPhoto(CInt(item.Cells(0).Value))
+        '        showcontact.listPhotos.Add(photoobject)
+        '  End If
+
+        ' Next
+        '  End If
+        For Each item In selectedRows
+            showcontact.ListID.Add(CInt(item.Cells(0).Value))
+        Next
+        showcontact.ShowDialog()
+    End Sub
 End Class

@@ -456,6 +456,7 @@ Partial Class ShowUser
         '
         'SqlOrElasticComboBox
         '
+        Me.SqlOrElasticComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.SqlOrElasticComboBox.FormattingEnabled = True
         Me.SqlOrElasticComboBox.Items.AddRange(New Object() {"SQL SERVER", "ELASTICSEARCH"})
         Me.SqlOrElasticComboBox.Location = New System.Drawing.Point(683, 34)

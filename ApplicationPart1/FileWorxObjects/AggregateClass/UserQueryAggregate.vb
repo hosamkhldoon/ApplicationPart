@@ -14,7 +14,7 @@ Public Class UserQueryAggregate
 
     Public Property SeconedValueLoginName As String Implements IUserQueryRepositroy.SeconedValueLoginName
     Public Property SeconedValueLastModifier As String Implements IUserQueryRepositroy.SeconedValueLastModifier
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IUserQueryRepositroy.IDSqlServerOrElasticSearch
+
 
 
 

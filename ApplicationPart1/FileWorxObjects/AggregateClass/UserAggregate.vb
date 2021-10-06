@@ -31,12 +31,13 @@
             Me.UserSql.Updata()
             Me.IDBusiness = Me.UserSql.IDBusiness
             Me.CopyObject(Me.UserElastic)
-            Me.UserElastic.IDCreateOrUpdate = -1
             Me.UserElastic.Updata()
         Else
             Me.CopyObject(Me.UserSql)
             Me.CopyObject(Me.UserElastic)
             Me.UserSql.Updata()
+            Me.UserSql.Read()
+            Me.UserElastic.CreationDateFileUser = Me.UserSql.CreationDateFileUser
             Me.UserElastic.Updata()
         End If
     End Sub

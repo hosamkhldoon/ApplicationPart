@@ -8,7 +8,7 @@ Public Class FileQueryReportSql
     Public Property QBody As String Implements IFileQueryRepositroy.QBody
     Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
     Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IFileQueryRepositroy.IDSqlServerOrElasticSearch
+
 
     <JsonIgnore>
     Public Overrides ReadOnly Property TableName As String

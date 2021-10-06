@@ -5,7 +5,7 @@
     End Sub
 
     Private Sub DeleteLoad(sender As Object, e As EventArgs) Handles MyBase.Load
-        deleteLabel1.Text = "Are You Sure To Delete This " + Me.TypeRow + " ?"
+        deleteLabel1.Text = "Are You Sure To Delete Me " + Me.TypeRow + " ?"
     End Sub
 
     Private Sub NoClick(sender As Object, e As EventArgs) Handles noButton2.Click

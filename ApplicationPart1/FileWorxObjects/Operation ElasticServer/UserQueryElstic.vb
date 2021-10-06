@@ -17,7 +17,7 @@ Public Class UserQueryElstic
     Public Property SeconedValueLastModifier As String Implements IUserQueryRepositroy.SeconedValueLastModifier
     Public Property SeconedValueLoginName As String Implements IUserQueryRepositroy.SeconedValueLoginName
 
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IUserQueryRepositroy.IDSqlServerOrElasticSearch
+
 
 
     Public Overloads Function Run() As List(Of User) Implements IUserQueryRepositroy.Run

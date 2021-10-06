@@ -13,13 +13,13 @@ Windows_Form
 </member>
 <member name="P:Windows_Form.My.Resources.Resources.ResourceManager">
 <summary>
-  Returns the cached ResourceManager instance used by this class.
+  Returns the cached ResourceManager instance used by Me class.
 </summary>
 </member>
 <member name="P:Windows_Form.My.Resources.Resources.Culture">
 <summary>
   Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
+  resource lookups using Me strongly typed resource class.
 </summary>
 </member>
 </members>

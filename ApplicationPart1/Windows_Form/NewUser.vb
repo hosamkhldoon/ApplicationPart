@@ -9,15 +9,8 @@ Public Class NewUser
 
 
 
-    Private idbusiness As Integer
     Public Property BusinessID() As Integer
-        Get
-            Return idbusiness
-        End Get
-        Set(ByVal value As Integer)
-            idbusiness = value
-        End Set
-    End Property
+
     Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton2.Click
 
 
@@ -69,6 +62,7 @@ Public Class NewUser
                 Dim Message = UserClient.CreateUser(NewUser)
                 If Not String.IsNullOrEmpty(Message) Then
                     MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 End If
             End If
 
@@ -91,7 +85,7 @@ Public Class NewUser
         NewUser.PasswordUser = PasswordTextBox3.Text
         NewUser.LastModifierUser = MainForm.CurrentUser
         NewUser.ClassIDFileOrUser = 3
-        NewUser.CreationDateFileUser = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+
         Dim Message = UserClient.UpdateUser(Me.BusinessID, NewUser)
         If Not String.IsNullOrEmpty(Message) Then
             MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)

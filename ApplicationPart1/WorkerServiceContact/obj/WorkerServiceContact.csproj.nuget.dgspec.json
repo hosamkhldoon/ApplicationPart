@@ -1,0 +1,236 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\WorkerServiceContact\\WorkerServiceContact.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj",
+        "projectName": "FileWorxObjects",
+        "projectPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj",
+        "packagesPath": "C:\\Users\\Hussam.Ibraheem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hussam.Ibraheem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "ConnectionFactory.NET": {
+              "target": "Package",
+              "version": "[1.0.6, )"
+            },
+            "Elasticsearch.Net": {
+              "target": "Package",
+              "version": "[7.14.1, )"
+            },
+            "ElasticsearchCRUD": {
+              "target": "Package",
+              "version": "[2.4.1.1, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[7.2.2, )"
+            },
+            "MessagePack": {
+              "target": "Package",
+              "version": "[2.3.85, )"
+            },
+            "Microsoft.ApplicationInsights.WorkerService": {
+              "target": "Package",
+              "version": "[2.15.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.14.1, )"
+            },
+            "NPoco": {
+              "target": "Package",
+              "version": "[5.3.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "NodaTime": {
+              "target": "Package",
+              "version": "[3.0.5, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            },
+            "System.Runtime": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            },
+            "System.ServiceModel.Http": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            },
+            "System.ServiceModel.Primitives": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\WorkerServiceContact\\WorkerServiceContact.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\WorkerServiceContact\\WorkerServiceContact.csproj",
+        "projectName": "WorkerServiceContact",
+        "projectPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\WorkerServiceContact\\WorkerServiceContact.csproj",
+        "packagesPath": "C:\\Users\\Hussam.Ibraheem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\WorkerServiceContact\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hussam.Ibraheem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj": {
+                "projectPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Eramake.eCryptography": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
+            "FluentFTP": {
+              "target": "Package",
+              "version": "[35.0.4, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting.WindowsServices": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "NPoco": {
+              "target": "Package",
+              "version": "[5.3.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.2, )"
+            },
+            "WinSCP": {
+              "target": "Package",
+              "version": "[5.19.2, )"
+            },
+            "WinSCPHelper": {
+              "target": "Package",
+              "version": "[1.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

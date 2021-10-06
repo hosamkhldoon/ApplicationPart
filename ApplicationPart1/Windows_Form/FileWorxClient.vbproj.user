@@ -17,6 +17,9 @@
     <Compile Update="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="NewContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="NewNews.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -24,6 +27,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="NewUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ShowContact.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ShowUser.vb">

@@ -55,26 +55,30 @@ WHERE [ID]='" & Me.IDBusiness & "'", con)
     End Sub
     Public Overridable Sub Updata() Implements IBusinessObjectRepositroy.Updata
         If Me.IDBusiness = -1 Then
-            con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
-            Dim cmd As SqlCommand = New SqlCommand("INSERT INTO [dbo].[T_BUSINESSOBJECT]
+            Try
+                con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
+                Dim cmd As SqlCommand = New SqlCommand("INSERT INTO [dbo].[T_BUSINESSOBJECT]
            ([C_CreationDate]
            ,[C_Name]
         ,[C_ClassID]
 ,[C_Description]
 )
-     VALUES
-           ('" + Me.CreationDateFileUser + "',N'" + Me.NameFileUser + "','" & Me.ClassIDFileOrUser & "',N'" + Me.DescriptionNewsPhoto + "')", con)
-            con.Open()
-            cmd.ExecuteNonQuery()
-            Dim newcmd As SqlCommand = New SqlCommand("SELECT @@IDENTITY", con)
-            Me.IDBusiness = newcmd.ExecuteScalar
-            con.Close()
+     VALUES 
+            ( ' " + Me.CreationDateFileUser + " ',N' " + Me.NameFileUser + " ',' " & Me.ClassIDFileOrUser & " ',N' " + Me.DescriptionNewsPhoto + " ' )", con)
+                con.Open()
+                cmd.ExecuteNonQuery()
+                Dim newcmd As SqlCommand = New SqlCommand("SELECT @@IDENTITY", con)
+                Me.IDBusiness = newcmd.ExecuteScalar
+                con.Close()
+            Catch ex As Exception
+
+            End Try
         Else
             con = New SqlConnection("Data Source=HUSSAMI;Initial Catalog=NewsDB;Integrated Security=True")
             Dim cmd As SqlCommand = New SqlCommand("UPDATE [dbo].[T_BUSINESSOBJECT]
    SET [C_Name] = N'" + Me.NameFileUser + "'
    ,[C_Description]=N'" + Me.DescriptionNewsPhoto + "'
-   ,[C_CreationDate]='" + Me.CreationDateFileUser + "'
+
  WHERE [ID]='" & Me.IDBusiness & "'", con)
             con.Open()
             cmd.ExecuteNonQuery()

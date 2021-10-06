@@ -7,7 +7,7 @@ Public Class FileQueryElastic
     Public Property IndexConditionBody As Integer Implements IFileQueryRepositroy.IndexConditionBody
     Public Property QBody As String Implements IFileQueryRepositroy.QBody
     Public Property SeconedValueBody As String Implements IFileQueryRepositroy.SeconedValueBody
-    Public Property IDSqlServerOrElasticSearch As Integer Implements IFileQueryRepositroy.IDSqlServerOrElasticSearch
+
 
     Private client As New ElasticClient()
 

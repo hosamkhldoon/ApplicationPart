@@ -6,14 +6,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ConnectionFactory.NET" Version="1.0.6" />
     <PackageReference Include="Elasticsearch.Net" Version="7.14.1" />
     <PackageReference Include="ElasticsearchCRUD" Version="2.4.1.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
     <PackageReference Include="MessagePack" Version="2.3.85" />
+    <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.15.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="NEST" Version="7.14.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NodaTime" Version="3.0.5" />
     <PackageReference Include="NPoco" Version="5.3.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.2" />
+    <PackageReference Include="RestSharp" Version="106.12.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.8.1" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WorkerServiceContact">
+      <HintPath>..\WorkerServiceContact\bin\Release\net5.0\publish\WorkerServiceContact.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
