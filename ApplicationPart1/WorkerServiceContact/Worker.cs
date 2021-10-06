@@ -62,7 +62,7 @@ namespace WorkerServiceContact
                 {
                     if (item.TypeContact == "Reception")
                     {
-                       
+                     
 
                         WebRequest request = WebRequest.Create(item.Address);
 

@@ -23,8 +23,6 @@
             Dim flag As Boolean = False
             Dim ContactQuery As FileWorxObjects.ContactQuery = New FileWorxObjects.ContactQuery()
 
-
-
             Dim ListContact As List(Of FileWorxObjects.Contact) = ContactQueryClient.GetContact(ContactQuery)
             If Not ListContact Is Nothing Then
                 For Each item In ListContact

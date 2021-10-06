@@ -21,7 +21,7 @@ namespace ApiClients
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.Timeout = TimeSpan.FromMinutes(15);
+            client.Timeout = TimeSpan.FromMinutes(5);
             HttpResponseMessage response = client.PostAsJsonAsync("api/FileOperation", file).Result;
 
 
