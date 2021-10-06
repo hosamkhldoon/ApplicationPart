@@ -19,7 +19,8 @@ namespace WorkerServiceContact
         public static void Main(string[] args)
         {
           
-            var factory = new RabbitMQ.Client.ConnectionFactory() { HostName = "localhost" };
+            var factory = new RabbitMQ.Client.ConnectionFactory() { 
+                Uri = new Uri("amqp://guest:guest@localhost:5672") };
             string queueName = "hello";
             var rabbitMqConnection = factory.CreateConnection();
             var rabbitMqChannel = rabbitMqConnection.CreateModel();

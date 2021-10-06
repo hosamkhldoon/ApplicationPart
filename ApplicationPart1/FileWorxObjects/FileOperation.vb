@@ -78,7 +78,7 @@ Public Class FileOperation
         Dim jsonInfo As JsonObject = New JsonObject()
 
         Dim factory = New RabbitMQ.Client.ConnectionFactory() With {
-                         .HostName = "localhost"
+                         .Uri = New Uri("amqp://guest:guest@localhost:5672")
                           }
         Dim JSONresult As String = JsonConvert.SerializeObject(ListContactAndNews)
         Using connection = factory.CreateConnection()
