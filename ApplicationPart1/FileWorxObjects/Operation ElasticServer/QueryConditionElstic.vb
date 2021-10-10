@@ -74,7 +74,7 @@ Public Class QueryConditionElstic
     Public Function ConditionString() As QueryContainer
         Select Case Me.SelectItem
             Case ConditionIndex.StartWith
-                Me.Condition = querydescriptor.QueryString(Function(m) m.Query(Me.Value + "*").Fields(Me.Field))
+                Me.Condition = querydescriptor.QueryString(Function(m) m.Query("*" + Me.Value).Fields(Me.Field))
             Case ConditionIndex.EndWith
                 Me.Condition = querydescriptor.QueryString(Function(m) m.Query("*" + Me.Value).Fields(Me.Field))
             Case ConditionIndex.Contain

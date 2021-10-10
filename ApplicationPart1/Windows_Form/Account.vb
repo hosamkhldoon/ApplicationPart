@@ -1,18 +1,19 @@
-﻿Public Class Account
+﻿Imports DTO
+Public Class Account
     Private AccountUser As FileWorxObjects.User = New FileWorxObjects.User()
     Private Sub AccountLoad(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
     Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton2.Click
+        Dim AccountUser As New UserUpdateService()
         MainForm.CurrentUser = NameTextBox1.Text
         MainForm.CurrentLoginName = LoginNameTextBox2.Text
 
         AccountUser.NameFileUser = MainForm.CurrentUser
         AccountUser.NameLogin = MainForm.CurrentLoginName
-        AccountUser.IDUser = MainForm.CurrentID
         Dim UserClient As New ApiClients.UserClient
-        Dim Message = UserClient.UpdateUser(AccountUser.IDUser, AccountUser)
+        Dim Message = UserClient.UpdateUser(MainForm.CurrentID, AccountUser)
         If Not String.IsNullOrEmpty(Message) Then
             MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

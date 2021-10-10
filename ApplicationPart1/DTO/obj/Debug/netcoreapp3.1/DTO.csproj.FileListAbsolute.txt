@@ -1,0 +1,10 @@
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\bin\Debug\netcoreapp3.1\DTO.deps.json
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\bin\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\bin\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.csprojAssemblyReference.cache
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfoInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfo.cs
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.dll
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\DTO\obj\Debug\netcoreapp3.1\DTO.pdb

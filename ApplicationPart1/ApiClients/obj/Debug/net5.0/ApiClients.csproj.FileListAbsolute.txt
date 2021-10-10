@@ -28,3 +28,5 @@ C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.dll
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ref\ApiClients.dll
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\ApiClients\obj\Debug\net5.0\ApiClients.pdb
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\DTO.dll
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\ApiClients\bin\Debug\net5.0\DTO.pdb

@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "WorkerServiceContact/1.0.0": {
         "dependencies": {
+          "DTO": "1.0.0",
           "Eramake.eCryptography": "1.1.6",
           "FileWorxObjects": "1.0.0",
           "FluentFTP": "35.0.4",
@@ -2061,6 +2062,11 @@
           }
         }
       },
+      "DTO/1.0.0": {
+        "runtime": {
+          "DTO.dll": {}
+        }
+      },
       "FileWorxObjects/1.0.0": {
         "dependencies": {
           "ConnectionFactory.NET": "1.0.6",
@@ -3401,6 +3407,11 @@
       "sha512": "sha512-4sxqO8gDr+8wvrbFWY2cVj/p0QvUh/1txGSjAeqL5XkTJJ261RtOmDNWP13xXNbfsRUFZDDBOmW/CPDG2yz21w==",
       "path": "winscphelper/1.0.13",
       "hashPath": "winscphelper.1.0.13.nupkg.sha512"
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "FileWorxObjects/1.0.0": {
       "type": "project",

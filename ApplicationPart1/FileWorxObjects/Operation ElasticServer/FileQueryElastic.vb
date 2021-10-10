@@ -44,13 +44,13 @@ Public Class FileQueryElastic
 
 
             End If
-            If Not Me.Namefilter() Is Nothing Then
+        If Not Me.Namefilter() Is Nothing Then
 
 
             QueryCondition = QueryCondition AndAlso Me.Namefilter()
 
 
-            End If
+        End If
         If Not Me.CreationDatefilter() Is Nothing Then
 
 

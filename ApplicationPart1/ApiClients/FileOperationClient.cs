@@ -8,13 +8,14 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 namespace ApiClients
 {
    public class FileOperationClient
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public string UploadFile(FileOperation file)
+        public string UploadFile(FileTransmissionService file)
         {
 
             client = new HttpClient();

@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DTO;
+using AutoMapper;
 
 namespace ApiServer.Controllers
 {
@@ -17,9 +19,12 @@ namespace ApiServer.Controllers
         public IActionResult GET([FromBody] ContactQuery contactfilter)
         {
 
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ContactQueryService,ContactQuery>());
+            var mapper = new Mapper(config);
 
+            ContactQuery ContactFilter = mapper.Map<ContactQuery>(contactfilter);
 
-            List<Contact> ListDataContact = contactfilter.Run();
+            List<Contact> ListDataContact = ContactFilter.Run();
             if (ListDataContact != null)
             {
 
@@ -36,8 +41,11 @@ namespace ApiServer.Controllers
 
             if (contact != null)
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Contact, ContactReadService>());
+                var mapper = new Mapper(config);
 
-                return Ok(contact);
+                ContactReadService contactedit = mapper.Map<ContactReadService>(contact);
+                return Ok(contactedit);
             }
             return NotFound();
         }
@@ -54,25 +62,35 @@ namespace ApiServer.Controllers
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult PUT([FromRoute] int id, [FromBody] Contact ContactUpdate)
+        public IActionResult PUT([FromRoute] int id, [FromBody] ContactUpdateService ContactUpdate)
         {
-            ContactUpdate.IDBusiness = id;
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ContactUpdateService, Contact>());
+            var mapper = new Mapper(config);
+
+            Contact contactedit = mapper.Map<Contact>(ContactUpdate);
+            contactedit.IDBusiness = id;
             contact.IDBusiness = id;
             contact.Read();
 
             if (contact == null)
+
                 return NotFound();
 
-            ContactUpdate.Updata();
+            contactedit.Updata();
             return NoContent();
         }
         [HttpPost]
-        public IActionResult POST([FromBody] Contact ContactCreate)
+        public IActionResult POST([FromBody] ContactUpdateService ContactCreate)
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ContactUpdateService, Contact>());
+            var mapper = new Mapper(config);
 
+            Contact contact = mapper.Map<Contact>(ContactCreate);
+            contact.IDBusiness = -1;
+            contact.ClassIDFileOrUser = 4;
 
-            ContactCreate.Updata();
-            return Accepted(ContactCreate.IDContact);
+            contact.Updata();
+            return Accepted(contact.IDContact);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports FileWorxObjects.QueryConditionSql
 Imports FileWorxObjects.FileQueryAggregate
-
+Imports DTO
 
 Public Class MainForm
     Private IDBusiness As Integer
@@ -62,32 +62,33 @@ Public Class MainForm
 
             If BusinessObject.ClassIDFileOrUser = ClassID.News Then 'news preview
                 Dim NewsClient As New ApiClients.NewsClient
+                Dim ReadNews As New NewsReadService()
                 imagePictureBox1.Visible = False
                 categoryLabel3.Visible = True
                 categoryComboBox1.Visible = True
-                Dim NewNew As FileWorxObjects.News = New FileWorxObjects.News()
-                NewNew = NewsClient.ReadNews(CInt(row.Cells(0).Value))
+
+                ReadNews = NewsClient.ReadNews(CInt(row.Cells(0).Value))
 
 
-                titleTextBox1.Text = NewNew.NameFileUser
-                CreationdateTextBox3.Text = NewNew.CreationDateFileUser
-                categoryComboBox1.Text = NewNew.CategoryNews
-                previewTextBox1.Text = NewNew.BodyNewsPhoto
+                titleTextBox1.Text = ReadNews.NameFileUser
+                CreationdateTextBox3.Text = ReadNews.CreationDateFileUser
+                categoryComboBox1.Text = ReadNews.CategoryNews
+                previewTextBox1.Text = ReadNews.BodyNewsPhoto
             ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Photo Then 'photo preview
                 Dim PhotoClient As New ApiClients.PhotoClient
-                Dim NewPhoto As New FileWorxObjects.Photo()
+                Dim ReadPhoto As New PhotoReadService()
                 categoryLabel3.Visible = False
                 categoryComboBox1.Visible = False
                 imagePictureBox1.Visible = True
-                NewPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
+                ReadPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
 
-                titleTextBox1.Text = NewPhoto.NameFileUser
-                CreationdateTextBox3.Text = NewPhoto.CreationDateFileUser
-                previewTextBox1.Text = NewPhoto.BodyNewsPhoto
+                titleTextBox1.Text = ReadPhoto.NameFileUser
+                CreationdateTextBox3.Text = ReadPhoto.CreationDateFileUser
+                previewTextBox1.Text = ReadPhoto.BodyNewsPhoto
 
-                If NewPhoto.LocationPhoto <> "" Then
+                If ReadPhoto.LocationPhoto <> "" Then
                     imagePictureBox1.Image?.Dispose()
-                    imagePictureBox1.Image = New Bitmap(NewPhoto.LocationPhoto)
+                    imagePictureBox1.Image = New Bitmap(ReadPhoto.LocationPhoto)
 
                     imagePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
 
@@ -112,7 +113,8 @@ Public Class MainForm
 
             End If
 
-            ContextMenuStrip1.Show(NewsPhotoDataGridView1, New Point(e.X, e.Y))
+            ContextMenuStrip1.Show(NewsPhotoDataGridView1, e.Location)
+            ContextMenuStrip1.Show(Cursor.Position)
 
         End If
     End Sub
@@ -148,51 +150,51 @@ Public Class MainForm
 
                 Dim NewsClient As New ApiClients.NewsClient
                 Dim NewsDilog As New NewNews()
-                Dim NewNew As FileWorxObjects.News = New FileWorxObjects.News()
-                NewNew = NewsClient.ReadNews(CInt(row.Cells(0).Value))
+                Dim ReadNews As New NewsReadService()
+                ReadNews = NewsClient.ReadNews(CInt(row.Cells(0).Value))
 
 
 
-                NewsDilog.TitleTextBox1.Text = NewNew.NameFileUser
-                NewsDilog.DescriptionTextBox2.Text = NewNew.DescriptionNewsPhoto
-                NewsDilog.ComboBox1.Text = NewNew.CategoryNews
-                NewsDilog.BodyTextBox3.Text = NewNew.BodyNewsPhoto
+                NewsDilog.TitleTextBox1.Text = ReadNews.NameFileUser
+                NewsDilog.DescriptionTextBox2.Text = ReadNews.DescriptionNewsPhoto
+                NewsDilog.ComboBox1.Text = ReadNews.CategoryNews
+                NewsDilog.BodyTextBox3.Text = ReadNews.BodyNewsPhoto
                 NewsDilog.BusinessID = CInt(row.Cells(0).Value)
                 NewsDilog.UpdateButton1.Visible = True
                 NewsDilog.SaveButton2.Visible = False
                 NewsDilog.ShowDialog()
-                NewNew = NewsClient.ReadNews(CInt(row.Cells(0).Value))
-                row.Cells(1).Value = NewNew.NameFileUser
+                ReadNews = NewsClient.ReadNews(CInt(row.Cells(0).Value))
+                row.Cells(1).Value = ReadNews.NameFileUser
 
-                row.Cells(3).Value = NewNew.DescriptionNewsPhoto
+                row.Cells(3).Value = ReadNews.DescriptionNewsPhoto
 
 
             ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Photo Then 'photo update
                 Dim PhotoClient As New ApiClients.PhotoClient
                 Dim PhotoDilog As NewPhoto = New NewPhoto()
-                Dim NewPhoto As New FileWorxObjects.Photo()
-                NewPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
+                Dim ReadPhoto As New PhotoReadService()
+                ReadPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
 
 
-                If NewPhoto.LocationPhoto <> "" Then
+                If ReadPhoto.LocationPhoto <> "" Then
                     imagePictureBox1.Image?.Dispose()
-                    PhotoDilog.ImagePictureBox1.Image = New Bitmap(NewPhoto.LocationPhoto)
+                    PhotoDilog.ImagePictureBox1.Image = New Bitmap(ReadPhoto.LocationPhoto)
                     PhotoDilog.ImagePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
 
                 End If
-                PhotoDilog.PathLabel1.Text = NewPhoto.LocationPhoto
-                PhotoDilog.TitleTextBox1.Text = NewPhoto.NameFileUser
-                PhotoDilog.DescriptionTextBox2.Text = NewPhoto.DescriptionNewsPhoto
-                PhotoDilog.BodyTextBox3.Text = NewPhoto.BodyNewsPhoto
+                PhotoDilog.PathLabel1.Text = ReadPhoto.LocationPhoto
+                PhotoDilog.TitleTextBox1.Text = ReadPhoto.NameFileUser
+                PhotoDilog.DescriptionTextBox2.Text = ReadPhoto.DescriptionNewsPhoto
+                PhotoDilog.BodyTextBox3.Text = ReadPhoto.BodyNewsPhoto
                 PhotoDilog.BusinessID = CInt(row.Cells(0).Value)
                 PhotoDilog.UpdateButton1.Visible = True
                 PhotoDilog.SaveButton1.Visible = False
                 Me.DisposePictureBox()
                 PhotoDilog.ShowDialog()
-                NewPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
-                row.Cells(1).Value = NewPhoto.NameFileUser
+                ReadPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
+                row.Cells(1).Value = ReadPhoto.NameFileUser
 
-                row.Cells(3).Value = NewPhoto.DescriptionNewsPhoto
+                row.Cells(3).Value = ReadPhoto.DescriptionNewsPhoto
 
             End If
 
@@ -220,7 +222,7 @@ Public Class MainForm
             End If
             formdelete.ShowDialog()
             If formdelete.DialogResult = DialogResult.Yes Then 'delete news or photo
-                Dim deletephoto As FileWorxObjects.Photo = New FileWorxObjects.Photo()
+                Dim deletephoto As New PhotoReadService()
                 Dim PhotoClient As New ApiClients.PhotoClient
                 Dim NewsClient As New ApiClients.NewsClient
                 deletephoto = PhotoClient.ReadPhoto(IDBusiness)
@@ -307,7 +309,7 @@ Public Class MainForm
             Dim BusinessQueryClient As New ApiClients.BusinessQueryClient
             NewsPhotoDataGridView1.Rows.Clear()
 
-            Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos
+            Dim DataNewsAndPhotos As List(Of FileWorxObjects.BusinessObject) = BusinessQueryClient.GetAllNewsAndPhotos()
             If Not DataNewsAndPhotos Is Nothing Then
                 For Each item In DataNewsAndPhotos
                     NewsPhotoDataGridView1.Rows.Add(item.IDBusiness, item.NameFileUser, item.CreationDateFileUser, item.DescriptionNewsPhoto)
@@ -495,7 +497,7 @@ Public Class MainForm
         End If
     End Sub
     Private Sub SearchClick(sender As Object, e As EventArgs) Handles SearchButton1.Click
-        Dim filefilter As FileWorxObjects.FileQuery = New FileWorxObjects.FileQuery()
+        Dim filefilter As New FileQueryService()
         If IDfilterTextBox1.Text.Length <> 0 And IDCheckBox5.Checked Then
             filefilter.IndexConditionID = Me.SelectedCondition(IdComboBox3)
             filefilter.SeconedValueID = Me.SeconedValue(seconedIDTextBox6, IdComboBox3)
@@ -589,21 +591,7 @@ Public Class MainForm
         Dim selectedRows = NewsPhotoDataGridView1.SelectedRows.OfType(Of DataGridViewRow)().Where(Function(row) Not row.IsNewRow).ToArray()
 
 
-        ' If NewsPhotoDataGridView1.SelectedRows.Count > 0 Then
-        'For Each item In selectedRows
-        'BusinessObject = BusinessClient.ReadNewsOrPhotoOrUser(CInt(item.Cells(0).Value))
-        'If BusinessObject.ClassIDFileOrUser = ClassID.News Then
-        'Dim newsobject As New FileWorxObjects.News
-        'bject = NewsClient.ReadNews(CInt(item.Cells(0).Value))
-        'wcontact.listNews.Add(newsobject)
-        '  Else
-        'Dim photoobject As New FileWorxObjects.Photo
-        '  photoobject = PhotoClient.ReadPhoto(CInt(item.Cells(0).Value))
-        '        showcontact.listPhotos.Add(photoobject)
-        '  End If
 
-        ' Next
-        '  End If
         For Each item In selectedRows
             showcontact.ListID.Add(CInt(item.Cells(0).Value))
         Next

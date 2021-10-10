@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using DTO;
+using AutoMapper;
+
 namespace ApiServer.Controllers
 {
     [Route("api/[controller]")]
@@ -14,9 +17,13 @@ namespace ApiServer.Controllers
     {
         
         [HttpPost]
-        public IActionResult POST([FromBody] FileOperation file)
+        public IActionResult POST([FromBody] FileTransmissionService file)
         {
-            file.Upload();
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<FileTransmissionService, FileOperation>());
+            var mapper = new Mapper(config);
+
+            FileOperation FileTransmission = mapper.Map<FileOperation>(file);
+            FileTransmission.Upload();
             return Accepted();
         }
     }

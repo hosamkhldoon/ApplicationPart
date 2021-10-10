@@ -64,7 +64,7 @@ WHERE [ID]='" & Me.IDBusiness & "'", con)
 ,[C_Description]
 )
      VALUES 
-            ( ' " + Me.CreationDateFileUser + " ',N' " + Me.NameFileUser + " ',' " & Me.ClassIDFileOrUser & " ',N' " + Me.DescriptionNewsPhoto + " ' )", con)
+            ( '" + Me.CreationDateFileUser + "',N'" + Me.NameFileUser + "','" & Me.ClassIDFileOrUser & "',N'" + Me.DescriptionNewsPhoto + "')", con)
                 con.Open()
                 cmd.ExecuteNonQuery()
                 Dim newcmd As SqlCommand = New SqlCommand("SELECT @@IDENTITY", con)

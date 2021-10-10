@@ -8,14 +8,14 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-
+using DTO;
 namespace ApiClients
 {
     public  class ContactQueryClient
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public List<Contact> GetContact(ContactQuery ContactDataFilter)
+        public List<Contact> GetContact(ContactQueryService ContactDataFilter)
         {
 
             client = new HttpClient();

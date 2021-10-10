@@ -1,7 +1,8 @@
 ﻿using FileWorxObjects;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
+using DTO;
+using AutoMapper;
 
 namespace ApiServer.Controllers
 {
@@ -33,8 +34,11 @@ namespace ApiServer.Controllers
             string SerializeToJson = JsonConvert.SerializeObject(photo);
             if (photo != null)
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Photo,PhotoReadService>());
+                var mapper = new Mapper(config);
 
-                return Ok(photo);
+                PhotoReadService photoread = mapper.Map<PhotoReadService>(photo);
+                return Ok(photoread);
             }
             return NotFound();
         }
@@ -50,24 +54,34 @@ namespace ApiServer.Controllers
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult PUT([FromRoute]int id, [FromBody]Photo PhotoUpdate)
+        public IActionResult PUT([FromRoute]int id, [FromBody]PhotoUpdateService PhotoUpdate)
         {
-            PhotoUpdate.IDBusiness = id;
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoUpdateService, Photo>());
+            var mapper = new Mapper(config);
+
+            Photo photoedit = mapper.Map<Photo>(PhotoUpdate);
+            photoedit.IDBusiness = id;
+            photoedit.ClassIDFileOrUser = 2;
             photo.IDBusiness = id;
             photo.Read();
        
             if (photo == null)
                 return NotFound();
 
-            PhotoUpdate.Updata();
+            photoedit.Updata();
             return NoContent();
         }
         [HttpPost]
-        public IActionResult POST([FromBody]Photo PhotoCreate)
+        public IActionResult POST([FromBody]PhotoUpdateService PhotoCreate)
         {
-           
-            PhotoCreate.Updata();
-            return Ok(PhotoCreate.IDPhoto);
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<PhotoUpdateService, Photo>());
+            var mapper = new Mapper(config);
+
+            Photo photo = mapper.Map<Photo>(PhotoCreate);
+            photo.IDBusiness = -1;
+            photo.ClassIDFileOrUser = 2;
+            photo.Updata();
+            return Ok(photo.IDPhoto);
         }
     }
 }

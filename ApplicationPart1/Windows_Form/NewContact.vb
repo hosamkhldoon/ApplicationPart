@@ -1,10 +1,11 @@
-﻿Public Class NewContact
+﻿Imports DTO
+Public Class NewContact
 
     Private NewContact As FileWorxObjects.Contact = New FileWorxObjects.Contact()
 
     Public Property BusinessID() As Integer
     Private Sub SaveButtonClick(sender As Object, e As EventArgs) Handles SaveButton1.Click
-
+        Dim NewContact As New ContactUpdateService()
         Dim Creationdate = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
         Dim ContactClient As New ApiClients.ContactClient
         Dim ContactQueryClient As New ApiClients.ContactQueryClient
@@ -21,7 +22,7 @@
 
         Else
             Dim flag As Boolean = False
-            Dim ContactQuery As FileWorxObjects.ContactQuery = New FileWorxObjects.ContactQuery()
+            Dim ContactQuery As New ContactQueryService()
 
             Dim ListContact As List(Of FileWorxObjects.Contact) = ContactQueryClient.GetContact(ContactQuery)
             If Not ListContact Is Nothing Then
@@ -40,8 +41,6 @@
                 Dim StrHash As String = Eramake.eCryptography.Encrypt(PasswordTextBox3.Text)
                 NewContact.NameFileUser = NameTextBox1.Text
                 NewContact.UserName = usernameTextBox2.Text
-                NewContact.IDBusiness = -1
-                NewContact.ClassIDFileOrUser = 4
                 NewContact.Password = StrHash
                 NewContact.CreationDateFileUser = Creationdate
                 NewContact.TypeContact = TypeComboBox1.Text
@@ -58,15 +57,15 @@
 
     Private Sub UpdateButtonClick(sender As Object, e As EventArgs) Handles updateButton1.Click
         Dim ContactClient As New ApiClients.ContactClient
+        Dim UpdateContact As New ContactUpdateService()
+
+        UpdateContact.NameFileUser = NameTextBox1.Text
+        UpdateContact.UserName = usernameTextBox2.Text
+        UpdateContact.Password = PasswordTextBox3.Text
+        UpdateContact.Address = AddressTextBox4.Text
 
 
-        NewContact.NameFileUser = NameTextBox1.Text
-        NewContact.UserName = usernameTextBox2.Text
-        NewContact.Password = PasswordTextBox3.Text
-        NewContact.Address = AddressTextBox4.Text
-        NewContact.ClassIDFileOrUser = 4
-
-        Dim Message = ContactClient.UpdateContact(Me.BusinessID, NewContact)
+        Dim Message = ContactClient.UpdateContact(Me.BusinessID, UpdateContact)
         If Not String.IsNullOrEmpty(Message) Then
             MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

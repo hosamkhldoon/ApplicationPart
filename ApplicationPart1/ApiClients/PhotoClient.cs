@@ -8,14 +8,14 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-
+using DTO;
 namespace ApiClients
 {
     public class PhotoClient
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public Photo ReadPhoto(int id)
+        public PhotoReadService ReadPhoto(int id)
         {
 
             client = new HttpClient();
@@ -28,7 +28,7 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                Photo PhotoData = JsonConvert.DeserializeObject<Photo>(body);
+                PhotoReadService PhotoData = JsonConvert.DeserializeObject<PhotoReadService>(body);
                 return PhotoData;
             }
             return null;
@@ -55,7 +55,7 @@ namespace ApiClients
 
 
         }
-        public string CreatePhoto(Photo photo)
+        public string CreatePhoto(PhotoUpdateService photo)
         {
 
             client = new HttpClient();
@@ -78,7 +78,7 @@ namespace ApiClients
 
 
         }
-        public string UpdatePhoto(int id, Photo photo)
+        public string UpdatePhoto(int id, PhotoUpdateService photo)
         {
 
             client = new HttpClient();

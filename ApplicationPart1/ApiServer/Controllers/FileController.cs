@@ -1,7 +1,8 @@
 ﻿using FileWorxObjects;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-
+using DTO;
+using AutoMapper;
 
 namespace ApiServer.Controllers
 {
@@ -12,11 +13,14 @@ namespace ApiServer.Controllers
       
         private File file = new File();
         [HttpPut]
-        public IActionResult GET([FromBody]FileQuery filterNewsAndPhotos)
+        public IActionResult GET([FromBody]FileQueryService filterNewsAndPhotos)
         {
-           
-         
-            List<BusinessObject> ListFilterNewsAndPhoto = filterNewsAndPhotos.Run();
+
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<FileQueryService, FileQuery>());
+            var mapper = new Mapper(config);
+
+            FileQuery FileFilter = mapper.Map<FileQuery>(filterNewsAndPhotos);
+            List<BusinessObject> ListFilterNewsAndPhoto = FileFilter.Run();
             
             if (ListFilterNewsAndPhoto != null)
                 return Ok(ListFilterNewsAndPhoto);

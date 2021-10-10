@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
-
+using DTO;
 
 namespace ApiClients
 {
@@ -14,7 +14,7 @@ namespace ApiClients
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public List<BusinessObject> GetNewsAndPhotos(FileQuery filternewsphoto)
+        public List<BusinessObject> GetNewsAndPhotos(FileQueryService filternewsphoto)
         {
 
             client = new HttpClient();

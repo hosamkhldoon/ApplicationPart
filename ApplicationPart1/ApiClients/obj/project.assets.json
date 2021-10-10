@@ -2671,6 +2671,16 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DTO.dll": {}
+        }
+      },
       "FileWorxObjects/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
@@ -8881,6 +8891,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "DTO/1.0.0": {
+      "type": "project",
+      "path": "../DTO/DTO.csproj",
+      "msbuildProject": "../DTO/DTO.csproj"
+    },
     "FileWorxObjects/1.0.0": {
       "type": "project",
       "path": "../FileWorxObjects/FileWorxObjects.vbproj",
@@ -8889,6 +8904,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "DTO >= 1.0.0",
       "FileWorxObjects >= 1.0.0",
       "Newtonsoft.Json >= 13.0.1",
       "System.Net.Http >= 4.3.4",
@@ -8927,6 +8943,9 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
+            "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\DTO\\DTO.csproj": {
+              "projectPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\DTO\\DTO.csproj"
+            },
             "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj": {
               "projectPath": "C:\\Users\\Hussam.Ibraheem\\Desktop\\FileWorxProject\\ApplicationPart\\ApplicationPart1\\FileWorxObjects\\FileWorxObjects.vbproj"
             }

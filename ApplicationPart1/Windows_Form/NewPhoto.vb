@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-
+Imports DTO
 Public Class NewPhoto
 
 
@@ -48,9 +48,9 @@ Public Class NewPhoto
     End Sub
     Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton1.Click
 
-        Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+        Dim CreationDate = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
         Dim PhotoClient As New ApiClients.PhotoClient
-
+        Dim NewPhoto As New PhotoUpdateService()
         If NumberCharcter() Then
 
         ElseIf TitleTextBox1.Text.Length = 0 Then
@@ -59,10 +59,8 @@ Public Class NewPhoto
             Dim fileName As String = Path.GetFileName(openFD.FileName) + Guid.NewGuid.ToString
             NewPhoto.NameFileUser = TitleTextBox1.Text
             NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
-            NewPhoto.IDBusiness = -1
             NewPhoto.BodyNewsPhoto = BodyTextBox3.Text
-            NewPhoto.CreationDateFileUser = Creation_date
-            NewPhoto.ClassIDFileOrUser = 2
+            NewPhoto.CreationDateFileUser = CreationDate
 
             If Not String.IsNullOrEmpty(openFD.FileName) Then
                 NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
@@ -84,27 +82,28 @@ Public Class NewPhoto
     Private Sub UpdateClick(sender As Object, e As EventArgs) Handles UpdateButton1.Click
         Dim fileName As String = Path.GetFileName(openFD.FileName) + Guid.NewGuid.ToString
         Dim PhotoClient As New ApiClients.PhotoClient
+        Dim UpdatePhoto As New PhotoUpdateService()
         If Not String.IsNullOrEmpty(openFD.FileName) Then
             If File.Exists(PrevPhoto.LocationPhoto) Then
                 File.Delete(PrevPhoto.LocationPhoto)
                 File.Copy(openFD.FileName, Path.Combine(folder, fileName), True)
 
             End If
-            NewPhoto.LocationPhoto = Path.Combine(folder, fileName)
+            UpdatePhoto.LocationPhoto = Path.Combine(folder, fileName)
         Else
-            NewPhoto.LocationPhoto = PrevPhoto.LocationPhoto
+            UpdatePhoto.LocationPhoto = PrevPhoto.LocationPhoto
         End If
 
-        NewPhoto.NameFileUser = TitleTextBox1.Text
-        NewPhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
-        NewPhoto.BodyNewsPhoto = BodyTextBox3.Text
-        NewPhoto.ClassIDFileOrUser = 2
+        UpdatePhoto.NameFileUser = TitleTextBox1.Text
+        UpdatePhoto.DescriptionNewsPhoto = DescriptionTextBox2.Text
+        UpdatePhoto.BodyNewsPhoto = BodyTextBox3.Text
 
-        If NewPhoto.NameFileUser = PrevPhoto.NameFileUser And String.IsNullOrEmpty(openFD.FileName) And NewPhoto.DescriptionNewsPhoto = PrevPhoto.DescriptionNewsPhoto And NewPhoto.BodyNewsPhoto = PrevPhoto.BodyNewsPhoto Then
+
+        If UpdatePhoto.NameFileUser = PrevPhoto.NameFileUser And String.IsNullOrEmpty(openFD.FileName) And UpdatePhoto.DescriptionNewsPhoto = PrevPhoto.DescriptionNewsPhoto And UpdatePhoto.BodyNewsPhoto = PrevPhoto.BodyNewsPhoto Then
             MessageBox.Show("Please Changing any thing", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
         Else
-            Dim Message = PhotoClient.UpdatePhoto(Me.BusinessID, NewPhoto)
+            Dim Message = PhotoClient.UpdatePhoto(Me.BusinessID, UpdatePhoto)
             If Not String.IsNullOrEmpty(Message) Then
                 MessageBox.Show("Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If

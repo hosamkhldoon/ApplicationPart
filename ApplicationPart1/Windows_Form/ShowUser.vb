@@ -2,14 +2,14 @@
 
 Imports FileWorxObjects.BusinessQuery
 Imports FileWorxObjects.QueryConditionSql
-
+Imports DTO
 Public Class ShowUser
     Public DictionaryUser As New Dictionary(Of String, Dictionary(Of String, String))
 
     Private IDBusiness As Integer
     Private BusinessObject As FileWorxObjects.BusinessObject = New FileWorxObjects.BusinessObject()
     Private Users As FileWorxObjects.User = New FileWorxObjects.User()
-    Private UserQuery As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
+    Private UserQuery As New UserQueryService()
 
     Private Sub ShowUserLoad(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim UserQueryClient As New ApiClients.UserQueryClient
@@ -45,29 +45,29 @@ Public Class ShowUser
 
 
             Dim UserDilog As NewUser = New NewUser()
-
+            Dim ReadUser As New UserReadService()
 
 
             Users.IDBusiness = CInt(row.Cells(0).Value)
             Users.IDUser = CInt(row.Cells(0).Value)
-            Users = UserClient.ReadUser(CInt(row.Cells(0).Value))
+            ReadUser = UserClient.ReadUser(CInt(row.Cells(0).Value))
 
 
-            UserDilog.NameTextBox1.Text = Users.NameFileUser
-            UserDilog.LoginNameTextBox2.Text = Users.NameLogin
-            UserDilog.TypeComboBox1.Text = Users.TypeUser
+            UserDilog.NameTextBox1.Text = ReadUser.NameFileUser
+            UserDilog.LoginNameTextBox2.Text = ReadUser.NameLogin
+            UserDilog.TypeComboBox1.Text = ReadUser.TypeUser
             UserDilog.PasswordTextBox3.Visible = False
             UserDilog.Label3.Visible = False
             UserDilog.BusinessID = CInt(row.Cells(0).Value)
             UserDilog.updateButton1.Visible = True
             UserDilog.SaveButton2.Visible = False
             UserDilog.ShowDialog()
-            Users = UserClient.ReadUser(CInt(row.Cells(0).Value))
+            ReadUser = UserClient.ReadUser(CInt(row.Cells(0).Value))
 
-            row.Cells(1).Value = Users.NameFileUser
+            row.Cells(1).Value = ReadUser.NameFileUser
 
-            row.Cells(3).Value = Users.NameLogin
-            row.Cells(4).Value = Users.LastModifierUser
+            row.Cells(3).Value = ReadUser.NameLogin
+            row.Cells(4).Value = ReadUser.LastModifierUser
 
 
         End If
@@ -86,8 +86,8 @@ Public Class ShowUser
                 IDBusiness = CInt(row.Cells(0).Value)
             End If
 
-            UserContextMenuStrip1.Show(UserDataGridView1, New Point(e.X, e.Y))
-
+            UserContextMenuStrip1.Show(UserDataGridView1, e.Location)
+            UserContextMenuStrip1.Show(Cursor.Position)
         End If
     End Sub
     Private Sub DeleteToolStripMenuItemClick(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
@@ -202,7 +202,7 @@ Public Class ShowUser
     End Sub
 
     Private Sub SearchClick(sender As Object, e As EventArgs) Handles searchButton1.Click
-        Dim userfilter As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
+        Dim userfilter As New UserQueryService()
         If IDTextBox1.Text.Length <> 0 And IDCheckBox1.Checked Then
             userfilter.SeconedValueID = Me.SeconedValue(seconedidTextBox1, IDComboBox1)
             userfilter.IndexConditionID = Me.SelectedCondition(IDComboBox1)

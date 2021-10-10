@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DTO;
+using AutoMapper;
 
 namespace ApiServer.Controllers
 {
@@ -15,12 +17,15 @@ namespace ApiServer.Controllers
     {
         private User user = new User();
         [HttpPut]
-        public IActionResult GET([FromBody]UserQuery userfilter)
+        public IActionResult GET([FromBody]UserQueryService userfilter)
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<UserQueryService,UserQuery>());
+            var mapper = new Mapper(config);
 
-          
-        
-            List<User> ListDataUser = userfilter.Run();
+            UserQuery UserFilter = mapper.Map<UserQuery>(userfilter);
+
+
+            List<User> ListDataUser = UserFilter.Run();
             if (ListDataUser != null)
             {
 
@@ -37,19 +42,29 @@ namespace ApiServer.Controllers
            
             if (user != null)
             {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<User,UserReadService>());
+                var mapper = new Mapper(config);
 
-                return Ok(user);
+               UserReadService useredit = mapper.Map<UserReadService>(user);
+                return Ok(useredit);
             }
             return NotFound();
         }
         [HttpPost("GETUSER")]
-        public IActionResult GETUSER([FromBody]User LoginUser)
+        public IActionResult GETUSER([FromBody]UserCeackLogin LoginUser)
         {
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<User,UserCeackLogin>());
+            var mapper = new Mapper(config);
+
+           
             user.PasswordUser = LoginUser.PasswordUser;
             user.NameLogin = LoginUser.NameLogin;
-   
+
             if (user.CheckLoginUser())
-                return Ok(user);
+            {
+                UserCeackLogin userlogin = mapper.Map<UserCeackLogin>(user);
+                return Ok(userlogin);
+            }
             return NotFound();
         
         }
@@ -65,24 +80,33 @@ namespace ApiServer.Controllers
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult PUT([FromRoute]int id,[FromBody] User UserUpdate)
+        public IActionResult PUT([FromRoute]int id,[FromBody] UserUpdateService UserUpdate)
         {
-            UserUpdate.IDBusiness = id;
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<UserUpdateService, User>());
+            var mapper = new Mapper(config);
+
+            User useredit = mapper.Map<User>(UserUpdate);
+            useredit.IDBusiness = id;
+            useredit.ClassIDFileOrUser = 3;
             user.IDBusiness = id;
             user.Read();
             
             if (user == null)
                 return NotFound();
 
-            UserUpdate.Updata();
+            useredit.Updata();
             return NoContent();
         }
         [HttpPost]
-        public IActionResult POST([FromBody]User UserCreate)
+        public IActionResult POST([FromBody]UserUpdateService UserCreate)
         {
-           
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<UserUpdateService, User>());
+            var mapper = new Mapper(config);
 
-            UserCreate.Updata();
+            User user = mapper.Map<User>(UserCreate);
+            user.IDBusiness = -1;
+            user.ClassIDFileOrUser = 3;
+            user.Updata();
             return Accepted();
         }
     }

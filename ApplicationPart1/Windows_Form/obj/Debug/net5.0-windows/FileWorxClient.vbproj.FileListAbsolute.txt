@@ -136,3 +136,5 @@ C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\System.ServiceModel.Http.dll
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\System.ServiceModel.Primitives.dll
 C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\System.ServiceModel.dll
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\DTO.dll
+C:\Users\Hussam.Ibraheem\Desktop\FileWorxProject\ApplicationPart\ApplicationPart1\Windows_Form\bin\Debug\net5.0-windows\DTO.pdb

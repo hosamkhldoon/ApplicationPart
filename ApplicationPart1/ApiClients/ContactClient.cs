@@ -8,14 +8,14 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-
+using DTO;
 namespace ApiClients
 {
     public class ContactClient
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public Contact ReadContact(int id)
+        public ContactReadService ReadContact(int id)
         {
 
             client = new HttpClient();
@@ -29,7 +29,7 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                Contact contactobject = JsonConvert.DeserializeObject<Contact>(body);
+                ContactReadService contactobject = JsonConvert.DeserializeObject<ContactReadService>(body);
                 return contactobject;
             }
             return null;
@@ -57,7 +57,7 @@ namespace ApiClients
 
 
         }
-        public string CreateContact(Contact contact)
+        public string CreateContact(ContactUpdateService contact)
         {
 
             client = new HttpClient();
@@ -81,7 +81,7 @@ namespace ApiClients
 
 
         }
-        public string UpdateContact(int id, Contact contact)
+        public string UpdateContact(int id, ContactUpdateService contact)
         {
 
             client = new HttpClient();

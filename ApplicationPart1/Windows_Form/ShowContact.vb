@@ -1,7 +1,7 @@
 ﻿Imports FileWorxObjects.QueryConditionSql
-
+Imports DTO
 Public Class ShowContact
-    Private ContactQuery As FileWorxObjects.ContactQuery = New FileWorxObjects.ContactQuery()
+    Private ContactQuery As New ContactQueryService()
     Public ListNews As New List(Of FileWorxObjects.News)
     Public ListPhotos As New List(Of FileWorxObjects.Photo)
     Public ListID As New List(Of Integer)
@@ -66,7 +66,7 @@ Public Class ShowContact
         Me.NamefiltertextBox1.Enabled = True
     End Sub
     Private Sub SerarchButtonClick(sender As Object, e As EventArgs) Handles SerarchButton.Click
-        Dim contactfilter As New FileWorxObjects.ContactQuery()
+        Dim contactfilter As New ContactQueryService()
         If NamefiltertextBox1.Text.Length <> 0 And NamecheckBox1.Checked Then
             contactfilter.IndexConditionName = Me.SelectedCondition(NameFiltercomboBox1)
             contactfilter.QName = NamefiltertextBox1.Text
@@ -116,24 +116,18 @@ Public Class ShowContact
 
             Dim row As DataGridViewRow = ContactDataGridView.Rows(e.RowIndex)
 
-
-
-
-
-
-
             Dim ContactDilog As NewContact = New NewContact()
 
 
-
+            Dim ReadContact As New ContactReadService()
             Contact.IDBusiness = CInt(row.Cells(0).Value)
             Contact.IDContact = CInt(row.Cells(0).Value)
-            Contact = ContactClient.ReadContact(CInt(row.Cells(0).Value))
+            ReadContact = ContactClient.ReadContact(CInt(row.Cells(0).Value))
 
 
-            ContactDilog.NameTextBox1.Text = Contact.NameFileUser
-            ContactDilog.usernameTextBox2.Text = Contact.UserName
-            ContactDilog.AddressTextBox4.Text = Contact.Address
+            ContactDilog.NameTextBox1.Text = ReadContact.NameFileUser
+            ContactDilog.usernameTextBox2.Text = ReadContact.UserName
+            ContactDilog.AddressTextBox4.Text = ReadContact.Address
             ContactDilog.TypeComboBox1.Visible = False
             ContactDilog.PasswordTextBox3.Visible = False
             ContactDilog.Label3.Visible = False
@@ -142,9 +136,9 @@ Public Class ShowContact
             ContactDilog.updateButton1.Visible = True
             ContactDilog.SaveButton1.Visible = False
             ContactDilog.ShowDialog()
-            Contact = ContactClient.ReadContact(CInt(row.Cells(0).Value))
+            ReadContact = ContactClient.ReadContact(CInt(row.Cells(0).Value))
 
-            row.Cells(1).Value = Contact.NameFileUser
+            row.Cells(1).Value = ReadContact.NameFileUser
 
 
 
@@ -166,8 +160,8 @@ Public Class ShowContact
                 IDBusiness = CInt(row.Cells(0).Value)
             End If
 
-            ContactContextMenuStrip1.Show(ContactDataGridView, New Point(e.X, e.Y))
-
+            ContactContextMenuStrip1.Show(ContactDataGridView, e.Location)
+            ContactContextMenuStrip1.Show(Cursor.Position)
         End If
     End Sub
     Private Sub DeleteToolStripMenuItemClick(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
@@ -181,16 +175,19 @@ Public Class ShowContact
             formdelete.ShowDialog()
             If formdelete.DialogResult = DialogResult.Yes Then
                 Dim row = ContactDataGridView.SelectedRows(0)
-                ContactClient.DeleteContact(IDBusiness)
+                Dim Message = ContactClient.DeleteContact(IDBusiness)
+                If Not String.IsNullOrEmpty(Message) Then
+                    MessageBox.Show(Message, "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    ContactDataGridView.Rows.Remove(row)
+                End If
 
-                ContactDataGridView.Rows.Remove(row)
             End If
         End If
 
     End Sub
     Private Sub OkButtonClick(sender As Object, e As EventArgs) Handles OkButton.Click
-        Dim FileOperationClient As New ApiClients.FileOperationClient
-        Dim FileOperation As New FileWorxObjects.FileOperation
+        Dim FileOperationClient As New ApiClients.FileOperationClient()
+        Dim FileOperation As New FileTransmissionService()
         Dim selectedRows = ContactDataGridView.SelectedRows.OfType(Of DataGridViewRow)().Where(Function(row) Not row.IsNewRow).ToArray()
 
         For Each id In Me.ListID
@@ -208,7 +205,7 @@ Public Class ShowContact
     End Sub
 
     Private Sub GetAllClick(sender As Object, e As EventArgs) Handles GetAllbutton2.Click
-        Dim ALLContact As New FileWorxObjects.ContactQuery()
+        Dim ALLContact As New ContactQueryService()
         Dim ContactQueryClient As New ApiClients.ContactQueryClient
 
         Dim FilterContact As List(Of FileWorxObjects.Contact) = ContactQueryClient.GetContact(ALLContact)

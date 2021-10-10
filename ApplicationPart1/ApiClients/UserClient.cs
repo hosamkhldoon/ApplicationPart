@@ -8,14 +8,14 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-
+using DTO;
 namespace ApiClients
 {
     public class UserClient
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public User ReadUser(int id)
+        public UserReadService ReadUser(int id)
         {
 
             client = new HttpClient();
@@ -29,12 +29,12 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                User UserData = JsonConvert.DeserializeObject<User>(body);
+                UserReadService UserData = JsonConvert.DeserializeObject<UserReadService>(body);
                 return UserData;
             }
             return null;
         }
-        public User LoginUser(User UserLogin)
+        public UserCeackLogin LoginUser(UserCeackLogin UserLogin)
         {
 
             client = new HttpClient();
@@ -48,7 +48,7 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                User UserData = JsonConvert.DeserializeObject<User>(body);
+                UserCeackLogin UserData = JsonConvert.DeserializeObject<UserCeackLogin>(body);
                 return UserData;
             }
             return null;
@@ -78,7 +78,7 @@ namespace ApiClients
 
 
         }
-        public string CreateUser(User user)
+        public string CreateUser(UserUpdateService user)
         {
 
             client = new HttpClient();
@@ -100,7 +100,7 @@ namespace ApiClients
 
 
         }
-        public string UpdateUser(int id,User user)
+        public string UpdateUser(int id,UserUpdateService user)
         {
 
             client = new HttpClient();

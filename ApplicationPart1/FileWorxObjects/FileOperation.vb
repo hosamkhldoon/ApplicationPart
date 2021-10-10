@@ -85,9 +85,9 @@ Public Class FileOperation
             Using channel = connection.CreateModel()
                 Dim basicProperties As IBasicProperties = channel.CreateBasicProperties()
                 basicProperties.Persistent = True
-                channel.QueueDeclare(queue:="hello", durable:=True, exclusive:=False, autoDelete:=False, arguments:=Nothing)
+                channel.QueueDeclare(queue:="News", durable:=True, exclusive:=False, autoDelete:=False, arguments:=Nothing)
                 Dim body = Encoding.UTF8.GetBytes(JSONresult)
-                channel.BasicPublish(exchange:="", routingKey:="hello", basicProperties, body:=body)
+                channel.BasicPublish(exchange:="", routingKey:="News", basicProperties, body:=body)
 
             End Using
         End Using

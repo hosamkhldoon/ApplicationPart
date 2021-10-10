@@ -4,7 +4,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-
+using DTO;
 
 namespace ApiClients
 {
@@ -12,7 +12,7 @@ namespace ApiClients
     {
         private string BaseUrl = "https://localhost:44391/";
         private HttpClient client;
-        public News ReadNews(int id)
+        public NewsReadService ReadNews(int id)
         {
 
             client = new HttpClient();
@@ -26,7 +26,7 @@ namespace ApiClients
             if (response.IsSuccessStatusCode)
             {
                 var body = response.Content.ReadAsStringAsync().Result;
-                News NewsData = JsonConvert.DeserializeObject<News>(body);
+                NewsReadService NewsData = JsonConvert.DeserializeObject<NewsReadService>(body);
                 return NewsData;
             }
             return null;
@@ -54,7 +54,7 @@ namespace ApiClients
 
 
         }
-        public string CreateNews(News news)
+        public string CreateNews(NewsUpdateService news)
         {
 
             client = new HttpClient();
@@ -76,7 +76,7 @@ namespace ApiClients
 
 
         }
-        public string UpdateNews(int id, News news)
+        public string UpdateNews(int id, NewsUpdateService news)
         {
 
             client = new HttpClient();

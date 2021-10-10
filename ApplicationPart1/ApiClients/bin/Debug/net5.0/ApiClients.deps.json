@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ApiClients/1.0.0": {
         "dependencies": {
+          "DTO": "1.0.0",
           "FileWorxObjects": "1.0.0",
           "Newtonsoft.Json": "13.0.1",
           "System.Net.Http": "4.3.4",
@@ -1787,6 +1788,11 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "DTO/1.0.0": {
+        "runtime": {
+          "DTO.dll": {}
+        }
+      },
       "FileWorxObjects/1.0.0": {
         "dependencies": {
           "ConnectionFactory.NET": "1.0.6",
@@ -3001,6 +3007,11 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "FileWorxObjects/1.0.0": {
       "type": "project",

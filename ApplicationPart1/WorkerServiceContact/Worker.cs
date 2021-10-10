@@ -13,7 +13,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
-
+using DTO;
 
 namespace WorkerServiceContact
 {
@@ -45,7 +45,8 @@ namespace WorkerServiceContact
             string BaseUrl = "https://localhost:44391/";
             HttpClient client;
             int CountNews = 0;
-            ContactQuery contactQuery = new ContactQuery();
+            ContactQueryService contactQuery = new ContactQueryService();
+            contactQuery.QType = "Reception";
             client = new HttpClient();
             client.BaseAddress = new Uri(BaseUrl);
             client.DefaultRequestHeaders.Accept.Clear();
@@ -60,8 +61,7 @@ namespace WorkerServiceContact
                 List<Contact> ContactData = JsonConvert.DeserializeObject<List<Contact>>(body);
                 foreach (var item in ContactData)
                 {
-                    if (item.TypeContact == "Reception")
-                    {
+                    
                      
 
                         WebRequest request = WebRequest.Create(item.Address);
@@ -93,10 +93,10 @@ namespace WorkerServiceContact
                             streamReader.Close();
                           
                                 
-                                for (int i = 0; i <= directories.Count - 1; i++)
-                                {
-                                    if (directories[i].Contains("."))
-                                    {
+                             for (int i = 0; i <= directories.Count - 1; i++)
+                             {
+                                 if (directories[i].Contains("."))
+                                 {
 
                                         string path = @item.Address+"/" + @directories[i].ToString();
                                         FtpWebRequest requestfile = (FtpWebRequest)WebRequest.Create(path);
@@ -111,21 +111,21 @@ namespace WorkerServiceContact
                                         requestdate.Method = WebRequestMethods.Ftp.GetDateTimestamp;
                                         requestdate.Credentials = new NetworkCredential(item.UserName, password);
                                         responsefile = (FtpWebResponse)requestdate.GetResponse();
-                                        Contact contact = new Contact();
+                                       ContactReadService contact = new ContactReadService();
                                         HttpResponseMessage responsecontactdate = client.GetAsync("api/Contact/" + item.IDBusiness).Result;
                                     
 
                                         if (responsecontactdate.IsSuccessStatusCode)
                                         {
                                            body = responsecontactdate.Content.ReadAsStringAsync().Result;
-                                           contact = JsonConvert.DeserializeObject<Contact>(body);
-                                         }
+                                           contact = JsonConvert.DeserializeObject<ContactReadService>(body);
+                                        }
                                       
                                         TimeSpan DifferenceTime = responsefile.LastModified - contact.LastFileDate;
                                         if (Math.Floor(DifferenceTime.TotalSeconds) > 0)
                                         {  
-                                            News newsobject = new News();
-                                            Photo photoobject = new Photo();
+                                            NewsUpdateService newsobject = new NewsUpdateService();
+                                            PhotoUpdateService photoobject = new PhotoUpdateService();
 
                                             string[] File = Strings.Split(reader.ReadToEnd(), "$%$");
                                             if (File[4] == "News")
@@ -135,8 +135,7 @@ namespace WorkerServiceContact
                                                 newsobject.DescriptionNewsPhoto = File[1];
                                                 newsobject.CategoryNews = File[2];
                                                 newsobject.BodyNewsPhoto = File[3];
-                                                newsobject.ClassIDFileOrUser = 1;
-                                                newsobject.IDBusiness = -1;
+                                              
                                                 newsobject.CreationDateFileUser = responsefile.LastModified.ToString("MM/dd/yyyy hh:mm:ss tt");
                                                 if (client.BaseAddress == null)
                                                 {
@@ -158,8 +157,7 @@ namespace WorkerServiceContact
                                                 photoobject.DescriptionNewsPhoto = File[1];
                                                 photoobject.LocationPhoto = File[2];
                                                 photoobject.BodyNewsPhoto = File[3];
-                                                photoobject.IDBusiness = -1;
-                                                photoobject.ClassIDFileOrUser = 2;
+                                           
                                                 if (client.BaseAddress == null)
                                                 {
                                                     client.BaseAddress = new Uri(BaseUrl);
@@ -178,12 +176,12 @@ namespace WorkerServiceContact
 
 
                                             }
-                                            item.LastFileDate = responsefile.LastModified;
+                                            contact.LastFileDate = responsefile.LastModified;
                                             if (client.BaseAddress == null)
                                             {
                                                 client.BaseAddress = new Uri(BaseUrl);
                                             }
-                                            HttpResponseMessage responsecontact = client.PutAsJsonAsync("api/Contact/" + item.IDBusiness, item).Result;
+                                            HttpResponseMessage responsecontact = client.PutAsJsonAsync("api/Contact/" + item.IDBusiness, contact).Result;
 
                                             if (responsecontact.IsSuccessStatusCode)
                                             {
@@ -192,15 +190,15 @@ namespace WorkerServiceContact
                                         }
                                         reader.Close();
                                         responsefile.Close();
-                                    }
+                                 }
                              
 
-                                }
+                             }
                             
                                                                   
                         }
 
-                    }
+                    
                 }
                
             }

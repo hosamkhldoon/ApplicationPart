@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
 Imports FileWorxObjects.BusinessQuery
-
+Imports DTO
 Public Class NewUser
 
 
@@ -14,9 +14,10 @@ Public Class NewUser
     Private Sub SaveClick(sender As Object, e As EventArgs) Handles SaveButton2.Click
 
 
-        Dim Creation_date = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
+        Dim CreationDate = Date.Now.ToString("MM/dd/yyyy hh:mm:ss tt")
         Dim UserClient As New ApiClients.UserClient
         Dim UserQueryClient As New ApiClients.UserQueryClient
+        Dim NewUser As New UserUpdateService()
         Dim emptyBoxes =
            From txt In Me.Controls.OfType(Of TextBox)()
            Where txt.Text.Length = 0
@@ -30,7 +31,7 @@ Public Class NewUser
 
         Else
             Dim flag As Boolean = False
-            Dim UserQuery As FileWorxObjects.UserQuery = New FileWorxObjects.UserQuery()
+            Dim UserQuery As New UserQueryService()
 
 
 
@@ -53,10 +54,9 @@ Public Class NewUser
 
                 NewUser.NameFileUser = NameTextBox1.Text
                 NewUser.NameLogin = LoginNameTextBox2.Text
-                NewUser.IDBusiness = -1
-                NewUser.ClassIDFileOrUser = 3
+
                 NewUser.PasswordUser = StrHash
-                NewUser.CreationDateFileUser = Creation_date
+                NewUser.CreationDateFileUser = CreationDate
                 NewUser.TypeUser = TypeComboBox1.Text
                 NewUser.LastModifierUser = ""
                 Dim Message = UserClient.CreateUser(NewUser)
@@ -78,15 +78,15 @@ Public Class NewUser
 
 
         Dim UserClient As New ApiClients.UserClient
+        Dim UpdateUser As New UserUpdateService()
+
+        UpdateUser.NameFileUser = NameTextBox1.Text
+        UpdateUser.NameLogin = LoginNameTextBox2.Text
+        UpdateUser.PasswordUser = PasswordTextBox3.Text
+        UpdateUser.LastModifierUser = MainForm.CurrentUser
 
 
-        NewUser.NameFileUser = NameTextBox1.Text
-        NewUser.NameLogin = LoginNameTextBox2.Text
-        NewUser.PasswordUser = PasswordTextBox3.Text
-        NewUser.LastModifierUser = MainForm.CurrentUser
-        NewUser.ClassIDFileOrUser = 3
-
-        Dim Message = UserClient.UpdateUser(Me.BusinessID, NewUser)
+        Dim Message = UserClient.UpdateUser(Me.BusinessID, UpdateUser)
         If Not String.IsNullOrEmpty(Message) Then
             MessageBox.Show(Message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
