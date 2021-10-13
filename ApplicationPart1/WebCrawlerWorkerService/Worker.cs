@@ -31,8 +31,8 @@ namespace WebCrawlerWorkerService
 
                 //Uncomment to demo major features
                 //DemoCrawlerX_PauseResumeStop();
-               //webCrowlerAbotX.DemoCrawlerXJavascriptRendering();
-               webCrowlerAbotX.DemoParallelCrawlerEngine();
+               webCrowlerAbotX.DemoCrawlerXJavascriptRendering();
+               //webCrowlerAbotX.DemoParallelCrawlerEngine();
                 _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
              
                 

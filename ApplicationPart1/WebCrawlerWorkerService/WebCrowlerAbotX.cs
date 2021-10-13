@@ -208,7 +208,7 @@ namespace WebCrawlerWorkerService
              siteToCrawlProvider.AddSitesToCrawl(new List<SiteToCrawl>
              {
                  new SiteToCrawl{ Uri = new Uri("http://www.millwoodinn.com/") },
-                 //new SiteToCrawl{ Uri = new Uri("https://www.alraimedia.com/") }
+                 new SiteToCrawl{ Uri = new Uri("https://www.alraimedia.com/") }
                  
              });
 
@@ -251,10 +251,10 @@ namespace WebCrawlerWorkerService
                     var Links = (IEnumerable<HyperLink>)abotEventArgs.CrawledPage.ParsedLinks;
                   //  DownloadContentLinks(Links);
                    
-                        foreach (var link in Links)
-                        {
-                            Console.WriteLine(link.HrefValue.AbsoluteUri);
-                        }
+                    foreach (var link in Links)
+                    {
+                        Console.WriteLine(link.HrefValue.AbsoluteUri);
+                    }
                     
                 };
               
