@@ -17,6 +17,7 @@ Public Class MainForm
         News = 1
         Photo = 2
         User = 3
+        Html = 5
     End Enum
 
     Private Sub UserToolStripMenuItemClick(sender As Object, e As EventArgs) Handles UserToolStripMenuItem.Click
@@ -66,7 +67,8 @@ Public Class MainForm
                 imagePictureBox1.Visible = False
                 categoryLabel3.Visible = True
                 categoryComboBox1.Visible = True
-
+                LabelUrl.Visible = False
+                UrlLinkLabel.Visible = False
                 ReadNews = NewsClient.ReadNews(CInt(row.Cells(0).Value))
 
 
@@ -80,6 +82,8 @@ Public Class MainForm
                 categoryLabel3.Visible = False
                 categoryComboBox1.Visible = False
                 imagePictureBox1.Visible = True
+                LabelUrl.Visible = False
+                UrlLinkLabel.Visible = False
                 ReadPhoto = PhotoClient.ReadPhoto(CInt(row.Cells(0).Value))
 
                 titleTextBox1.Text = ReadPhoto.NameFileUser
@@ -93,6 +97,20 @@ Public Class MainForm
                     imagePictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
 
                 End If
+            ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Html Then
+                Dim HtmlClient As New ApiClients.HtmlClient()
+                Dim ReadHtml As New HtmlFileReadService()
+                categoryLabel3.Visible = False
+                categoryComboBox1.Visible = False
+                TabControl1.Visible = False
+                LabelUrl.Visible = True
+                UrlLinkLabel.Visible = True
+                ReadHtml = HtmlClient.ReadHtmlPage(CInt(row.Cells(0).Value))
+
+                titleTextBox1.Text = ReadHtml.NameFileUser
+                CreationdateTextBox3.Text = ReadHtml.CreationDateFileUser
+                UrlLinkLabel.Text = ReadHtml.LinkPage
+
             End If
 
 
@@ -216,21 +234,24 @@ Public Class MainForm
             If BusinessObject.ClassIDFileOrUser = ClassID.News Then
                 formdelete.TypeRow = "News"
 
-            Else
+            ElseIf BusinessObject.ClassIDFileOrUser = ClassID.Photo Then
                 formdelete.TypeRow = "Photo"
-
+            Else
+                formdelete.TypeRow = "Html Page"
             End If
             formdelete.ShowDialog()
             If formdelete.DialogResult = DialogResult.Yes Then 'delete news or photo
                 Dim deletephoto As New PhotoReadService()
+                Dim deleteHtmlFile As New HtmlFileReadService()
                 Dim PhotoClient As New ApiClients.PhotoClient
                 Dim NewsClient As New ApiClients.NewsClient
-                deletephoto = PhotoClient.ReadPhoto(IDBusiness)
+                Dim HtmlClient As New ApiClients.HtmlClient
+
                 index = NewsPhotoDataGridView1.SelectedRows.Item(0).Index
                 SelectRow = NewsPhotoDataGridView1.Rows.Item(index)
 
                 If BusinessObject.ClassIDFileOrUser = ClassID.Photo Then ' delete photo from folder
-
+                    deletephoto = PhotoClient.ReadPhoto(IDBusiness)
                     If deletephoto.LocationPhoto <> "" Then
 
                         If File.Exists(deletephoto.LocationPhoto) Then
@@ -239,8 +260,14 @@ Public Class MainForm
                         End If
                     End If
                     Message = PhotoClient.DeletePhoto(IDBusiness)
-                Else
+                ElseIf BusinessObject.ClassIDFileOrUser = ClassID.News Then
                     Message = NewsClient.DeleteNews(IDBusiness)
+                Else
+                    deleteHtmlFile = HtmlClient.ReadHtmlPage(IDBusiness)
+                    If File.Exists(deleteHtmlFile.NameFile) Then
+                        File.Delete(deleteHtmlFile.NameFile)
+                    End If
+                    Message = HtmlClient.DeleteHtmlPage(IDBusiness)
                 End If
 
 
@@ -596,5 +623,20 @@ Public Class MainForm
             showcontact.ListID.Add(CInt(item.Cells(0).Value))
         Next
         showcontact.ShowDialog()
+    End Sub
+
+    Private Sub UrlLinkLabelLinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles UrlLinkLabel.LinkClicked
+        Try
+
+
+            Dim psi As ProcessStartInfo = New ProcessStartInfo With {
+                 .FileName = Me.UrlLinkLabel.Text,
+                 .UseShellExecute = True
+             }
+            Process.Start(psi)
+
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

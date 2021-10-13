@@ -1,5 +1,7 @@
+using Abot2;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +13,17 @@ namespace WebCrawlerWorkerService
     {
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration()
+              .MinimumLevel.Information()
+              .Enrich.WithThreadId()
+              .WriteTo.Console(outputTemplate: Constants.LogFormatTemplate)
+              .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+           .UseWindowsService()
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();

@@ -92,6 +92,8 @@ Partial Class MainForm
         Me.ResetButton2 = New System.Windows.Forms.Button()
         Me.SqlOrElasticComboBox = New System.Windows.Forms.ComboBox()
         Me.SendButton = New System.Windows.Forms.Button()
+        Me.LabelUrl = New System.Windows.Forms.Label()
+        Me.UrlLinkLabel = New System.Windows.Forms.LinkLabel()
         CType(Me.NewsPhotoDataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -818,11 +820,35 @@ Partial Class MainForm
         Me.SendButton.Text = "Send News And Photo"
         Me.SendButton.UseVisualStyleBackColor = True
         '
+        'LabelUrl
+        '
+        Me.LabelUrl.AutoSize = True
+        Me.LabelUrl.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelUrl.Location = New System.Drawing.Point(19, 416)
+        Me.LabelUrl.Name = "LabelUrl"
+        Me.LabelUrl.Size = New System.Drawing.Size(66, 17)
+        Me.LabelUrl.TabIndex = 32
+        Me.LabelUrl.Text = "Page URL"
+        Me.LabelUrl.Visible = False
+        '
+        'UrlLinkLabel
+        '
+        Me.UrlLinkLabel.AutoSize = True
+        Me.UrlLinkLabel.Location = New System.Drawing.Point(139, 414)
+        Me.UrlLinkLabel.Name = "UrlLinkLabel"
+        Me.UrlLinkLabel.Size = New System.Drawing.Size(63, 15)
+        Me.UrlLinkLabel.TabIndex = 33
+        Me.UrlLinkLabel.TabStop = True
+        Me.UrlLinkLabel.Text = "LinkLabel1"
+        Me.UrlLinkLabel.Visible = False
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1023, 667)
+        Me.Controls.Add(Me.UrlLinkLabel)
+        Me.Controls.Add(Me.LabelUrl)
         Me.Controls.Add(Me.SendButton)
         Me.Controls.Add(Me.SqlOrElasticComboBox)
         Me.Controls.Add(Me.ResetButton2)
@@ -936,4 +962,6 @@ Partial Class MainForm
     Friend WithEvents seconedDateTimePicker2 As DateTimePicker
     Friend WithEvents SqlOrElasticComboBox As ComboBox
     Friend WithEvents SendButton As Button
+    Friend WithEvents LabelUrl As Label
+    Friend WithEvents UrlLinkLabel As LinkLabel
 End Class

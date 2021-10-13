@@ -92,7 +92,7 @@ Public Class BusinessQueryReportsql
 ," + Me.TableName + ".[C_Description]
 
             FROM " + Me.TableName + " 
-WHERE " + Me.TableName + ".[C_ClassID] in (1,2) ", con)
+WHERE " + Me.TableName + ".[C_ClassID] in (1,2,5) ", con)
         con.Open()
         myReader = cmd.ExecuteReader()
 
